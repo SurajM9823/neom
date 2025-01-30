@@ -1,0 +1,2696 @@
+<html>
+ <head>
+  <title>
+   NEOM
+  </title>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+  /* Navbar link styles */
+.navbar-nav .nav-link {
+   
+    font-weight: 500; /* Make links bold */
+    font-size: 1rem; /* Set a consistent font size */
+    transition: color 0.3s ease, font-size 0.3s ease; /* Smooth hover and size transitions */
+}
+
+/* Hover effect for navbar links */
+.navbar-nav .nav-link:hover {
+    color: #2e0888;; /* Slightly darker #5ABCE6 for hover state */
+}
+
+/* Navbar brand logo styling */
+.navbar-brand img {
+    margin-left: -50px;
+    height: 60px; /* Default logo height */
+    transition: height 0.3s ease; /* Smooth resizing on interactions */
+}
+
+/* Contact button styling */
+.contact-btn {
+    border: 1px solid #5ABCE6; /* Update to darker #5ABCE6 for better contrast */
+    border-radius: 10px; /* Slightly rounder corners */
+    padding: 2px 20px; /* Balanced look */
+    font-weight: 600; /* Make text bold */
+    color: #5ABCE6; /* Match border color */
+    background-color: transparent; /* Transparent background */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+/* Hover effect for contact button */
+.contact-btn:hover {
+    background-color: #5ABCE6; /* Darker #5ABCE6 background */
+    color: #fff; /* White text for contrast */
+    border-color: #5ABCE6; /* Match border with background */
+}
+
+/* Navbar fixed at the top */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030; /* Ensure navbar appears above other elements */
+    transition: all 0.3s ease; /* Smooth transition for height and background changes */
+}
+
+/* Initial navbar state */
+.navbar-expanded {
+    height: 50px; /* Default height */
+    background-color: #f8f9fa; /* Light background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Shrinked navbar state on scroll */
+.navbar {
+    height: 50px; /* Smaller height */
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Stronger shadow for focus */
+}
+
+
+
+.full-screen-image {
+    height: 100vh;
+    width: 100%; /* Optional, ensures it spans the full width */
+    object-fit: cover; /* Optional, adjusts the image to fit nicely */
+}
+
+  </style>
+
+  <style>
+        
+       
+        .main-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .sub-heading {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .description {
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+        .btn-custom {
+            border: 2px solid #5ABCE6;
+            color: #5ABCE6;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            margin-top: 1.5rem;
+        }
+        .btn-custom:hover {
+            background-color: #5ABCE6;
+            color: #fff;
+        }
+        .stats-card {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        .stats-card .stat {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #5ABCE6;
+        }
+        .stats-card .stat-description {
+            font-size: 1rem;
+            color: #666;
+        }
+        .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Ensures proper layout on smaller screens */
+}
+
+.left-content {
+    width: 45%; /* Adjust width as needed */
+    text-align: left;
+}
+
+.stats-card {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping items to the next line */
+    justify-content: center; /* Centers the items */
+    gap: 20px; /* Adds spacing between items */
+}
+
+.stat-item {
+    width: 45%; /* Makes each item take 45% of the width for 2 items per row */
+    margin-bottom: 20px; /* Adds space between rows */
+}
+
+.stat {
+    font-size: 2.5rem; /* Adjust font size for better visibility */
+    font-weight: bold;
+}
+
+.stat-description {
+    font-size: 1.2rem; /* Adjust font size for the description */
+    color: #666;
+}
+
+
+    </style>
+
+    <!--The css for third section starts-->
+    <style>
+
+ 
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .card-title {
+            background-color: #f8f9fa;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 10px;
+            margin: 0;
+        }
+  </style>
+
+  <!--Css for Item-container-->
+  <style>
+  .product-card {
+    background-color: #0e058b;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.product-card img {
+    max-width: 100%;
+    height: auto;
+}
+.product-card .card-title {
+    background-color: white;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.view-all {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+.view-all a {
+    text-decoration: none;
+    color: #5ABCE6;
+    border: 1px solid #5ABCE6;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.view-all a:hover {
+    background-color: #5ABCE6;
+    color: white;
+}
+</style>
+
+<style>
+   
+      .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .section-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .btn-discover {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+        .card img {
+            border-radius: 10px;
+        }
+        .card {
+            border: none;
+        }
+        .card-body {
+            text-align: center;
+        }
+        @media(max-width:768px){
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    }
+  </style>
+
+<style>
+    
+         .hero-section {
+             position: relative;
+             text-align: center;
+             color: white;
+         }
+         .hero-section img {
+             width: 100%;
+             height: 500px;
+             object-fit: cover;
+         }
+         .hero-text {
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+         }
+         .hero-text h1 {
+             font-size: 3rem;
+             font-weight: bold;
+         }
+         .hero-text p {
+             font-size: 1.25rem;
+         }
+         .card-container {
+             margin-top: -50px;
+         }
+         .card {
+             border: none;
+             border-radius: 10px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         }
+         .card-title {
+             color: #5ABCE6;
+             font-weight: bold;
+         }
+         .discover-btn {
+             margin-top: 20px;
+             padding: 10px 20px;
+             border: 2px solid #5ABCE6;
+             border-radius: 5px;
+             color: #5ABCE6;
+             text-decoration: none;
+             font-weight: bold;
+         }
+         .discover-btn:hover {
+             background-color: #5ABCE6;
+             color: white;
+         }
+   </style>
+
+
+<style>
+    .body-footer {
+             background-color: #000c1d;
+             color: #fffefe;
+             font-family: Arial, sans-serif;
+         }
+         .footer {
+             padding: 40px 0;
+         }
+         .footer h5 {
+             font-weight: bold;
+             color: #f1dede;
+         }
+         .footer a {
+             color: #e7d7d7;
+             text-decoration: none;
+         }
+         .footer a:hover {
+             text-decoration: underline;
+         }
+         .footer .social-icons a {
+             color: #4a4a4a;
+             margin-right: 15px;
+             font-size: 20px;
+         }
+         .footer .social-icons a:hover {
+             color: #5ABCE6;
+         }
+         .footer .logo img {
+             max-width: 150px;
+         }
+   </style>
+
+<style>
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #5ABCE6;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.scroll-to-top:hover {
+    background-color: #5ABCE6;
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+.nav-item{
+    position: relative;
+}
+
+</style>
+    
+
+ </head>
+ <body>
+
+
+  <div id="popup-notice-1" class="popup-notice">
+    <div class="popup-content">
+        <button class="close-btn">&times;</button>
+        <img src="img/pop-up-distributors.jpg" alt="Notice 1" />
+    </div>
+</div>
+
+<div id="popup-notice-2" class="popup-notice">
+    <div class="popup-content">
+        <button class="close-btn">&times;</button>
+        <img src="img/pop-up-manager.jpg" alt="Notice 2" />
+    </div>
+</div>
+
+<style>
+/* Popup Overlay */
+.popup-notice {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+}
+
+/* Popup Content */
+.popup-content {
+    
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    width: fit-content;
+    height: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-btn:hover {
+    background: darkred;
+}
+
+/* Image Styling */
+.popup-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Show Popup */
+.popup-notice.show {
+    visibility: visible;
+    opacity: 1;
+}
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const popup1 = document.getElementById("popup-notice-1");
+        const popup2 = document.getElementById("popup-notice-2");
+        const closeBtns = document.querySelectorAll(".close-btn");
+        let isSecondPopupClosed = false; // Track if the second popup has been closed
+    
+        // Show the first popup on page load
+        popup1.classList.add("show");
+    
+        // Function to show the second popup
+        function showSecondPopup() {
+            // Only show the second popup if it hasn't been closed manually
+            if (!isSecondPopupClosed) {
+                popup2.classList.add("show");
+    
+                // Hide the second popup after 5 seconds
+                setTimeout(() => {
+                    popup2.classList.remove("show");
+                }, 5000);
+            }
+        }
+    
+        // Close event for both popups
+        closeBtns.forEach(btn => {
+            btn.addEventListener("click", (event) => {
+                const popup = event.target.closest(".popup-notice");
+                popup.classList.remove("show");
+    
+                // If the first popup is closed, show the second popup
+                if (popup === popup1) {
+                    setTimeout(showSecondPopup, 500);
+                }
+    
+                // If the second popup is closed, mark it as closed manually
+                if (popup === popup2) {
+                    isSecondPopupClosed = true;
+                }
+            });
+        });
+    
+        // Automatically hide the first popup after 5 seconds and show the second popup
+        setTimeout(() => {
+            popup1.classList.remove("show");
+            setTimeout(showSecondPopup, 500);
+        }, 5000);
+    });
+    </script>
+            
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Logo and Company Name Inline -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="image/lo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
+                <span style="display: inline-block; text-align: left; vertical-align: top; color:#012576;           font-weight: bold;">
+                    NEOM World<br>
+                    <span style="display: inline-block; vertical-align: bottom; margin-top:-10px; color: #012576; font-weight: bold;">Trade Pvt. Ltd.</span>
+                </span>
+            </a>
+    
+            <!-- Navbar Toggler for mobile view -->
+            <button class="navbar-toggler" type="button" style="border: none;" onclick="toggleSidebar()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+           
+            <!-- Navbar links for desktop (horizontal) -->
+            <div class="collapse navbar-collapse" id="navbarNav" style="margin-left:100px">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="index.html" class="nav-link" style="color: #012576;"> Home</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link" style="color: #012576;"> About Us</a></li>
+                    <li class="nav-item"><a href="ourproduct.html" class="nav-link" style="color: #012576;"> Our Products</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="distributor.html" class="nav-link dropdown-toggle" id="navbarDropdown" style="color: #012576;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             Sustainability
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a href="forplanet.html" class="dropdown-item" style="color: #012576;">For Planet</a></li>
+                            <li><a href="forcommunity.html" class="dropdown-item" style="color: #012576;">For Community</a></li>
+                            <li><a href="forpeople.html" class="dropdown-item" style="color: #012576">For People</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="small-nav-link" >
+                    
+                    <li class="nav-item"><a href="careers.html" class="nav-link" style="color: blue;"> Careers</a></li>
+                    <li class="nav-item"><a href="notice.html" class="nav-link" style="color: blue;"> Notice</a></li>
+                    <li class="nav-item"><a href="contactus.html" class="nav-link" style="color: blue;">Contact</a></li>
+                </ul>
+            </div>
+            </div>
+
+            
+    
+            <!-- "Order Now" Button -->
+            <a class="nav-link contact-btn order_now_btn" href="payoutform.html" style="background-color:#5ABCE6   ; color:white; border-radius: 0px; width: 200px; height: 50px; padding-top: 10px;">
+                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Buy Now
+            </a>
+    
+            <!-- Video in navbar, visible only on desktop -->
+            <video autoplay loop muted playsinline class="navbar-video" style="width: 200px; height: auto;">
+                <source src="video/ontext.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </nav>
+    
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <ul class="sidebar-links">
+            <li><a href="index.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> Home</a></li>
+            <li><a href="aboutus.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> About Us</a></li>
+            <li><a href="ourproduct.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> Products</a></li>
+            <li><a href="strategy.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> Sustainability</a></li>
+            
+            <li><a href="careers.html" style="color: #012576; font-weight: 700; font-size: 16px; font-style: bold; margin-top: 50px; margin-left: 15px;" >Careers</a></li>
+            <li><a href="notice.html" style="color: #012576; font-weight: 700; font-size: 16px; font-style: bold;  margin-left: 15px;"> Notice</a></li>
+            <li><a href="contactus.html" style="color: #012576; font-weight: 700; font-size: 16px; font-style: bold;  margin-left: 15px;"> Contact</a></li>
+        </ul>
+    </div>
+    
+    <style>
+        /* Sidebar styles */
+     .sidebar {
+         height: 100%;
+         width: 0;
+         position: fixed;
+         top: 0;
+         left: 0;
+         background: white;
+         overflow-x: hidden;
+         transition: 0.3s ease;
+         padding-top: 60px;
+         z-index: 1000;
+         box-shadow: 2px 0 10px rgba(226, 222, 222, 0.5);
+     }
+     
+     /* Sidebar links */
+     .sidebar-links {
+         list-style-type: none;
+         padding: 30px;
+         margin: 0;
+     }
+     
+     /* Sidebar link items */
+     .sidebar-links li {
+         padding: 10px 15px;
+         text-align: left;
+     }
+     
+     /* Sidebar link anchor */
+     .sidebar-links a {
+         color: #5ABCE6;
+         text-decoration: none;
+         display: block;
+         font-size: 18px;
+         padding: 10px 0; /* Keep padding consistent */
+         transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transition for background color */
+     }
+     
+     /* Sidebar link hover effect */
+     .sidebar-links a:hover {
+         background-color: white;
+         padding-left: 0; /* No shift on hover */
+         padding-right: 0; /* Ensure no padding change */
+     }
+     
+     /* Prevent shift during click */
+     .sidebar-links a:active {
+         background-color: white; /* Keep the background consistent */
+         padding-left: 0; /* No padding change */
+     }
+     
+     /* Sidebar when active (expanded) */
+     .sidebar.active {
+         width: 250px;
+     }
+     
+     /* Dropdown menu */
+     .sidebar .dropdown-menu {
+         display: none;
+         padding-left: 20px;
+         background-color: #444;
+     }
+     
+     .sidebar .dropdown:hover .dropdown-menu {
+         display: block;
+     }
+     
+     /* Toggler button styles */
+     .navbar-toggler {
+         position: relative;
+         z-index: 1050;
+     }
+     
+     /* Responsive styling for mobile devices */
+     @media (max-width: 768px) {
+         .navbar-nav {
+             display: none; /* Hide navbar items in mobile */
+         }
+     
+         .sidebar {
+             width: 0;
+         }
+     
+         .sidebar.active {
+             width: 80%; /* Expand sidebar to 80% of screen width */
+         }
+     
+         .navbar-video {
+             display: none;
+         }
+     
+         .navbar-brand img {
+             height: 40px;
+             margin-left: 1px;
+             padding-bottom: 5px;
+         }
+     }
+     
+     /* Ensure the sidebar works properly on larger screens */
+     @media (min-width: 769px) {
+         .navbar-nav {
+             display: flex;
+             justify-content: center;
+             gap: 10px;
+         }
+     
+         .navbar-nav .nav-item {
+             display: inline-block;
+         }
+     
+         .navbar-nav .nav-item .nav-link {
+             color: #5ABCE6;
+         }
+     }
+     
+     /* Ensure smooth transition for the sidebar */
+     .sidebar.active {
+         width: 250px;
+         transition: width 0.3s ease-in-out;
+     }
+     
+     /* Style for small-nav-link to make it horizontal and small */
+     .small-nav-link {
+         list-style-type: none;  /* Remove bullet points */
+         padding: 0;             /* Remove padding */
+         margin-left: 30px;      /* Remove margin */
+         display: flex;          /* Display the list items horizontally */
+         gap: 15px;    
+         margin-top: 10px;         /* Space between the items */
+     }
+     
+     .small-nav-link .nav-item {
+         font-size: 14px;        /* Smaller font size for the items */
+     }
+     
+     .small-nav-link .nav-link {
+         color: #5ABCE6;  /* Change text color */
+         text-decoration: none;  /* Remove underline */
+         font-weight: normal;    /* Make font weight normal */
+         transition: color 0.3s ease; /* Smooth transition for color change on hover */
+     }
+     
+     .small-nav-link .nav-link:hover {
+         color: #5ABCE6;  /* Change text color on hover */
+     }
+     
+         </style>
+     
+    
+    <script>
+    // Toggle sidebar visibility
+    function toggleSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('active'); // Toggle the active class to show or hide the sidebar
+    }
+    </script>
+    
+
+     <div class="content-video">
+        <div class="video-container">
+            <video src="video/ontext.mp4" alt="Promo Video" class="promo-media" autoplay muted loop>
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <div class="order-button-type" style="background-color: #5ABCE6;">
+            <button 
+                style="border: #5ABCE6; background-color: #5ABCE6; border-radius: 0px; color: white;" 
+                onclick="window.location.href='payoutform.html';">
+                Order Now
+            </button>
+        </div>
+        
+    </div>
+
+
+
+    <style>
+
+
+/* Default styles for the content-video section */
+.content-video {
+    display: flex;
+    align-items: center; /* Vertically align content */
+    justify-content: space-between; /* Space out video and button */
+    width: 100%;
+    height: auto; /* Default height */
+}
+
+/* Video Container: 70% width */
+.video-container {
+    width: 70%; /* Video takes 70% width */
+    display: flex;
+    justify-content: center; /* Center the video */
+}
+
+/* Video settings */
+.promo-media {
+    width: 100%; /* Make sure the video fills the container */
+    height: 100%; /* Ensure it fits within the container */
+    object-fit: cover; /* Ensure the video covers the container without distortion */
+}
+
+/* Button container: 30% width */
+.order-button-type {
+    width: 30%; /* Button takes 30% width */
+    text-align: center;
+    padding: 10px; /* Optional padding for button */
+}
+
+/* Button styling */
+.order-button-type button {
+    background-color: #5ABCE6;
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+/* Hide content-video section in desktop mode */
+@media (min-width: 1024px) {
+    .content-video {
+        display: none; /* Hide the content in desktop view */
+    }
+}
+
+/* Mobile view: Display content-video section */
+@media (max-width: 768px) {
+
+    .navbar{
+        height: 60px;
+    }
+
+    .order_now_btn{
+        display: none;
+    }
+    .content-video {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px; /* Set the height equal to the navbar height */
+        margin-top: 60px;
+    }
+
+    /* Adjust the video container width for mobile */
+    .video-container {
+        width: 70%; /* Video takes 70% width */
+    }
+
+    .order-button-type {
+        width: 30%; /* Button takes 30% width */
+    }
+
+    /* Ensure video fits inside its container */
+    .promo-media {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .order-button-type button {
+        width: 100%; /* Full width button */
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+}
+
+
+
+        /* Hide content on desktop and larger screens */
+@media (min-width: 1024px) {
+  .content {
+    display: none; /* Hide the entire content */
+    height: 0; /* Ensure no extra height is taken */
+    width: 0; /* Ensure no extra width is taken */
+    margin: 0; /* Reset any margin that might take space */
+    padding: 0; /* Reset padding */
+  }
+}
+        /* Style for the container div */
+.order-button-type {
+  display: flex;
+ 
+  justify-content: center; /* Center the button horizontally */
+  align-items: center;     /* Center the button vertically */
+  padding: 20px;           /* Add padding around the button */
+  background-color: white;
+  border-radius: 10px;     /* Rounded corners for the container */
+}
+
+/* Style for the button */
+.order-button-type button {
+  /* Button padding for a better size */
+  font-size: 16px;     /* Text size for the button */
+  background-color: #5ABCE6; /* #5ABCE6 background for the button */
+  color: white;   /* Text color */
+ /* Rounded corners for the button */
+  cursor: pointer;     /* Show pointer on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the button */
+.order-button-type button:hover {
+  background-color: #009688; /* Darker #5ABCE6 on hover */
+  transform: scale(1.05);      /* Slight scale effect on hover */
+}
+
+/* Focus effect for the button */
+.order-button-type button:focus {
+  outline: none;               /* Remove outline */
+  box-shadow: 0 0 0 2px #009688; /* Add shadow when focused */
+}
+
+        </style>
+
+    
+
+
+
+
+<style>
+  /* Ensure images maintain aspect ratio and cover the full screen */
+  .carousel-item img {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    object-fit: contain!; /* Ensure images cover the container without stretching */
+  }
+  
+  /* Center carousel content properly */
+  .carousel-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    z-index: 5;
+  }
+  
+  .carousel-heading {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #5ABCE6;
+  }
+  
+  .carousel-btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    border: 2px solid #5ABCE6;
+    color: white;
+    background-color: #5ABCE6;
+    transition: background-color 0.3s;
+  }
+  
+  .carousel-btn:hover {
+    background-color: #009688;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 767px) {
+    .carousel-heading { font-size: 2rem; }
+    .carousel-btn { font-size: 1rem; padding: 10px 20px; }
+  }
+  </style>
+  </head>
+  <body>
+  
+  <div id="carouselExampleIndicators" class="carousel slide container-fluid p-0" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+    </div>
+  
+    <div class="carousel-inner">
+      <div class="carousel-item ">
+        <img src="img/main-carsoul.png" alt="Scene 1">
+        <div class="carousel-content">
+          <h2 class="carousel-heading">Explore Neom World</h2>
+          <a href="aboutus.html" class="btn btn-primary carousel-btn">About Us</a>
+        </div>
+      </div>
+  
+      <div class="carousel-item active">
+        <img src="img/main-main.webp" alt="Scene 2">
+        <div class="carousel-content">
+          <h2 class="carousel-heading">Get in Touch with Us</h2>
+          <a href="contactus.html" class="btn btn-primary carousel-btn">Contact Us</a>
+        </div>
+      </div>
+  
+      <div class="carousel-item ">
+        <img src="image/background_c.webp" alt="Scene 3">
+        <div class="carousel-content">
+          <h2 class="carousel-heading">Welcome to Our Store</h2>
+          <a href="ourproduct.html" class="btn btn-primary carousel-btn">See Our Products</a>
+        </div>
+      </div>
+
+      <div class="carousel-item ">
+        <img src="img/landscape-ontext-main-carsoul.jpg" alt="Scene 4">
+        <div class="carousel-content">
+          <h2 class="carousel-heading">Welcome to Our Store</h2>
+          <a href="ourproduct.html" class="btn btn-primary carousel-btn">See Our Products</a>
+        </div>
+      </div>
+    </div>
+  
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+    .intro-main-container{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 2rem;
+      gap: 1rem;
+    }
+
+    .intro-left-content {
+      flex: 1;
+      text-align: left;
+    }
+
+    .intro-right-content {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .intro-stat-item {
+      margin: 1rem 0;
+      flex: 1 1 100%;
+    }
+
+    .intro-stat {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .intro-stat-description {
+      font-size: 1rem;
+      color: #666;
+    }
+    .f1{
+        display: flex;
+        flex-direction: column;
+      }
+
+    /* Responsive Styles for Mobile */
+    @media(max-width:768px){
+      .intro-main-container{
+        display: flex;
+        width: 92vw;
+        margin: 4vw;
+        flex-direction:column; /* Stack content vertically */
+        align-items: center;
+        height: fit-content;
+        padding: 0px;
+      }
+
+      .intro-left-content {
+        width: 100%; /* Take full width */
+        margin-bottom: 1.5rem; /* Add spacing */
+        text-align:left; /* Center-align text */
+      }
+
+      .intro-right-content {
+        width: 100%; /* Take full width */
+        flex-direction: row; /* Stack stats vertically */
+      }
+
+      .intro-stat-item {
+        width: 100%; /* Each stat takes full width */
+        margin-bottom: 1rem;
+      }
+      .f1{
+        display: flex;
+      }
+    }
+    
+    @media(max-width:1024px)and (min-width:768px){
+        .intro-main-container{
+        display: flex;
+        width: 96vw;
+        margin: 2vw;
+        flex-direction:row; /* Stack content vertically */
+        align-items: center;
+        height: fit-content;
+        padding: 0px;
+      }
+
+      .intro-left-content {
+        width: 100%; /* Take full width */
+        margin-bottom: 1.5rem; /* Add spacing */
+        text-align:left; /* Center-align text */
+      }
+
+      .intro-right-content {
+        width: 100%; /* Take full width */
+        flex-direction: row; /* Stack stats vertically */
+      }
+
+      .intro-stat-item {
+        width: 100%; /* Each stat takes full width */
+        margin-bottom: 1rem;
+      }
+      .f1{
+        display: flex;
+      }
+    }
+
+    
+  </style>
+
+
+<style>
+    @media (max-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  p {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .img-fluid {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px; /* Adjusted for smaller screens */
+  }
+}
+
+   </style>
+
+
+  <div class="intro-main-container ">
+    <!-- Left Content -->
+    <div class="intro-left-content">
+     
+      <h2> Authorized Ontex Nepal Distributor</h2>
+      
+  
+        <p style="text-align: justify;"><span class="dropcap">O</span><b>NTEX</b> is a Belgium-based multinational company, known for its global reach and remarkable revenue of billion dollars. Ontex is a global leader in personal hygiene, providing high-quality products for Baby Care, Feminine Care, and Adult Care. Trusted by consumers, retailers, and healthcare providers worldwide, Ontex is the partner of choice for quality and reliability.</p>
+       
+        <p id="more-text" style="display:none; text-align: justify;"><span class="dropcap">N</span>EOM World Trade Pvt. Ltd., operating under the Pathivara Group, is the authorized distributor of Ontex Global. With a strong presence across all seven provinces of the country, Neom specializes in distributing high-quality baby care and cosmetic products, with adult care solutions set to launch soon. Committed to excellence, Neom ensures that every product meets the highest standards of quality and hygiene, making it a trusted name for consumers nationwide. Its extensive distribution network and dedication to customer satisfaction have solidified its position as a leading player in the market.</p>
+        
+        <button class="read-more-btn" onclick="showMore()">Read More</button>
+    <script>
+        function showMore() {
+            const moreText = document.getElementById('more-text');
+            if (moreText.style.display === "none") {
+                moreText.style.display = "block";
+            } else {
+                moreText.style.display = "none";
+            }
+        }
+    </script>
+    </div>
+
+
+    <style>
+
+
+.content {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropcap {
+    font-size: 4em;
+    font-weight: bold;
+    color: #5ABCE6;
+    float: left;
+    margin-right: 8px;
+    line-height: 0.8;
+    text-align: center;
+}
+
+.read-more-btn {
+    background-color: #5ABCE6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.read-more-btn:hover {
+    background-color: white;
+    color:#5ABCE6;
+    border:1px solid #5ABCE6;
+}
+
+#more-text {
+    margin-top: 20px;
+    
+}
+
+        </style>
+
+    <!-- Right Content -->
+    <div class="intro-right-content" style="border: 1px solid #5ABCE6;">
+        <div class="stat-row">
+          <div class="stat-item">
+            <div class="intro-stat" data-target="20">0</div>
+            <div class="intro-stat-description"><b>Ontex Products</b></div>
+          </div>
+          <div class="stat-item">
+            <div class="intro-stat" data-target="7">0</div>
+            <div class="intro-stat-description">NEOM Distributors</div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-item">
+            <div class="intro-stat" data-target="11">0</div>
+            <div class="intro-stat-description">Our Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="intro-stat" data-target="4">0</div>
+            <div class="intro-stat-description">Partner Brands</div>
+          </div>
+        </div>
+       
+       
+        
+
+    </div>
+
+    </div>
+  </div>
+  
+  <script>
+    // Function to animate the number from 0 to the target number
+function animateNumber(element) {
+  const target = +element.getAttribute('data-target'); // Get the target number from the data attribute
+  let currentValue = 0; // Start from 0
+
+  const increment = target / 100; // Increment value for each frame
+
+  function update() {
+    currentValue += increment;
+    if (currentValue >= target) {
+      currentValue = target;
+    }
+
+    element.innerText = Math.floor(currentValue); // Update the text content
+
+    if (currentValue < target) {
+      requestAnimationFrame(update); // Continue the animation
+    }
+  }
+
+  update(); // Start the animation
+}
+
+// Intersection Observer to trigger the animation when elements come into view
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const statElement = entry.target;
+      animateNumber(statElement); // Animate the number when it's in the viewport
+      observer.unobserve(statElement); // Stop observing after animation starts
+    }
+  });
+}, {
+  threshold: 0.5 // Trigger the animation when 50% of the element is visible
+});
+
+// Observe each .intro-stat element
+document.querySelectorAll('.intro-stat').forEach(statElement => {
+  observer.observe(statElement);
+});
+
+    </script>
+
+  <style>
+    /* Styling for the intro-right-content */
+.intro-right-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+  border-radius: 16px;
+  align-items: center;
+}
+
+/* Styling for each row of statistics */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Styling for individual statistic items */
+.stat-item {
+  text-align: center;
+  width: 45%; /* Set width to create two items per row */
+}
+
+.intro-stat {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.intro-stat-description {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+  </style>
+
+<style>
+    .our-product-container{
+        margin-top: -80px;
+
+    }
+
+    @media screen and (max-width: 768px) {
+    .our-product-container {
+        margin: 0 auto; /* Centers the element horizontally */
+      
+    }
+    </style>
+
+
+
+
+
+    <style>
+    /* Container Styling */
+    .container-title-innovation {
+        text-align: center; /* Centers the title */
+        margin-bottom: 20px; /* Adds spacing below the title */
+    }
+
+    .container-video-innovation {
+        display: flex;
+        justify-content: center; /* Centers the video */
+        align-items: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Video Responsive Sizing */
+    .container-video-innovation iframe {
+        width: 70%;
+        height: 400px; /* Larger height for better visibility */
+        border-radius: 8px; /* Soft edges */
+    }
+
+    /* Mobile Optimization */
+    @media screen and (max-width: 768px) {
+        .container-video-innovation iframe {
+            width: 90%; /* Makes it more adaptive for smaller screens */
+            height: 250px; /* Adjust height for mobile */
+        }
+    }
+</style>
+
+<div class="container-title-innovation">
+    <h5>Innovation at Ontex</h5>
+</div>
+
+<div class="container-video-innovation">
+    <iframe 
+        src="https://www.youtube.com/embed/5l9q0DVMItE?autoplay=1&mute=1" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+
+    
+    
+
+
+
+
+<div class="container " >
+    <h1 class="main-heading" >Our products</h1>
+ 
+  
+
+    <div class="section row align-items-center">
+        <div class="col-md-12">
+          <h2 style="color: black;">
+            Helen Harper 
+          </h2>
+          <h4><u>European Standard and Quality Products</u> </h4>
+          <p style="text-align: justify;">
+            Right from the very start, babies need the freedom to explore the new world around them in freedom and comfort. The absorption and lock-away properties of our diapers, pants and night pants, gives them just the start they need. Ontex’s continuous innovation helps ensure a great start for parents and children.
+          </p>
+        </div>
+        
+        <!-- Product List -->
+        <div class="col-md-4">
+          <div class="product-item">
+            <img src="img/helen-product-1.jpg" alt="Product 1" class="img-fluid">
+            <h5>HELEN HARPER-Maxi</h5>
+            <p>Short description of product 1.</p>
+            <div class="bt-flex">
+              <a class="btn-custom" href="productdetail.html" style="text-decoration: none;">
+                See Product Detail
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a class="btn-custom" href="payoutform.html" style="text-decoration: none;">
+                Buy Now
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="col-md-4">
+          <div class="product-item">
+            <img src="img/helen-product-2.jpg" alt="Product 2" class="img-fluid">
+            <h5>HELEN HARPER -Junior</h5>
+            <p>Short description of product 2.</p>
+            <div class="bt-flex">
+              <a class="btn-custom" href="productdetail.html" style="text-decoration: none;">
+                See Product Detail
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a class="btn-custom" href="payoutform.html" style="text-decoration: none;">
+                Buy Now
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="col-md-4">
+          <div class="product-item">
+            <img src="img/helen-product-3.jpg" alt="Product 3" class="img-fluid">
+            <h5>HELEN HARPER - XL</h5>
+            <p>Short description of product 3.</p>
+            <div class="bt-flex">
+              <a class="btn-custom" href="productdetail.html" style="text-decoration: none;">
+                See Product Detail
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a class="btn-custom" href="payoutform.html" style="text-decoration: none;">
+                Buy Now
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      
+    <div class="section row align-items-center">
+        <div class="col-md-12">
+          <h2 style="color: black;">
+            BABY CHARM 
+          </h2>
+          <h4><u>European Standard and Quality Products</u> </h4>
+          <p style="text-align: justify;">
+            Right from the very start, babies need the freedom to explore the new world around them in freedom and comfort. The absorption and lock-away properties of our diapers, pants and night pants, gives them just the start they need. Ontex’s continuous innovation helps ensure a great start for parents and children.
+          </p>
+        </div>
+        
+
+        
+        <!-- Product List -->
+        <div class="col-md-4">
+            <div class="product-item">
+              <img src="img/baby-charm-diaper-roduct-1.jpg" alt="Product 1" class="img-fluid">
+              <h5>BABY CHARM-NEW BORN</h5>
+           
+              <div class="bt-flex">
+                <a class="btn-custom" href="productdetail.html" style="text-decoration: none;">
+                  See Product Detail
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+                <a class="btn-custom" href="payoutform.html" style="text-decoration: none;">
+                  Buy Now
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+  
+        
+        <!-- Product List -->
+        <div class="col-md-4">
+          <div class="product-item">
+            <img src="img/baby-cham-roduct-1.jpg" alt="Product 1" class="img-fluid">
+            <h5>BABY CHARM-MAXI</h5>
+           
+            <div class="bt-flex">
+              <a class="btn-custom" href="productdetail.html" style="text-decoration: none;">
+                See Product Detail
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a class="btn-custom" href="payoutform.html" style="text-decoration: none;">
+                Buy Now
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="product-item">
+              <img src="img/baby-charm-product-2.jpg" alt="Product 1" class="img-fluid">
+              <h5>BABY CHARM PANTS-JUNIOR</h5>
+             
+              <div class="bt-flex">
+                <a class="btn-custom" href="productdetail.html" style="text-decoration: none;">
+                  See Product Detail
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+                <a class="btn-custom" href="payoutform.html" style="text-decoration: none;">
+                  Buy Now
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="col-md-4">
+            <div class="product-item">
+              <img src="img/baby-charm-product-3.jpg" alt="Product 1" class="img-fluid">
+              <h5>BABY CHARM PANTS-XL</h5>
+             
+              <div class="bt-flex">
+                <a class="btn-custom" href="productdetail.html" style="text-decoration: none;">
+                  See Product Detail
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+                <a class="btn-custom" href="payoutform.html" style="text-decoration: none;">
+                  Buy Now
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        
+
+      </div>
+     
+       
+   
+ </div>
+
+ <style>
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        max-width: 1200px;
+        gap: 20px;
+       
+    }
+    .bt-flex{
+        display: flex;
+        flex-direction: row;
+    }
+    .btn-custom{
+        margin-right: 20px; 
+    }
+    .main-heading {
+    text-align: center;
+    display: block; /* Ensures it takes the full width */
+    margin: 0 auto; /* Centers it horizontally */
+}
+
+    .section{
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    .star-rating {
+        color: #ff6f61;
+    }
+    .learn-more-btn {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .learn-more-btn:hover {
+        background-color: #555;
+    }
+    @media(max-width:760px){
+        .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 1200px;
+        gap: 20px;
+       
+    }
+    .bt-flex{
+        display: flex;
+        flex-direction: column;
+    }
+    .bt-flex a{
+        text-align: center;
+    }
+        .section{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .main-heading{
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+    .col-md-6 h2{
+        margin-top: 20px;
+    }
+    }
+    </style>
+    
+
+
+  <div class="container-abc" style="background-color: white;">
+    <div class="row">
+        <!-- Best Selling Section -->
+        <div class="col-left">
+            <div class="best-sellers"  style="margin-top: 50px;">
+                <h1 class="main-heading">Best Selling</h1>
+               
+            </div>
+            <div class="row" style="margin-top: 20px; margin-bottom: 30px;">
+                <div class="col-md-4 product">
+                    <img alt="Pampers Baby Diapers" src="img/best-selling-helen-harper.jpg" />
+                    <div class="product-description">Helen Harper</div>
+                </div>
+                <div class="col-md-4 product">
+                    <img alt="Baby Charm Baby Pants" src="img/best-selling-baby-charm.jpg" />
+                    <div class="product-description">Baby Charm</div>
+                </div>
+                
+                
+                
+            </div>
+
+            <h1 class="main-heading" style="text-align: left; margin-bottom: 20px;  font-weight: bold;">
+                Upcoming Products
+            </h1>
+            <div class="row justify-content-left">
+                <!-- First Product Card -->
+                <div class="col-md-6 d-flex justify-content-center mb-4">
+                    <div class="product-card" style="border: 2px solid #009688; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center; padding: 20px; background-color: #009688;">
+                        <img alt="Baby care products including diapers and baby pants" height="200" src="image/femini.png" width="200" style="border-radius: 8px;"/>
+                        <div class="card-title" style="font-size: 1.2rem; font-weight: bold; margin-top: 10px;">
+                            Feminine care products
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Second Product Card -->
+                <div class="col-md-6 d-flex justify-content-center mb-4">
+                    <div class="product-card" style="border: 2px solid #009688; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center; padding: 20px; background-color: #009688;">
+                        <img alt="Feminine care products including pads and tampons" height="200" src="image/cosmetic.png" width="200" style="border-radius: 8px;"/>
+                        <div class="card-title" style="font-size: 1.2rem; font-weight: bold; margin-top: 10px;">
+                            NEOM Cosmetic product
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+
+        </div>
+
+        <!-- Facebook Posts Section -->
+        <div class="col-right">
+            <h1 class="main-heading" style="color: #5ABCE6">Facebook</h1>  
+            <div class="scroll-container">
+                <div class="facebook-post">
+                    <div class="post-header">
+                        <img src="image/logo.png" alt="User Avatar" class="avatar">
+                        <div class="post-info">
+                            <h3 class="username">NEOM</h3>
+                            <span class="timestamp">5 hrs ago</span>
+                        </div>
+                    </div>
+                    <p class="post-text">Here's an awesome post content for everyone to enjoy!</p>
+                    <img src="image/background_a.webp" alt="Post Image" class="post-image">
+                    <div class="post-footer">
+                        <button class="like-btn">👍 Like</button>
+                        <button class="comment-btn">💬 Comment</button>
+                        <button class="share-btn">🔁 Share</button>
+                    </div>
+                </div>
+                <div class="facebook-post">
+                    <div class="post-header">
+                        <img src="image/logo.png" alt="User Avatar" class="avatar">
+                        <div class="post-info">
+                            <h3 class="username">NEOM</h3>
+                            <span class="timestamp">2 days ago</span>
+                        </div>
+                    </div>
+                    <p class="post-text">Another interesting post for you!</p>
+                    <img src="image/background_b.webp" alt="Post Image" class="post-image">
+                    <div class="post-footer">
+                        <button class="like-btn">👍 Like</button>
+                        <button class="comment-btn">💬 Comment</button>
+                        <button class="share-btn">🔁 Share</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+           
+
+<style>
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .col-left {
+        width: 70%; /* 70% for Best Selling Section */
+        padding-right: 20px;
+    }
+    .container-abc{
+        padding-left: 110px; padding-right: 110px; 
+    }
+    .col-right {
+        width: 30%; /* 30% for Facebook Posts Section */
+    }
+
+    /* Best Selling Section Styling */
+    .best-sellers {
+        text-align: left;
+    }
+
+    .best-sellers h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .best-sellers .view-all {
+        float: right;
+        font-size: 14px;
+        margin-top: -30px;
+        margin-right: 20px;
+    }
+
+    .product {
+        text-align: center;
+        display: inline-block;
+        width: 30%; /* Adjusted width for each product */
+        margin: 0 10px;
+    }
+
+    .product img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .product-description {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    /* Facebook Posts Section Styling */
+    .scroll-container {
+        width: 100%;
+        height: 610px; /* Smaller height to show only one post */
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        scroll-behavior: smooth;
+    }
+
+    .facebook-post {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        height: auto;
+    }
+
+    .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .post-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .username {
+        margin: 0;
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .timestamp {
+        font-size: 12px;
+        color: #888;
+    }
+
+    .post-text {
+        margin: 10px 0;
+        font-size: 14px;
+        color: #444;
+    }
+
+    .post-image {
+        width: 100%;
+        height: 100px; /* Fixed height for images */
+        object-fit: cover; /* Maintain aspect ratio and crop excess */
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+
+    .post-footer {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    .post-footer button {
+        border: none;
+        background: none;
+        color: #1877f2;
+        cursor: pointer;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+    }
+
+    .post-footer button:hover {
+        text-decoration: underline;
+    }
+    @media(max-width:760px){
+        h1{
+            font-size: 24px;
+        }
+        .row {
+        left: 0px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 100vw;
+        max-width: 100vw;
+        padding: 2vw;
+        overflow-x: hidden;
+    }
+
+    .col-left {
+        width: 100%; /* 70% for Best Selling Section */
+        padding-right: 20px;
+    }
+
+    .col-right {
+        width:100vw; /* 30% for Facebook Posts Section */
+    }
+
+    /* Best Selling Section Styling */
+    .best-sellers {
+        text-align: left;
+    }
+    .main-heading{
+        font-size: 24px;
+        margin-left:2vw;
+    }
+
+    .best-sellers h1 {
+        margin-left: 2vw;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .container-abc{
+        margin-left: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-right: 0px;
+    }
+    .best-sellers .view-all {
+        float:right;
+        font-size: 14px;
+        margin-top: -30px;
+        margin-right: 20px;
+    }
+
+    .product {
+        text-align: center;
+        display: inline-block;
+        width: 80%; /* Adjusted width for each product */
+        margin: 0 10px;
+        margin: 20px 10%;
+    }
+
+    .product img {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-description {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    /* Facebook Posts Section Styling */
+    .scroll-container {
+        width: 90vw;
+        height:fit-content; /* Smaller height to show only one post */
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        margin-left: 2vw;
+        scroll-behavior: smooth;
+    }
+    .main-heading{
+        margin-bottom: 20px;
+    }
+    .facebook-post {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        height: auto;
+    }
+
+    .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .post-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .username {
+        margin: 0;
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .timestamp {
+        font-size: 12px;
+        color: #888;
+    }
+
+    .post-text {
+        margin: 10px 0;
+        font-size: 14px;
+        color: #444;
+    }
+
+    .post-image {
+        width: 100%;
+        height: 100px; /* Fixed height for images */
+        object-fit: cover; /* Maintain aspect ratio and crop excess */
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+
+    .post-footer {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    .post-footer button {
+        border: none;
+        background: none;
+        color: #1877f2;
+        cursor: pointer;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+    }
+
+    .post-footer button:hover {
+        text-decoration: underline;
+    }
+    }
+</style>
+
+
+
+
+<style>
+   
+
+    /* For tablets and smaller screens */
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 1.8rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+        }
+    }
+
+    /* For mobile screens */
+    @media (max-width: 480px) {
+        .section-title {
+            font-size: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+<div class="container" style="margin-top: 50px;">
+    <h1 class="section-title" style="text-align:left ;">
+        NEOM Distributor Across Nepal
+    </h1>
+    <p class="section-subtitle" style="text-align: left;">
+        NEOM has operations in all 7 provinces of Nepal.
+        <br/>
+        The set-up keeps us flexible and close to our customers and consumers to ensure they get the best value from our products.
+    </p>
+</div>
+
+
+   <style>
+      
+    
+    /* Map container styles */
+    .map-container {
+        position: relative;
+        flex: 1;
+        height: 600px;
+        background: url('image/nepalback.png') no-repeat center center;
+        background-size: 600px;
+        
+      
+    }
+
+    .map-marker {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: #5ABCE6;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out, background 0.3s;
+    }
+    .container-fluid{
+        padding-left: 80px;
+    }
+    .map-marker.active {
+        background: #ff5722;
+    }
+    .right-section{
+        margin-left: 60px;
+    }
+    .map-marker:hover {
+        transform: scale(1.2);
+    }
+
+    .map-marker span {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .details-container {
+        flex: 1;
+        padding: 20px;
+        
+      
+    }
+
+    .details-container img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .details-container h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .details-container p {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+
+    .details-container a {
+        color: #009688;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .details-container a:hover {
+        text-decoration: underline;
+    }
+
+    .details-container .icon {
+        font-size: 20px;
+        margin-right: 8px;
+    }
+
+    .details-container .buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .details-container .buttons a {
+        text-decoration: none;
+        padding: 10px 15px;
+        border: 1px solid #009688;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #009688;
+        transition: background-color 0.3s;
+    }
+
+    .details-container .buttons a:hover {
+        background-color: #009688;
+    }
+    @media(max-width:760px){
+        .container-fluid{
+            margin-left: 0px;
+            padding-left: 2vw;
+        }
+        .right-section{
+            margin-left:2vw;
+        }
+    }
+</style>
+
+<div class="container" style="margin-top: -120px;" >
+  
+    <!-- Left Side: Map -->
+    <div class="map-container">
+        <div  class="map-marker active m1" data-id="bagmati">
+           
+            view
+        </div>
+        <div class="map-marker m2" data-id="Koshi">
+           
+            view
+        </div>
+        <div class="map-marker m3" data-id="Madesh">
+           
+            view
+        </div>
+        <div class="map-marker m4" data-id="gandaki">
+           
+            view
+        </div>
+        <div class="map-marker m5"  data-id="lumbini">
+           
+            view
+        </div>
+        <div class="map-marker m6"  data-id="karnali">
+           
+            view
+        </div>
+        <div class="map-marker m7"  data-id="sudurpaschim">
+           
+           view
+        </div>
+    </div>
+
+    <!-- Dropdown Menu for Mobile View -->
+<div class="state-dropdown-container">
+    <label for="state-dropdown">Select Province of Nepal:</label>
+    <select id="state-dropdown" class="state-dropdown">
+        <option value="bagmati">Bagmati</option>
+        <option value="province1">Koshi</option>
+        <option value="province2">Madesh</option>
+        <option value="gandaki">Gandaki</option>
+        <option value="lumbini">Lumbini</option>
+        <option value="karnali">Karnali</option>
+        <option value="sudurpaschim">Sudurpaschim</option>
+    </select>
+</div>
+    
+    <style>
+        .map-container .m1{
+            top:54%; left: 62%;
+        }
+        .map-container .m2{
+            top: 60%; left: 80%;
+        }
+        .map-container .m3{
+            top: 67%; left: 62%;
+        }
+        .map-container .m4{
+            top: 46%; left: 45%;
+        }
+        .map-container .m5{
+            top: 52%; left: 33%;
+        }
+        .map-container .m6{
+            top: 36%; left: 28%;
+        }
+        .map-container .m7{
+            top: 34%; left: 12%;
+        }
+        
+        @media(max-width:768px){
+            .map-container{
+                height: 600px;
+            }
+            .map-container .m1{
+            top:54%; left: 73%;
+        }
+        .map-container .m2{
+            top: 60%; left: 90%;
+        }
+        .map-container .m3{
+            top: 65%; left: 78%;
+        }
+        .map-container .m4{
+            top: 46%; left: 45%;
+        }
+        .map-container .m5{
+            top: 52%; left: 20%;
+        }
+        .map-container .m6{
+            top: 36%; left: 20%;
+        }
+        .map-container .m7{
+            top: 30%; left: 0%;
+        }
+        }
+    </style>
+    <!-- Right Side: Details -->
+    <div class="details-container "  id="details" >
+       
+       
+        
+        <h2 style="text-align: left;">Bagmati Province</h2>
+        <p style="text-align: left;"><strong>Location:</strong> Khumaltr, Lalitpur, Bagmati, Nepal</p>
+        <p style="text-align: left;"><strong>Contact:</strong> +977-9842145414</p>
+        <p style="text-align: left;"><strong>Email:</strong> bagmati@distributor.com</p>
+    
+        <div class="buttons">
+    <a href="https://maps.app.goo.gl/erRoucv1HNGSMK7x7?g_st=awb" style="background-color: #5ABCE6;">View Map</a>
+    <a href="https://wa.me/9779842145414" target="_blank" style="background-color: #5ABCE6;">
+        <i class="fab fa-whatsapp icon"></i> Chat on WhatsApp
+    </a>
+</div>
+
+    </div>
+    </div>
+
+    <style>
+
+.state-dropdown-container {
+    display: none;
+    
+  }
+       /* Media query for mobile view */
+@media screen and (max-width: 768px) {
+  /* Hide the map on mobile view */
+  .map-container {
+    display: none;
+  }
+
+  /* Show the dropdown on mobile view */
+  .state-dropdown-container {
+    display: block;
+    margin-top: 130px;
+  }
+  
+  /* Optional: Style for the dropdown */
+  .state-dropdown {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .state-dropdown {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+
+}
+</style>
+
+<script>
+    // Add event listener for dropdown change
+document.getElementById('state-dropdown').addEventListener('change', function(event) {
+    const selectedProvince = event.target.value;
+    console.log('Selected Province:', selectedProvince);
+
+    // You can then use this value to show the corresponding map marker, etc.
+    // For example, if you want to highlight a map marker based on the selection:
+    const allMarkers = document.querySelectorAll('.map-marker');
+    allMarkers.forEach(marker => {
+        if (marker.getAttribute('data-id') === selectedProvince) {
+            marker.classList.add('highlight');  // Add a class to highlight the marker
+        } else {
+            marker.classList.remove('highlight');
+        }
+    });
+});
+    
+</script>
+        
+    
+<script>
+    // Data for provinces
+    const detailsData = {
+        province1: {
+            video: "branding.mp4",
+            name: "Province 1",
+            location: "Biratnagar",
+            contact: "+977-9812345671",
+            email: "province1@distributor.com",
+        },
+        province2: {
+            video: "branding.mp4",
+            name: "Province 2",
+            location: "Janakpur",
+            contact: "+977-9812345672",
+            email: "province2@distributor.com",
+        },
+        bagmati: {
+            video: "branding.mp4",
+            name: "Bagmati Province",
+            location: "Kathmandu",
+            contact: "+977-9812345673",
+            email: "bagmati@distributor.com",
+        },
+        gandaki: {
+            video: "branding.mp4",
+            name: "Gandaki Province",
+            location: "Pokhara",
+            contact: "+977-9812345674",
+            email: "gandaki@distributor.com",
+        },
+        lumbini: {
+            video: "branding.mp4",
+            name: "Lumbini Province",
+            location: "Butwal",
+            contact: "+977-9812345675",
+            email: "lumbini@distributor.com",
+        },
+        karnali: {
+            video: "branding.mp4",
+            name: "Karnali Province",
+            location: "Surkhet",
+            contact: "+977-9812345676",
+            email: "karnali@distributor.com",
+        },
+        sudurpaschim: {
+            video: "branding.mp4",
+            name: "Sudurpashchim Province",
+            location: "Dhangadhi",
+            contact: "+977-9812345677",
+            email: "sudurpaschim@distributor.com",
+        },
+    };
+
+    // Function to update details based on ID
+    function updateDetails(provinceId) {
+        const detailsContainer = document.getElementById('details');
+        const data = detailsData[provinceId];
+
+        // Update details
+        detailsContainer.innerHTML = `
+            <div class="video-container">
+                <video autoplay loop muted>
+                    <source src="${data.video}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <h2>${data.name}</h2>
+            <p><strong>Location:</strong> ${data.location}</p>
+            <p><strong>Contact:</strong> ${data.contact}</p>
+            <p><strong>Email:</strong> ${data.email}</p>
+            <div class="buttons">
+                <a href="https://maps.google.com" target="_blank">View Map</a>
+                <a href="https://wa.me/${data.contact.replace(/\+/g, '')}" target="_blank">
+                    <i class="fab fa-whatsapp icon"></i>Chat on WhatsApp
+                </a>
+            </div>
+        `;
+    }
+
+    // Add event listener for map marker click
+    const markers = document.querySelectorAll('.map-marker');
+    markers.forEach(marker => {
+        marker.addEventListener('click', () => {
+            const id = marker.dataset.id;
+
+            // Update marker styles
+            document.querySelectorAll('.map-marker').forEach(m => m.classList.remove('active'));
+            marker.classList.add('active');
+
+            // Update details
+            updateDetails(id);
+        });
+    });
+
+    // Add event listener for dropdown change
+    document.getElementById('state-dropdown').addEventListener('change', function (event) {
+        const selectedProvince = event.target.value;
+
+        // Update marker styles (optional)
+        const allMarkers = document.querySelectorAll('.map-marker');
+        allMarkers.forEach(marker => {
+            if (marker.getAttribute('data-id') === selectedProvince) {
+                marker.classList.add('highlight'); // Add a class to highlight the marker
+            } else {
+                marker.classList.remove('highlight');
+            }
+        });
+
+        // Update details
+        updateDetails(selectedProvince);
+    });
+</script>
+
+    <div class="hero-section">
+        <img alt="Forest background image" height="500" src="https://storage.googleapis.com/a1aa/image/7M02AOVRXzawHxNA8QPTfDouekdikVlDQ8onCOP3NCOFYI5TA.jpg" width="1920"/>
+        <div class="hero-text">
+         <h1>
+          Sustainability
+         </h1>
+         <p>
+          Here for you. Here for the better. Discover our sustainability approach.
+         </p>
+    
+         <div class="text-center" style="margin-top: 30px;" >
+            <a class="discover-btn" href="strategy.html" style="background-color: #5ABCE6; color: white;">
+             Discover sustainability at Ontex
+             <i class="fas fa-arrow-right">
+             </i>
+            </a>
+           </div>
+    
+    
+        </div>
+       <style>
+        @media(max-width:760px){
+            .card-container .row{
+               
+                display: none;
+            }
+        }
+       </style>
+       </div>
+       <div class="container card-container"  >
+        <div class="row">
+         <div class="col-md-4 mb-4">
+          <div class="card p-4">
+           <h5 class="card-title">
+            Better for the planet
+           </h5>
+           <p class="card-text">
+            Embedding good, scalable sustainability practice into every single product
+           </p>
+          </div>
+         </div>
+         <div class="col-md-4 mb-4">
+          <div class="card p-4">
+           <h5 class="card-title">
+            Better for people
+           </h5>
+           <p class="card-text">
+            Investing in people – in the broadest sense
+           </p>
+          </div>
+         </div>
+         <div class="col-md-4 mb-4">
+          <div class="card p-4">
+           <h5 class="card-title">
+            Better for business
+           </h5>
+           <p class="card-text">
+            Our commitment to strong ethical standards and transparency along our value chain
+           </p>
+          </div>
+         </div>
+        </div>
+       
+       </div>
+       
+  
+
+
+<div class="body-footer" style=" margin-top: 20px; background-color: #5ABCE6; padding: 20px;  "  >
+    <div class="container footer">
+     <div class="row">
+      <div class="col-md-3">
+       
+        <p style="text-align: justify;">
+            Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal. With a strong presence across all seven provinces of the country, Neom specializes in distributing high-quality baby care and cosmetic products, with adult care solutions set to launch soon.
+          </p>
+       <div class="social-icons">
+        
+        <a href="#">
+         <i class="fab fa-facebook">
+         </i>
+        </a>
+        <a href="#">
+         <i class="fab fa-instagram">
+         </i>
+        </a>
+        <a href="#">
+         <i class="fas fa-envelope">
+         </i>
+        </a>
+       </div>
+     
+      </div>
+      <div class="col-md-2">
+       <h5>
+       Quick Link
+       </h5>
+       <ul class="list-unstyled">
+        <li>
+         <a href="aboutus.html">
+          About US
+         </a>
+        </li>
+        <li>
+         <a href="ourproduct.html">
+          Products
+         </a>
+        </li>
+        <li>
+         <a href="index.html">
+          Home
+         </a>
+        </li>
+        <li>
+            <a href="index.html">
+             Sustainability
+            </a>
+           </li>
+       </ul>
+      </div>
+      <div class="col-md-3">
+     
+       <ul class="list-unstyled">
+        <h5>
+         Our Brands
+        </h5>
+        <li>
+         <a href="https://www.helenharperbaby.com/" target="_blank">
+          Helen Helper
+         </a>
+        </li>
+        <li>
+         <a href="https://www.babycharm.com/" target="_blank">
+          Baby Charm
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div class="col-md-2">
+       <h5>
+         Updates
+         </h5>
+       <ul class="list-unstyled">
+        <li>
+         <a href="contactus.html">
+          Contact Us
+         </a>
+        </li>
+        <li>
+         <a href="notice.html">
+          Notice
+         </a>
+        </li>
+        <li>
+            <a href="careers.html">
+             Careers
+            </a>
+           </li>
+      
+       
+       </ul>
+      </div>
+     
+     </div>
+    </div>
+ </div>
+
+
+<div id="scrollToTopBtn" class="scroll-to-top" style="background-color: #5ABCE6; bottom: 40px;" >
+    ↑
+</div>
+
+
+<script>
+    window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('navbar-shrink');
+    } else {
+        navbar.classList.remove('navbar-shrink');
+    }
+});
+</script>
+
+<script>
+    // Add functionality for the scroll-to-top button
+const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add('show');
+    } else {
+        scrollToTopBtn.classList.remove('show');
+    }
+});
+
+scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+});
+
+</script>
+ <!-- Bootstrap JS Bundle with Popper -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+ </body>
+</html>

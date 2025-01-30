@@ -1,0 +1,1189 @@
+<html>
+ <head>
+  <title>
+   NEOM
+  </title>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+
+    /* Prevent horizontal and vertical overflow */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Disable horizontal scrolling */
+}
+
+/* Box-sizing reset */
+* {
+    box-sizing: border-box; /* Ensure padding and border are included in width/height */
+}
+
+
+
+  /* Navbar link styles */
+.navbar-nav .nav-link {
+    color: #333; /* Dark color for better readability */
+    font-weight: 700; /* Make links bold */
+    font-size: 1rem; /* Set a consistent font size */
+    transition: color 0.3s ease, font-size 0.3s ease; /* Smooth hover and size transitions */
+}
+
+/* Hover effect for navbar links */
+.navbar-nav .nav-link:hover {
+    color: blue; /* Slightly darker blue for hover state */
+}
+
+/* Navbar brand logo styling */
+.navbar-brand img {
+ 
+    height: 60px; /* Default logo height */
+    transition: height 0.3s ease; /* Smooth resizing on interactions */
+}
+
+/* Contact button styling */
+.contact-btn {
+
+    border-radius: 10px; /* Slightly rounder corners */
+    padding: 2px 20px; /* Balanced look */
+    font-weight: 600; /* Make text bold */
+    color: white; /* Match border color */
+    background-color: transparent; /* Transparent background */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+
+/* Navbar fixed at the top */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030; /* Ensure navbar appears above other elements */
+    transition: all 0.3s ease; /* Smooth transition for height and background changes */
+}
+
+/* Initial navbar state */
+.navbar-expanded {
+    height: 50px; /* Default height */
+    background-color: #f8f9fa; /* Light background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Shrinked navbar state on scroll */
+.navbar {
+    height: 50px; /* Smaller height */
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Stronger shadow for focus */
+}
+       
+    .body-footer {
+             background-color: #000c1d;
+             color: #fffefe;
+             font-family: Arial, sans-serif;
+         }
+         .footer {
+             padding: 40px 0;
+         }
+         .footer h5 {
+             font-weight: bold;
+             color: #f1dede;
+         }
+         .footer a {
+             color: #e7d7d7;
+             text-decoration: none;
+         }
+         .footer a:hover {
+             text-decoration: underline;
+         }
+         .footer .social-icons a {
+             color: #4a4a4a;
+             margin-right: 15px;
+             font-size: 20px;
+         }
+         .footer .social-icons a:hover {
+             color: #007bff;
+         }
+         .footer .logo img {
+             max-width: 150px;
+         }
+   </style>
+
+<style>
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #009688;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.scroll-to-top:hover {
+    background-color: #009688;
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+.nav-item{
+    position: relative;
+}
+
+</style>
+    
+
+ </head>
+ <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Logo and Company Name Inline -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="image/lo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
+                <span style="display: inline-block; text-align: left; vertical-align: top; color:#012576;           font-weight: bold;">
+                    NEOM World<br>
+                    <span style="display: inline-block; vertical-align: bottom; margin-top:-10px; color: #012576; font-weight: bold;">Trade Pvt. Ltd.</span>
+                </span>
+            </a>
+    
+            <!-- Navbar Toggler for mobile view -->
+            <button class="navbar-toggler" type="button" style="border: none;" onclick="toggleSidebar()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+           
+            <!-- Navbar links for desktop (horizontal) -->
+            <div class="collapse navbar-collapse" id="navbarNav" style="margin-left:100px">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="index.html" class="nav-link" style="color: #012576;"> Home</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link" style="color: #012576;"> About Us</a></li>
+                    <li class="nav-item"><a href="ourproduct.html" class="nav-link" style="color: #012576;"> Our Products</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="distributor.html" class="nav-link dropdown-toggle" id="navbarDropdown" style="color: #012576;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             Sustainability
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a href="forplanet.html" class="dropdown-item" style="color: #012576;">For Planet</a></li>
+                            <li><a href="forcommunity.html" class="dropdown-item" style="color: #012576;">For Community</a></li>
+                            <li><a href="forpeople.html" class="dropdown-item" style="color: #012576">For People</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="small-nav-link" >
+                    
+                    <li class="nav-item"><a href="careers.html" class="nav-link" style="color: blue;"> Careers</a></li>
+                    <li class="nav-item"><a href="notice.html" class="nav-link" style="color: blue;"> Notice</a></li>
+                    <li class="nav-item"><a href="contactus.html" class="nav-link" style="color: blue;">Contact</a></li>
+                </ul>
+            </div>
+            </div>
+
+            
+    
+            <!-- "Order Now" Button -->
+            <a class="nav-link contact-btn order_now_btn" href="payoutform.html" style="background-color:#5ABCE6   ; color:white; border-radius: 0px; width: 200px; height: 50px; padding-top: 10px;">
+                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Buy Now
+            </a>
+    
+            <!-- Video in navbar, visible only on desktop -->
+            <video autoplay loop muted playsinline class="navbar-video" style="width: 200px; height: auto;">
+                <source src="video/ontext.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </nav>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <ul class="sidebar-links">
+            <li><a href="index.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> Home</a></li>
+            <li><a href="aboutus.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> About Us</a></li>
+            <li><a href="ourproduct.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> Products</a></li>
+            <li><a href="strategy.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> Sustainability</a></li>
+            
+            <li><a href="careers.html" style="color: #012576; font-weight: 700; font-size: 16px; font-style: bold; margin-top: 50px; margin-left: 15px;" >Careers</a></li>
+            <li><a href="notice.html" style="color: #012576; font-weight: 700; font-size: 16px; font-style: bold;  margin-left: 15px;"> Notice</a></li>
+            <li><a href="contactus.html" style="color: #012576; font-weight: 700; font-size: 16px; font-style: bold;  margin-left: 15px;"> Contact</a></li>
+        </ul>
+    </div>
+    
+    <style>
+        /* Sidebar styles */
+     .sidebar {
+         height: 100%;
+         width: 0;
+         position: fixed;
+         top: 0;
+         left: 0;
+         background: white;
+         overflow-x: hidden;
+         transition: 0.3s ease;
+         padding-top: 60px;
+         z-index: 1000;
+         box-shadow: 2px 0 10px rgba(226, 222, 222, 0.5);
+     }
+     
+     /* Sidebar links */
+     .sidebar-links {
+         list-style-type: none;
+         padding: 30px;
+         margin: 0;
+     }
+     
+     /* Sidebar link items */
+     .sidebar-links li {
+         padding: 10px 15px;
+         text-align: left;
+     }
+     
+     /* Sidebar link anchor */
+     .sidebar-links a {
+         color: #5ABCE6;
+         text-decoration: none;
+         display: block;
+         font-size: 18px;
+         padding: 10px 0; /* Keep padding consistent */
+         transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transition for background color */
+     }
+     
+     /* Sidebar link hover effect */
+     .sidebar-links a:hover {
+         background-color: white;
+         padding-left: 0; /* No shift on hover */
+         padding-right: 0; /* Ensure no padding change */
+     }
+     
+     /* Prevent shift during click */
+     .sidebar-links a:active {
+         background-color: white; /* Keep the background consistent */
+         padding-left: 0; /* No padding change */
+     }
+     
+     /* Sidebar when active (expanded) */
+     .sidebar.active {
+         width: 250px;
+     }
+     
+     /* Dropdown menu */
+     .sidebar .dropdown-menu {
+         display: none;
+         padding-left: 20px;
+         background-color: #444;
+     }
+     
+     .sidebar .dropdown:hover .dropdown-menu {
+         display: block;
+     }
+     
+     /* Toggler button styles */
+     .navbar-toggler {
+         position: relative;
+         z-index: 1050;
+     }
+     
+     /* Responsive styling for mobile devices */
+     @media (max-width: 768px) {
+         .navbar-nav {
+             display: none; /* Hide navbar items in mobile */
+         }
+     
+         .sidebar {
+             width: 0;
+         }
+     
+         .sidebar.active {
+             width: 80%; /* Expand sidebar to 80% of screen width */
+         }
+     
+         .navbar-video {
+             display: none;
+         }
+     
+         .navbar-brand img {
+             height: 40px;
+             margin-left: 1px;
+             padding-bottom: 5px;
+         }
+     }
+     
+     /* Ensure the sidebar works properly on larger screens */
+     @media (min-width: 769px) {
+         .navbar-nav {
+             display: flex;
+             justify-content: center;
+             gap: 10px;
+         }
+     
+         .navbar-nav .nav-item {
+             display: inline-block;
+         }
+     
+         .navbar-nav .nav-item .nav-link {
+             color: #5ABCE6;
+         }
+     }
+     
+     /* Ensure smooth transition for the sidebar */
+     .sidebar.active {
+         width: 250px;
+         transition: width 0.3s ease-in-out;
+     }
+     
+     /* Style for small-nav-link to make it horizontal and small */
+     .small-nav-link {
+         list-style-type: none;  /* Remove bullet points */
+         padding: 0;             /* Remove padding */
+         margin-left: 30px;      /* Remove margin */
+         display: flex;          /* Display the list items horizontally */
+         gap: 15px;    
+         margin-top: 10px;         /* Space between the items */
+     }
+     
+     .small-nav-link .nav-item {
+         font-size: 14px;        /* Smaller font size for the items */
+     }
+     
+     .small-nav-link .nav-link {
+         color: #5ABCE6;  /* Change text color */
+         text-decoration: none;  /* Remove underline */
+         font-weight: normal;    /* Make font weight normal */
+         transition: color 0.3s ease; /* Smooth transition for color change on hover */
+     }
+     
+     .small-nav-link .nav-link:hover {
+         color: #5ABCE6;  /* Change text color on hover */
+     }
+     
+         </style>
+     
+    
+    
+    <script>
+    // Toggle sidebar visibility
+    function toggleSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('active'); // Toggle the active class to show or hide the sidebar
+    }
+    </script>
+    
+
+<style>
+.intro-section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.intro-section img {
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.description h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.executive-management img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+    margin-bottom: 10px;
+}
+
+.executive-management h5 {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.executive-management p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+</style>
+
+
+
+  
+<div class="content-video" style="width: 100%; padding: 0;">
+    <div class="video-container" style="width: 80%;">
+        <video 
+            src="video/ontext.mp4" 
+            alt="Promo Video" 
+            class="promo-media" 
+            autoplay 
+            muted 
+            loop 
+            style="pointer-events: none;">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    
+    
+        <button class="order-button-type"
+            style="border: #5ABCE6; background-color: #5ABCE6; border-radius: 0px; color: white;" 
+            onclick="window.location.href='payoutform.html';">
+            Order Now
+        </button>
+    
+    
+</div>
+
+
+
+<style>
+
+
+/* Default styles for the content-video section */
+.content-video {
+display: flex;
+align-items: center; /* Vertically align content */
+justify-content: space-between; /* Space out video and button */
+width: 100%;
+
+}
+
+/* Video Container: 70% width */
+.video-container {
+width: 70%; /* Video takes 70% width */
+display: flex;
+justify-content: center; /* Center the video */
+}
+
+/* Video settings */
+.promo-media {
+width: 100%; /* Make sure the video fills the container */
+height: 100%; /* Ensure it fits within the container */
+object-fit: fill; /* Ensure the video covers the container without distortion */
+}
+
+
+
+/* Button styling */
+.order-button-type button {
+background-color: #5ABCE6;
+color: white;
+font-size: 1.2rem;
+padding: 5px 15px;
+border: none;
+
+cursor: pointer;
+}
+
+/* Hide content-video section in desktop mode */
+@media (min-width: 1024px) {
+.content-video {
+    display: none; /* Hide the content in desktop view */
+}
+}
+
+/* Mobile view: Display content-video section */
+/* Mobile view: Display content-video section */
+@media (max-width: 768px) {
+
+.navbar {
+    height: 60px;
+}
+
+.order_now_btn {
+    display: none;
+}
+
+.content-video {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px; /* Set the height equal to the navbar height */
+    margin-top: 80px;
+}
+
+/* Adjust the video container width for mobile */
+.video-container {
+    width: 70%; /* Video takes 70% width */
+    height: 60px; /* Ensure the height is explicitly set */
+    display: flex;
+    margin-top: -20px;
+    align-items: center; /* Center the video */
+}
+
+.promo-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Ensure button container height matches video */
+.order-button-type {
+    width: 50%; /* Button takes 30% width */
+    height: 60px; /* Match the height of the video container */
+    display: flex;
+    align-items: center;
+    margin-top: -20px;
+    justify-content: center;
+}
+
+.order-button-type button {
+    width: 100%; /* Full width button */
+    font-size: 1.2rem;
+    height: 100%; /* Match height of the button container */
+}
+}
+
+    /* Hide content on desktop and larger screens */
+@media (min-width: 1024px) {
+.content {
+display: none; /* Hide the entire content */
+height: 0; /* Ensure no extra height is taken */
+width: 0; /* Ensure no extra width is taken */
+margin: 0; /* Reset any margin that might take space */
+padding: 0; /* Reset padding */
+}
+}
+    /* Style for the container div */
+.order-button-type {
+display: flex;
+
+justify-content: center; /* Center the button horizontally */
+align-items: center;     /* Center the button vertically */
+padding: 20px;           /* Add padding around the button */
+background-color: white;
+border-radius: 10px;     /* Rounded corners for the container */
+}
+
+/* Style for the button */
+.order-button-type button {
+/* Button padding for a better size */
+font-size: 16px;     /* Text size for the button */
+background-color: #5ABCE6; /* #5ABCE6 background for the button */
+color: white;   /* Text color */
+/* Rounded corners for the button */
+cursor: pointer;     /* Show pointer on hover */
+transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the button */
+.order-button-type button:hover {
+background-color: #009688; /* Darker #5ABCE6 on hover */
+transform: scale(1.05);      /* Slight scale effect on hover */
+}
+
+/* Focus effect for the button */
+.order-button-type button:focus {
+outline: none;               /* Remove outline */
+box-shadow: 0 0 0 2px #009688; /* Add shadow when focused */
+}
+
+    </style>
+
+
+
+<div class="main-content" style="margin-top: 50px; ">
+    
+    <div class=" mt-4 detail-product-container" style="padding:30px;"  >
+
+        <div class="row">
+         <div class="col-md-6">
+          <div class="d-flex">
+            <div id="main-image-container" class="d-flex">
+                <img id="main-image" alt="Main product image" class="img-fluid" height="200" src="img/baby-charm-diaper-roduct-1.jpg" width="400"/>
+                <div id="thumbnails" class="ms-2 vertical-thumbnails">
+                    <img id="thumb-1" alt="Thumbnail 1" class="img-thumbnail mb-2" height="50" src="img/baby-charm-product-2.jpg" width="50" />
+                    <img id="thumb-2" alt="Thumbnail 2" class="img-thumbnail mb-2" height="50" src="img/baby-charm-product-3.jpg" width="50" />
+                    <img id="thumb-3" alt="Thumbnail 3" class="img-thumbnail mb-2" height="50" src="img/baby-charm-index-brand.jpg" width="50" />
+                    <img id="thumb-4" alt="Thumbnail 4" class="img-thumbnail mb-2" height="50" src="img/baby-charm-many.jpg" width="50" />
+                </div>
+            </div>
+            
+         
+
+         <script>
+           // Select the main image and all thumbnail images using their IDs
+const mainImage = document.getElementById('main-image');
+const thumbnails = [
+    document.getElementById('thumb-1'),
+    document.getElementById('thumb-2'),
+    document.getElementById('thumb-3'),
+    document.getElementById('thumb-4')
+];
+
+// Function to update the main image based on the thumbnail index
+function updateMainImage(index) {
+    mainImage.src = thumbnails[index].src;
+}
+
+// Variable to track the current index of the thumbnail being shown
+let currentIndex = 0;
+
+// Function to change the main image every 3 seconds
+function changeMainImage() {
+    // Update the main image to the current thumbnail's image
+    updateMainImage(currentIndex);
+
+    // Increment the index for the next image
+    currentIndex++;
+
+    // If we reach the end of the thumbnails, reset to the first one
+    if (currentIndex >= thumbnails.length) {
+        currentIndex = 0;
+    }
+}
+
+// Start the automatic image change every 3 seconds
+setInterval(changeMainImage, 3000); // 3000 ms = 3 seconds
+
+         </script>
+         <style>
+             .vertical-thumbnails {
+                 display: flex;
+                 flex-direction: column; /* Stack items vertically */
+                 align-items: center; /* Center-align images horizontally */
+                 gap: 10px; /* Add spacing between images */
+             }
+             .vertical-thumbnails img {
+                 border-radius: 8px; /* Optional: Rounded corners */
+                 cursor: pointer;
+                 transition: transform 0.3s; /* Optional: Smooth zoom effect */
+             }
+             .vertical-thumbnails img:hover {
+                 transform: scale(1.1); /* Optional: Enlarge on hover */
+             }
+         </style>
+         
+          </div>
+         </div>
+         <div class="col-md-6">
+            <div class="product-title">
+               Baby Charm Baby  50 pcs Plane pants  All sizes -new born, Maxi, Junior and XL 
+            
+               
+            </div>
+        
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                15 Ratings
+            </div>
+        
+            <div class="price mt-2">
+                Rs. 13,889
+               
+            </div>
+        
+            <!-- Available Sizes -->
+            <div class="available-sizes mt-3">
+                <strong>Available Sizes:</strong>
+                <div class="size-options">
+                    <span class="size-option">new born</span>
+                    <span class="size-option">Maxi</span>
+                    <span class="size-option">Junior</span>
+                    <span class="size-option">XL</span>
+                </div>
+            </div>
+        
+            <!-- Best Features with Icons -->
+            <div class="best-features mt-3">
+                <div class="row">
+                    <div class="col-6 feature-item">
+                        <i class="fas fa-balance-scale"></i>
+                        <span>50     pieces per pack</span>
+                    </div>
+                    <div class="col-6 feature-item">
+                        <i class="fas fa-baby"></i>
+                        <span>Between 2 and 16kgs</span>
+                    </div>
+                    <div class="col-6 feature-item">
+                        <i class="fas fa-hourglass-half"></i>
+                        <span>12 hours protection</span>
+                    </div>
+                    <div class="col-6 feature-item">
+                        <i class="fas fa-moon"></i>
+                        <span>Day and night use</span>
+                    </div>
+                </div>
+            </div>
+        
+            <button class="btn btn-primary btn-buy">
+                Buy Now
+            </button>
+        </div>
+        
+
+        <style>
+            /* General Product Card Container Styling */
+
+
+
+
+/* Product Title */
+.product-title {
+    font-size: 1.2rem; /* Adjust font size */
+    font-weight: bold; /* Make the title bold */
+    color: #333; /* Dark gray color for better readability */
+    line-height: 1.5; /* Make title more readable */
+    margin-bottom: 15px; /* Space below the title */
+}
+
+/* Rating Stars */
+.rating {
+    font-size: 1rem; /* Adjust font size */
+    color: #f4c150; /* Yellow color for stars */
+    margin-bottom: 10px; /* Space below the rating */
+}
+
+.rating i {
+    margin-right: 3px; /* Space between stars */
+}
+
+/* Price Styling */
+.price {
+    font-size: 1.4rem; /* Larger font size for the price */
+    font-weight: bold; /* Bold price */
+    color: #5ABCE6; /* Green color for the price */
+    margin-bottom: 10px; /* Space below the price */
+}
+
+
+
+.old-price {
+    font-size: 1.2rem; /* Smaller size for old price */
+    color: #888; /* Light gray color for the old price */
+    text-decoration: line-through; /* Strikethrough old price */
+    margin-left: 10px; /* Space between prices */
+}
+
+/* Price Discount */
+.price span {
+    color: #5ABCE6; /* Red color for the discount percentage */
+    font-size: 1rem; /* Adjust font size */
+    font-weight: normal; /* Regular weight for the discount text */
+}
+
+
+/* Available Sizes Styling */
+.available-sizes {
+    margin-top: 15px;
+}
+
+.size-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.size-option {
+    background-color: #f1f1f1;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.size-option:hover {
+    background-color: #5ABCE6;
+    color: white;
+}
+
+/* Best Features Styling */
+.best-features {
+    margin-top: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.feature-item i {
+    font-size: 1.5rem;
+    color: #5ABCE6;
+    margin-right: 10px;
+
+}
+
+.feature-item span {
+    font-weight: bold;
+}
+
+
+/* Button Styling */
+.btn-buy {
+    display: block; /* Block button to span full width */
+    width: 100%; /* Button takes full width */
+    padding: 12px; /* Add padding for button */
+    font-size: 1.2rem; /* Adjust font size */
+    background-color: #5ABCE6; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 30px; /* Rounded corners for the button */
+    text-align: center; /* Center text in button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Hover effect for button */
+.btn-buy:hover {
+    background-color: blue; /* Darker green on hover */
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Mobile Responsiveness (optional for better mobile design) */
+@media (max-width: 768px) {
+    .col-md-6 {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .product-title {
+        font-size: 1.1rem; /* Slightly smaller font size for smaller screens */
+    }
+
+    .price {
+        font-size: 1.2rem; /* Adjust price size */
+    }
+
+    .btn-buy {
+        font-size: 1.1rem; /* Adjust button size for smaller screens */
+    }
+}
+
+            </style>
+     
+     <style>
+         .full-width-box {
+             width: 100%;
+             padding: 15px;
+             border: 1px solid #ccc;
+             border-radius: 8px;
+             background-color: #f9f9f9;
+         }
+         .flex-item {
+             flex: 1;
+             margin: 0 10px;
+             padding: 15px;
+             border: 1px solid #ddd;
+             border-radius: 8px;
+             background-color: #ffffff;
+         }
+         .flex-item h5 {
+             margin-bottom: 15px;
+         }
+         .qr-code {
+             display: block;
+             margin-top: 10px;
+         }
+         .d-flex {
+             display: flex;
+         }
+         .justify-content-between {
+             justify-content: space-between;
+         }
+     </style>
+     
+     </div>
+     
+     
+     
+     <style>
+       
+         .product-details, .specifications, .ratings-reviews {
+             margin-bottom: 20px;
+         }
+         .ratings-reviews .rating-stars {
+             color: #FFD700;
+         }
+         .ratings-reviews .rating-bar {
+             height: 10px;
+             background-color: #FFD700;
+         }
+         .ratings-reviews .rating-bar-bg {
+             height: 10px;
+             background-color: #e0e0e0;
+         }
+     </style>
+     <div class="product-details" style="margin-top: 50px; padding: 20px;">
+        <h5>Product Details of Baby Charm Pants - Soft, Comfortable & Leak-Proof (50 Pcs)</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <ul>
+                    <li><strong>Ultimate Comfort:</strong> Baby Charm Pants are designed with ultra-soft and flexible materials to ensure your baby’s maximum comfort throughout the day.</li>
+                    <li><strong>Quick Absorption:</strong> Equipped with advanced absorption technology, these pants lock in moisture instantly, keeping your baby’s skin dry and fresh.</li>
+                    <li><strong>360° Stretch Fit:</strong> The 360° elastic waistband adapts to your baby’s movements, providing a snug and secure fit without causing any marks or irritation.</li>
+                    <li><strong>Breathable Design:</strong> The pants feature a breathable outer layer that allows airflow, preventing heat buildup and keeping your baby cool and happy.</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul>
+                    <li><strong>Leak-Proof Protection:</strong> Double-layered leak guards ensure protection against side and back leakage, giving you peace of mind during playtime or sleep.</li>
+                    <li><strong>Gentle on Skin:</strong> Dermatologically tested and hypoallergenic, Baby Charm Pants are crafted to care for your baby’s sensitive skin, reducing the risk of irritation or rashes.</li>
+                    <li><strong>Easy-to-Wear Design:</strong> Pull-up style pants make changing time quick and hassle-free for both parents and babies.</li>
+                    <li><strong>Odor Control:</strong> Advanced odor-lock technology keeps unpleasant smells at bay, ensuring a fresh experience for you and your baby.</li>
+                    <li><strong>Environmentally Friendly:</strong> Baby Charm Pants are made with eco-friendly materials, ensuring safety for your baby and sustainability for the planet.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+            <style>
+                .about-container {
+                    position: relative;
+                    width: 100%;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+                    border-radius: 10px;
+                    
+                    font-family: 'Arial', sans-serif;
+                    color: #333;
+                }
+                
+                .about-title {
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                    margin-bottom: 20px;
+                    text-align: center;
+                    color: #2c3e50;
+                }
+              
+                .about-paragraph {
+                    line-height: 1.8;
+                    font-size: 1.1rem;
+                    margin-bottom: 20px;
+                    text-align: justify;
+                }
+              
+                .about-highlight {
+                    color: #e74c3c;
+                    font-weight: bold;
+                }
+              
+                .production-section {
+                    margin-top: 30px;
+                    padding-top: 20px;
+                    border-top: 2px solid #ddd;
+                }
+              
+                .production-title {
+                    font-size: 2rem;
+                    font-weight: bold;
+                    margin-bottom: 15px;
+                    text-align: center;
+                    color: #5ABCE6;
+                }
+              
+                .production-paragraph {
+                    line-height: 1.8;
+                    font-size: 1.1rem;
+                    text-align: justify;
+                }
+              </style>
+              <div class="about-container">
+                <h1 class="about-title">Who Are Baby Charm Pants?</h1>
+                <p class="about-paragraph">
+                    Baby Charm Pants are your <span class="about-highlight">ultimate partner</span> in keeping your baby happy and comfortable. These pants are designed for the busy mom next door, the caring dad at the park, or the loving parent shopping for their little one. <br><br>
+                    Baby Charm Pants are <span class="about-highlight">for every parent</span> who wants the best for their child.
+                </p>
+                <p class="about-paragraph">
+                    We created Baby Charm Pants with the idea that what parents need most is a <span class="about-highlight">dependable partner</span> to help them through the joys and challenges of parenthood. A partner that ensures their baby stays comfortable, protected, and happy all day long.
+                </p>
+                <p class="about-paragraph">
+                    Baby Charm Pants offer premium comfort, advanced leak protection, and a stress-free experience so that parents can focus on creating <span class="about-highlight">precious moments</span> with their little ones. Because your happiness, and your baby’s comfort, is what matters most to us.
+                </p>
+            
+                <div class="production-section">
+                    <h2 class="production-title">About Production</h2>
+                    <p class="production-paragraph">
+                        Baby Charm Pants are a product of <span class="about-highlight">Ontex</span>, a globally trusted name in personal hygiene. Ontex specializes in designing and manufacturing high-quality products for Baby Care, Feminine Care, and Adult Care. We are committed to supporting parents, retailers, and healthcare providers around the world.
+                    </p>
+                    <p class="production-paragraph">
+                        Baby Charm Pants are produced in Ontex facilities across Europe, adhering to the highest standards of safety, quality, and customer satisfaction. Our dedicated team works tirelessly to deliver products that care for your baby’s delicate needs while staying eco-friendly and innovative.
+                    </p>
+                </div>
+            </div>
+</div>            
+
+ 
+
+
+<div class="body-footer" style=" margin-top: 20px; background-color: #5ABCE6; padding: 20px;  "  >
+    <div class="container footer">
+     <div class="row">
+      <div class="col-md-3">
+       
+        <p style="text-align: justify;">
+            Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal. With a strong presence across all seven provinces of the country, Neom specializes in distributing high-quality baby care and cosmetic products, with adult care solutions set to launch soon.
+          </p>
+       <div class="social-icons">
+        
+        <a href="#">
+         <i class="fab fa-facebook">
+         </i>
+        </a>
+        <a href="#">
+         <i class="fab fa-instagram">
+         </i>
+        </a>
+        <a href="#">
+         <i class="fas fa-envelope">
+         </i>
+        </a>
+       </div>
+     
+      </div>
+      <div class="col-md-2">
+       <h5>
+       Quick Link
+       </h5>
+       <ul class="list-unstyled">
+        <li>
+         <a href="aboutus.html">
+          About US
+         </a>
+        </li>
+        <li>
+         <a href="ourproduct.html">
+          Products
+         </a>
+        </li>
+        <li>
+         <a href="index.html">
+          Home
+         </a>
+        </li>
+        <li>
+            <a href="index.html">
+             Sustainability
+            </a>
+           </li>
+       </ul>
+      </div>
+      <div class="col-md-3">
+     
+       <ul class="list-unstyled">
+        <h5>
+         Our Brands
+        </h5>
+        <li>
+         <a href="https://www.helenharperbaby.com/" target="_blank">
+          Helen Helper
+         </a>
+        </li>
+        <li>
+         <a href="https://www.babycharm.com/" target="_blank">
+          Baby Charm
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div class="col-md-2">
+       <h5>
+         Updates
+         </h5>
+       <ul class="list-unstyled">
+        <li>
+         <a href="contactus.html">
+          Contact Us
+         </a>
+        </li>
+        <li>
+         <a href="notice.html">
+          Notice
+         </a>
+        </li>
+        <li>
+            <a href="careers.html">
+             Careers
+            </a>
+           </li>
+      
+       
+       </ul>
+      </div>
+     
+     </div>
+    </div>
+ </div>
+
+
+
+ 
+  <script>
+         window.addEventListener('scroll', () => {
+         const navbar = document.querySelector('.navbar');
+         if (window.scrollY > 50) {
+             navbar.classList.add('navbar-shrink');
+         } else {
+             navbar.classList.remove('navbar-shrink');
+         }
+     });
+     </script>
+     
+     <script>
+         // Add functionality for the scroll-to-top button
+     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+     
+     window.addEventListener('scroll', () => {
+         if (window.scrollY > 300) {
+             scrollToTopBtn.classList.add('show');
+         } else {
+             scrollToTopBtn.classList.remove('show');
+         }
+     });
+     
+     scrollToTopBtn.addEventListener('click', () => {
+         window.scrollTo({
+             top: 0,
+             behavior: 'smooth',
+         });
+     });
+     
+     </script>
+      <!-- Bootstrap JS Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+     
+     
+     
+         <script 
+             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+Kq8x0B2M7z44O/tpoQbC6bb2xkzj" 
+             crossorigin="anonymous">
+         </script>
+     
+     
+
+
+
+
+
+
+ </body>
+</html>

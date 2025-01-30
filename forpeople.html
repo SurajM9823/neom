@@ -1,0 +1,1063 @@
+<html>
+ <head>
+  <title>
+   NEOM
+  </title>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+
+    /* Prevent horizontal and vertical overflow */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Disable horizontal scrolling */
+}
+
+/* Box-sizing reset */
+* {
+    box-sizing: border-box; /* Ensure padding and border are included in width/height */
+}
+
+
+
+  /* Navbar link styles */
+.navbar-nav .nav-link {
+    color: #333; /* Dark color for better readability */
+    font-weight: 700; /* Make links bold */
+    font-size: 1rem; /* Set a consistent font size */
+    transition: color 0.3s ease, font-size 0.3s ease; /* Smooth hover and size transitions */
+}
+
+/* Hover effect for navbar links */
+.navbar-nav .nav-link:hover {
+    color: blue; /* Slightly darker blue for hover state */
+}
+
+/* Navbar brand logo styling */
+.navbar-brand img {
+ 
+    height: 60px; /* Default logo height */
+    transition: height 0.3s ease; /* Smooth resizing on interactions */
+}
+
+/* Contact button styling */
+.contact-btn {
+
+    border-radius: 10px; /* Slightly rounder corners */
+    padding: 2px 20px; /* Balanced look */
+    font-weight: 600; /* Make text bold */
+    color: white; /* Match border color */
+    background-color: transparent; /* Transparent background */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+
+/* Navbar fixed at the top */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030; /* Ensure navbar appears above other elements */
+    transition: all 0.3s ease; /* Smooth transition for height and background changes */
+}
+
+/* Initial navbar state */
+.navbar-expanded {
+    height: 50px; /* Default height */
+    background-color: #f8f9fa; /* Light background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Shrinked navbar state on scroll */
+.navbar {
+    height: 50px; /* Smaller height */
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Stronger shadow for focus */
+}
+       
+    .body-footer {
+             background-color: #000c1d;
+             color: #fffefe;
+             font-family: Arial, sans-serif;
+         }
+         .footer {
+             padding: 40px 0;
+         }
+         .footer h5 {
+             font-weight: bold;
+             color: #f1dede;
+         }
+         .footer a {
+             color: #e7d7d7;
+             text-decoration: none;
+         }
+         .footer a:hover {
+             text-decoration: underline;
+         }
+         .footer .social-icons a {
+             color: #4a4a4a;
+             margin-right: 15px;
+             font-size: 20px;
+         }
+         .footer .social-icons a:hover {
+             color: #007bff;
+         }
+         .footer .logo img {
+             max-width: 150px;
+         }
+   </style>
+
+<style>
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #009688;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.scroll-to-top:hover {
+    background-color: #009688;
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+.nav-item{
+    position: relative;
+}
+
+</style>
+    
+
+ </head>
+ <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Logo and Company Name Inline -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="image/lo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
+                <span style="display: inline-block; text-align: left; vertical-align: top; color:#012576;           font-weight: bold;">
+                    NEOM World<br>
+                    <span style="display: inline-block; vertical-align: bottom; margin-top:-10px; color: #012576; font-weight: bold;">Trade Pvt. Ltd.</span>
+                </span>
+            </a>
+    
+            <!-- Navbar Toggler for mobile view -->
+            <button class="navbar-toggler" type="button" style="border: none;" onclick="toggleSidebar()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+           
+            <!-- Navbar links for desktop (horizontal) -->
+            <div class="collapse navbar-collapse" id="navbarNav" style="margin-left:100px">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="index.html" class="nav-link" style="color: #012576;"> Home</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link" style="color: #012576;"> About Us</a></li>
+                    <li class="nav-item"><a href="ourproduct.html" class="nav-link" style="color: #012576;"> Our Products</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="distributor.html" class="nav-link dropdown-toggle" id="navbarDropdown" style="color: #012576;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             Sustainability
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a href="forplanet.html" class="dropdown-item" style="color: #012576;">For Planet</a></li>
+                            <li><a href="forcommunity.html" class="dropdown-item" style="color: #012576;">For Community</a></li>
+                            <li><a href="forpeople.html" class="dropdown-item" style="color: #012576">For People</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="small-nav-link" >
+                    
+                    <li class="nav-item"><a href="careers.html" class="nav-link" style="color: blue;"> Careers</a></li>
+                    <li class="nav-item"><a href="notice.html" class="nav-link" style="color: blue;"> Notice</a></li>
+                    <li class="nav-item"><a href="contactus.html" class="nav-link" style="color: blue;">Contact</a></li>
+                </ul>
+            </div>
+            </div>
+
+            
+    
+            <!-- "Order Now" Button -->
+            <a class="nav-link contact-btn order_now_btn" href="payoutform.html" style="background-color:#5ABCE6   ; color:white; border-radius: 0px; width: 200px; height: 50px; padding-top: 10px;">
+                <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Buy Now
+            </a>
+    
+            <!-- Video in navbar, visible only on desktop -->
+            <video autoplay loop muted playsinline class="navbar-video" style="width: 200px; height: auto;">
+                <source src="video/ontext.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </nav>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <ul class="sidebar-links">
+            <li><a href="index.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> Home</a></li>
+            <li><a href="aboutus.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> About Us</a></li>
+            <li><a href="ourproduct.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> Products</a></li>
+            <li><a href="strategy.html" style="color: #012576; font-weight: 700; font-size: 26px; font-style: bold;"> Sustainability</a></li>
+            
+            <li><a href="careers.html" style="color: #012576; font-weight: 700; font-size: 16px; font-style: bold; margin-top: 50px; margin-left: 15px;" >Careers</a></li>
+            <li><a href="notice.html" style="color: #012576; font-weight: 700; font-size: 16px; font-style: bold;  margin-left: 15px;"> Notice</a></li>
+            <li><a href="contactus.html" style="color: #012576; font-weight: 700; font-size: 16px; font-style: bold;  margin-left: 15px;"> Contact</a></li>
+        </ul>
+    </div>
+    
+    <style>
+        /* Sidebar styles */
+     .sidebar {
+         height: 100%;
+         width: 0;
+         position: fixed;
+         top: 0;
+         left: 0;
+         background: white;
+         overflow-x: hidden;
+         transition: 0.3s ease;
+         padding-top: 60px;
+         z-index: 1000;
+         box-shadow: 2px 0 10px rgba(226, 222, 222, 0.5);
+     }
+     
+     /* Sidebar links */
+     .sidebar-links {
+         list-style-type: none;
+         padding: 30px;
+         margin: 0;
+     }
+     
+     /* Sidebar link items */
+     .sidebar-links li {
+         padding: 10px 15px;
+         text-align: left;
+     }
+     
+     /* Sidebar link anchor */
+     .sidebar-links a {
+         color: #5ABCE6;
+         text-decoration: none;
+         display: block;
+         font-size: 18px;
+         padding: 10px 0; /* Keep padding consistent */
+         transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transition for background color */
+     }
+     
+     /* Sidebar link hover effect */
+     .sidebar-links a:hover {
+         background-color: white;
+         padding-left: 0; /* No shift on hover */
+         padding-right: 0; /* Ensure no padding change */
+     }
+     
+     /* Prevent shift during click */
+     .sidebar-links a:active {
+         background-color: white; /* Keep the background consistent */
+         padding-left: 0; /* No padding change */
+     }
+     
+     /* Sidebar when active (expanded) */
+     .sidebar.active {
+         width: 250px;
+     }
+     
+     /* Dropdown menu */
+     .sidebar .dropdown-menu {
+         display: none;
+         padding-left: 20px;
+         background-color: #444;
+     }
+     
+     .sidebar .dropdown:hover .dropdown-menu {
+         display: block;
+     }
+     
+     /* Toggler button styles */
+     .navbar-toggler {
+         position: relative;
+         z-index: 1050;
+     }
+     
+     /* Responsive styling for mobile devices */
+     @media (max-width: 768px) {
+         .navbar-nav {
+             display: none; /* Hide navbar items in mobile */
+         }
+     
+         .sidebar {
+             width: 0;
+         }
+     
+         .sidebar.active {
+             width: 80%; /* Expand sidebar to 80% of screen width */
+         }
+     
+         .navbar-video {
+             display: none;
+         }
+     
+         .navbar-brand img {
+             height: 40px;
+             margin-left: 1px;
+             padding-bottom: 5px;
+         }
+     }
+     
+     /* Ensure the sidebar works properly on larger screens */
+     @media (min-width: 769px) {
+         .navbar-nav {
+             display: flex;
+             justify-content: center;
+             gap: 10px;
+         }
+     
+         .navbar-nav .nav-item {
+             display: inline-block;
+         }
+     
+         .navbar-nav .nav-item .nav-link {
+             color: #5ABCE6;
+         }
+     }
+     
+     /* Ensure smooth transition for the sidebar */
+     .sidebar.active {
+         width: 250px;
+         transition: width 0.3s ease-in-out;
+     }
+     
+     /* Style for small-nav-link to make it horizontal and small */
+     .small-nav-link {
+         list-style-type: none;  /* Remove bullet points */
+         padding: 0;             /* Remove padding */
+         margin-left: 30px;      /* Remove margin */
+         display: flex;          /* Display the list items horizontally */
+         gap: 15px;    
+         margin-top: 10px;         /* Space between the items */
+     }
+     
+     .small-nav-link .nav-item {
+         font-size: 14px;        /* Smaller font size for the items */
+     }
+     
+     .small-nav-link .nav-link {
+         color: #5ABCE6;  /* Change text color */
+         text-decoration: none;  /* Remove underline */
+         font-weight: normal;    /* Make font weight normal */
+         transition: color 0.3s ease; /* Smooth transition for color change on hover */
+     }
+     
+     .small-nav-link .nav-link:hover {
+         color: #5ABCE6;  /* Change text color on hover */
+     }
+     
+         </style>
+     
+    
+    
+    <script>
+    // Toggle sidebar visibility
+    function toggleSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('active'); // Toggle the active class to show or hide the sidebar
+    }
+    </script>
+    
+
+<style>
+.intro-section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.intro-section img {
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.description h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.executive-management img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+    margin-bottom: 10px;
+}
+
+.executive-management h5 {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.executive-management p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+</style>
+
+
+
+  
+<div class="content-video" style="width: 100%; padding: 0;">
+    <div class="video-container" style="width: 80%;">
+        <video 
+            src="video/ontext.mp4" 
+            alt="Promo Video" 
+            class="promo-media" 
+            autoplay 
+            muted 
+            loop 
+            style="pointer-events: none;">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    
+    
+        <button class="order-button-type"
+            style="border: #5ABCE6; background-color: #5ABCE6; border-radius: 0px; color: white;" 
+            onclick="window.location.href='payoutform.html';">
+            Order Now
+        </button>
+    
+    
+</div>
+
+
+
+<style>
+
+
+/* Default styles for the content-video section */
+.content-video {
+display: flex;
+align-items: center; /* Vertically align content */
+justify-content: space-between; /* Space out video and button */
+width: 100%;
+
+}
+
+/* Video Container: 70% width */
+.video-container {
+width: 70%; /* Video takes 70% width */
+display: flex;
+justify-content: center; /* Center the video */
+}
+
+/* Video settings */
+.promo-media {
+width: 100%; /* Make sure the video fills the container */
+height: 100%; /* Ensure it fits within the container */
+object-fit: fill; /* Ensure the video covers the container without distortion */
+}
+
+
+
+/* Button styling */
+.order-button-type button {
+background-color: #5ABCE6;
+color: white;
+font-size: 1.2rem;
+padding: 5px 15px;
+border: none;
+
+cursor: pointer;
+}
+
+/* Hide content-video section in desktop mode */
+@media (min-width: 1024px) {
+.content-video {
+    display: none; /* Hide the content in desktop view */
+}
+}
+
+/* Mobile view: Display content-video section */
+/* Mobile view: Display content-video section */
+@media (max-width: 768px) {
+
+.navbar {
+    height: 60px;
+}
+
+.order_now_btn {
+    display: none;
+}
+
+.content-video {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px; /* Set the height equal to the navbar height */
+    margin-top: 80px;
+}
+
+/* Adjust the video container width for mobile */
+.video-container {
+    width: 70%; /* Video takes 70% width */
+    height: 60px; /* Ensure the height is explicitly set */
+    display: flex;
+    margin-top: -20px;
+    align-items: center; /* Center the video */
+}
+
+.promo-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Ensure button container height matches video */
+.order-button-type {
+    width: 50%; /* Button takes 30% width */
+    height: 60px; /* Match the height of the video container */
+    display: flex;
+    align-items: center;
+    margin-top: -20px;
+    justify-content: center;
+}
+
+.order-button-type button {
+    width: 100%; /* Full width button */
+    font-size: 1.2rem;
+    height: 100%; /* Match height of the button container */
+}
+}
+
+    /* Hide content on desktop and larger screens */
+@media (min-width: 1024px) {
+.content {
+display: none; /* Hide the entire content */
+height: 0; /* Ensure no extra height is taken */
+width: 0; /* Ensure no extra width is taken */
+margin: 0; /* Reset any margin that might take space */
+padding: 0; /* Reset padding */
+}
+}
+    /* Style for the container div */
+.order-button-type {
+display: flex;
+
+justify-content: center; /* Center the button horizontally */
+align-items: center;     /* Center the button vertically */
+padding: 20px;           /* Add padding around the button */
+background-color: white;
+border-radius: 10px;     /* Rounded corners for the container */
+}
+
+/* Style for the button */
+.order-button-type button {
+/* Button padding for a better size */
+font-size: 16px;     /* Text size for the button */
+background-color: #5ABCE6; /* #5ABCE6 background for the button */
+color: white;   /* Text color */
+/* Rounded corners for the button */
+cursor: pointer;     /* Show pointer on hover */
+transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the button */
+.order-button-type button:hover {
+background-color: #009688; /* Darker #5ABCE6 on hover */
+transform: scale(1.05);      /* Slight scale effect on hover */
+}
+
+/* Focus effect for the button */
+.order-button-type button:focus {
+outline: none;               /* Remove outline */
+box-shadow: 0 0 0 2px #009688; /* Add shadow when focused */
+}
+
+    </style>
+
+
+
+<div class="main-content" style="padding: 0;">
+
+
+    <style>
+        .image-container-abc {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+        }
+        .image-container-abc img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-container-abc .center-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white; /* Ensures the text is visible */
+           
+            padding: 10px 20px; /* Optional: Adds some padding around the text */
+            border-radius: 8px; /* Optional: Adds rounded corners to the background */
+        }
+        .image-container h4 {
+            margin: 0;
+            font-size: 2rem; /* Adjust the font size as needed */
+        }
+    </style>
+    
+    <div class="container-fluid-abc image-container-abc">
+        <img 
+            src="https://storage.googleapis.com/a1aa/image/7M02AOVRXzawHxNA8QPTfDouekdikVlDQ8onCOP3NCOFYI5TA.jpg" 
+            alt="A child holding a shopping basket with groceries in a store"
+        >
+        <div class="center-content">
+            <h4>Sustainability / For People</h4>
+        </div>
+    </div>
+
+     
+     
+       
+    
+    
+    
+    <div class="container" >
+   
+        <style>
+            .page-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+    
+            .page-wrapper .content-wrapper {
+                display: flex;
+                flex-direction: row;
+                width: 80%;
+                max-width: 1200px;
+                margin: 40px auto;
+    
+    
+            }
+    
+            .page-wrapper .main-text-section,
+            .page-wrapper .highlight-section {
+                padding: 20px;
+            }
+    
+            .page-wrapper .main-text-section {
+                flex: 1;
+            }
+    
+            .page-wrapper .highlight-section {
+                flex: 1;
+                background-color: #5ABCE6;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+    
+            .page-wrapper .main-heading {
+                font-size: 3em;
+                font-weight: 700;
+                margin: 0 0 20px 0;
+            }
+    
+            .page-wrapper .main-paragraph {
+                font-size: 1.2em;
+                line-height: 1.6;
+                margin: 0;
+            }
+    
+            .page-wrapper .highlight-quote {
+                font-size: 2em;
+                font-weight: 700;
+                text-align: center;
+                color: white;
+                line-height: 1.5;
+                /* Adjusted line height for better spacing */
+            }
+    
+            .page-wrapper .highlight-quote::before,
+            .page-wrapper .highlight-quote::after {
+    
+                font-size: 2em;
+                color: white;
+            }
+    
+    
+    
+            .page-wrapper .highlight-line {
+                width: 50%;
+                height: 2px;
+                background-color: #fbfdff;
+                margin: 20px auto 0 auto;
+            }
+    
+            @media (max-width: 768px) {
+                .page-wrapper .content-wrapper {
+                    flex-direction: column;
+                }
+    
+                .page-wrapper .highlight-section {
+                    padding: 20px;
+                }
+    
+                .page-wrapper .highlight-quote {
+                    font-size: 1.5em;
+                }
+            }
+    
+            .page-wrapper .info-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 20px;
+                width: 80%;
+                max-width: 1200px;
+                margin: 40px auto;
+            }
+    
+            .page-wrapper .info-left-column {
+                flex: 1;
+                padding: 20px;
+                max-width: 60%;
+            }
+    
+            .page-wrapper .info-right-column img {
+                width: 90%;
+                height: 400px;
+                
+            }
+    
+            .page-wrapper h1,
+            .page-wrapper h2 {
+                font-family: Arial, sans-serif;
+                color: #333;
+            }
+    
+            .page-wrapper h1 {
+                font-size: 2.5em;
+                margin-bottom: 20px;
+            }
+    
+            .page-wrapper h2 {
+                font-size: 2em;
+                margin-top: 40px;
+                margin-bottom: 20px;
+            }
+    
+            .page-wrapper p {
+                font-size: 1.1em;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+    
+            .page-wrapper .info-quote {
+    
+                font-size: 1.8em;
+                color: white;
+                text-align: center;
+                padding: 20px;
+                line-height: 1.6;
+                /* Adjusted line height for better spacing */
+            }
+    
+    
+            .page-wrapper .info-quote::before,
+            .page-wrapper .info-quote::after {
+    
+                font-size: 2em;
+                color: #f8f9fa;
+            }
+    
+            .page-wrapper .info-line {
+                width: 50px;
+                height: 2px;
+                background-color: #fafbfc;
+                margin: 20px auto 0;
+            }
+    
+            @media (max-width: 768px) {
+    
+                .page-wrapper .info-left-column,
+                .page-wrapper .info-right-column {
+                    max-width: 100%;
+                    flex: 100%;
+                }
+            }
+        </style>
+    
+        <div class="page-wrapper" id="better-for-people" style=" padding:0">
+            <div class="content-wrapper" style="text-align: justify; font-size: 13px;">
+                <div class="highlight-section">
+                    <div>
+                        <p class="highlight-quote">"A brighter future begins with how we care for and empower our
+                            children today. By championing their rights, we shape a world where every child has the
+                            chance to thrive."</p>
+                        <div class="highlight-line"></div>
+                    </div>
+                </div>
+    
+                <div class="main-text-section">
+                    <h1 class="main-heading">Children’s Rights</h1>
+                    <p class="main-paragraph">Children are at the heart of everything we do. Operating our business
+                        responsibly with a strong focus on their well-being has always been a core value for us. Guided
+                        by Save Children’s Rights and Business Principles, we ensure that
+                        every aspect of our operations—from production to marketing and distribution—champions the
+                        rights and dignity of children.
+    
+                        These principles serve as our playbook, shaping how we integrate the protection and empowerment
+                        of children into our daily practices. By adhering to these values, we’re not just making
+                        statements; we’re taking meaningful action to build a future that genuinely prioritizes the
+                        well-being, growth, and opportunities for children in Nepal.</p>
+                </div>
+    
+            </div>
+    
+            <div class="info-container" style="text-align: justify; font-size: 13px;">
+                <div class="info-left-column">
+                    <h1 style="text-align: left;">Education for Every child</h1>
+                    <p>We are steadfast in our mission to create equal educational opportunities for every child in
+                        Nepal, regardless of their socio-economic background, geographic location, or personal
+                        circumstances. Education is the cornerstone of progress, and we envision a future where every
+                        child in Nepal not only completes secondary school but does so with a robust foundation of
+                        knowledge, critical thinking skills, and confidence.
+                    </p>
+    
+                    <p>Our aim is to empower children to pursue higher education and specialized fields of their
+                        choice, enabling them to achieve their aspirations and compete successfully in the global
+                        workforce. We believe that when children are given the tools to excel, they not only transform
+                        their own lives but also contribute to the sustainable growth and development of their
+                        communities and the nation as a whole.
+                    </p>
+    
+                    <p>Through this commitment, we strive to bridge gaps in access, quality, and opportunity, ensuring
+                        that education becomes a universal right rather than a privilege. We work tirelessly to create
+                        an inclusive, supportive, and equitable learning environment where every child has the
+                        opportunity to unlock their full potential and build a brighter future.
+                    </p>
+                </div>
+                <div class="info-right-column">
+                    <img src="studentphoto.png" alt="student">
+                </div>
+            </div>
+        </div>
+    
+    
+    
+        </div>
+    
+    
+            
+       <style>
+       
+             .section img {
+                 max-width: 100%;
+                 height: auto;
+             }
+             .section h2 {
+                 font-size: 2.5rem;
+                 font-weight: bold;
+             }
+             .section p {
+                 font-size: 1rem;
+                 color: #555;
+             }
+             .btn-custom {
+                 border: 1px solid #000;
+                 padding: 10px 20px;
+                 text-decoration: none;
+                 color: #000;
+                 display: inline-block;
+                 margin-top: 20px;
+             }
+             .btn-custom:hover {
+                 background-color: #f0f0f0;
+             }
+       </style>
+    
+ </div>
+ 
+ 
+ 
+
+
+
+
+ <div class="body-footer" style=" margin-top: 20px; background-color: #5ABCE6;padding: 20px;  "  >
+    <div class="container footer">
+     <div class="row">
+      <div class="col-md-3">
+       
+        <p style="text-align: justify;">
+            Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal. With a strong presence across all seven provinces of the country, Neom specializes in distributing high-quality baby care and cosmetic products, with adult care solutions set to launch soon.
+          </p>
+       <div class="social-icons">
+        
+        <a href="#">
+         <i class="fab fa-facebook">
+         </i>
+        </a>
+        <a href="#">
+         <i class="fab fa-instagram">
+         </i>
+        </a>
+        <a href="#">
+         <i class="fas fa-envelope">
+         </i>
+        </a>
+       </div>
+     
+      </div>
+      <div class="col-md-2">
+       <h5>
+       Quick Link
+       </h5>
+       <ul class="list-unstyled">
+        <li>
+         <a href="aboutus.html">
+          About US
+         </a>
+        </li>
+        <li>
+         <a href="ourproduct.html">
+          Products
+         </a>
+        </li>
+        <li>
+         <a href="index.html">
+          Home
+         </a>
+        </li>
+        <li>
+            <a href="index.html">
+             Sustainability
+            </a>
+           </li>
+       </ul>
+      </div>
+      <div class="col-md-3">
+     
+       <ul class="list-unstyled">
+        <h5>
+         Our Brands
+        </h5>
+        <li>
+         <a href="https://www.helenharperbaby.com/" target="_blank">
+          Helen Helper
+         </a>
+        </li>
+        <li>
+         <a href="https://www.babycharm.com/" target="_blank">
+          Baby Charm
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div class="col-md-2">
+       <h5>
+         Updates
+         </h5>
+       <ul class="list-unstyled">
+        <li>
+         <a href="contactus.html">
+          Contact Us
+         </a>
+        </li>
+        <li>
+         <a href="notice.html">
+          Notice
+         </a>
+        </li>
+        <li>
+            <a href="careers.html">
+             Careers
+            </a>
+           </li>
+      
+       
+       </ul>
+      </div>
+     
+     </div>
+    </div>
+ </div>
+
+
+
+ 
+  <script>
+         window.addEventListener('scroll', () => {
+         const navbar = document.querySelector('.navbar');
+         if (window.scrollY > 50) {
+             navbar.classList.add('navbar-shrink');
+         } else {
+             navbar.classList.remove('navbar-shrink');
+         }
+     });
+     </script>
+     
+     <script>
+         // Add functionality for the scroll-to-top button
+     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+     
+     window.addEventListener('scroll', () => {
+         if (window.scrollY > 300) {
+             scrollToTopBtn.classList.add('show');
+         } else {
+             scrollToTopBtn.classList.remove('show');
+         }
+     });
+     
+     scrollToTopBtn.addEventListener('click', () => {
+         window.scrollTo({
+             top: 0,
+             behavior: 'smooth',
+         });
+     });
+     
+     </script>
+      <!-- Bootstrap JS Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+     
+     
+     
+         <script 
+             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+Kq8x0B2M7z44O/tpoQbC6bb2xkzj" 
+             crossorigin="anonymous">
+         </script>
+     
+     
+
+
+
+
+
+
+ </body>
+</html>

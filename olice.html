@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal Police Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9f4fc; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .notice-container {
+            background: white;
+            width: 600px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #007bff; /* Blue accent */
+        }
+
+        .notice-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .notice-header img {
+            max-width: 80px;
+            margin-bottom: 10px;
+        }
+
+        .notice-header h1 {
+            font-size: 1.8rem;
+            color: #007bff;
+            margin: 0;
+        }
+
+        .sub-header {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .notice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .notice-table th, .notice-table td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .notice-table th {
+            background-color: #f1f8ff;
+            font-weight: bold;
+        }
+
+        .notice-message {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .important {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="notice-container">
+        <div class="notice-header">
+            <!-- Placeholder for Logo -->
+            <img src="img/po-removebg-preview.png" alt="Logo">
+            <h1>Nepal Police Report</h1>
+            <p class="sub-header">Online Police Clearance Registration System</p>
+        </div>
+        <p class="notice-message">
+            Your request for a <span class="important">Police Report</span> associated with the application ID 
+            <span class="important">3256966</span> has been <span class="important">rejected</span> due to 
+            an unclear report. Please reapply with proper details to avoid further rejection.
+        </p>
+        <table class="notice-table">
+            <thead>
+                <tr>
+                    <th>Application ID</th>
+                    <th>Status</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3256966</td>
+                    <td style="color: #007bff; font-weight: bold;">Rejected</td>
+                    <td style="color: #d9534f; font-weight: bold;">The document you have uploaded is not clear. Please upload the scanned document.</td>
+                </tr>
+            </tbody>
+
+        </table>
+        <div class="footer">
+            For further assistance, contact us at <strong>support@nepalpolice.gov.np</strong>.
+        </div>
+    </div>
+</body>
+</html>
