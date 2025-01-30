@@ -1238,6 +1238,34 @@ box-shadow: 0 0 0 2px #5ABCE6; /* Add shadow when focused */
     </div>
 
 
+    <style>
+
+/* Responsive Table for Mobile */
+@media (max-width: 768px) {
+    #order-summary table {
+        font-size: 14px; /* Reduce font size for better visibility */
+    }
+    
+    #order-summary th, 
+    #order-summary td {
+        padding: 6px; /* Reduce padding */
+    }
+    
+    /* Make table scrollable on small screens */
+    #order-summary {
+        overflow-x: auto;
+        display: block;
+    }
+
+    /* Stack delivery details as a block */
+    #order-summary table:last-of-type td {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 6px;
+    }
+}
+    </style>
 
 
     <div class="body-footer" style=" margin-top: 20px; background-color: #5ABCE6; padding: 20px;  "  >
