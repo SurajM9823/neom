@@ -917,21 +917,16 @@
 
         </style>
 
-    
-
-
-
-
-<style>
-  /* Ensure images maintain aspect ratio and cover the full screen */
-  .carousel-item img {
+    <style>
+/* Ensure images maintain aspect ratio and scale properly */
+.carousel-item img {
     width: 100%;
     height: 100vh; /* Full viewport height */
-    object-fit: contain!; /* Ensure images cover the container without stretching */
-  }
-  
-  /* Center carousel content properly */
-  .carousel-content {
+    object-fit: cover; /* Ensures images fit without stretching or cropping */
+}
+
+/* Center carousel content properly */
+.carousel-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -939,16 +934,18 @@
     color: #fff;
     text-align: center;
     z-index: 5;
-  }
-  
-  .carousel-heading {
+    width: 90%; /* Ensures text doesn't overflow */
+}
+
+/* Adjust heading and button size for large screens */
+.carousel-heading {
     font-size: 3rem;
     font-weight: bold;
     text-transform: uppercase;
     color: #5ABCE6;
-  }
-  
-  .carousel-btn {
+}
+
+.carousel-btn {
     padding: 12px 30px;
     font-size: 1.1rem;
     font-weight: bold;
@@ -957,19 +954,66 @@
     color: white;
     background-color: #5ABCE6;
     transition: background-color 0.3s;
-  }
-  
-  .carousel-btn:hover {
+}
+
+.carousel-btn:hover {
     background-color: #009688;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 767px) {
-    .carousel-heading { font-size: 2rem; }
-    .carousel-btn { font-size: 1rem; padding: 10px 20px; }
-  }
-  </style>
-  </head>
+}
+
+/* Responsive adjustments for tablets & small devices */
+@media (max-width: 1024px) {
+    .carousel-item img {
+        height: 80vh; /* Reduce height for tablets */
+    }
+
+    .carousel-heading {
+        font-size: 2.5rem;
+    }
+
+    .carousel-btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 767px) {
+    .carousel-item img {
+        height: 60vh; /* Reduce height for smaller devices */
+    }
+
+    .carousel-heading {
+        font-size: 2rem; /* Reduce heading size */
+    }
+
+    .carousel-btn {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+    }
+
+    .carousel-content {
+        width: 95%; /* Prevents text from going off-screen */
+    }
+}
+
+/* Extra small devices (like very small smartphones) */
+@media (max-width: 480px) {
+    .carousel-item img {
+        height: 50vh; /* Further reduce image height */
+    }
+
+    .carousel-heading {
+        font-size: 1.8rem;
+    }
+
+    .carousel-btn {
+        font-size: 0.8rem;
+        padding: 7px 18px;
+    }
+}
+</style>
+
+</head>
   <body>
   
   <div id="carouselExampleIndicators" class="carousel slide container-fluid p-0" data-bs-ride="carousel">
@@ -977,11 +1021,12 @@
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+      
     </div>
   
     <div class="carousel-inner">
       <div class="carousel-item ">
-        <img src="img/main-carsoul.png" alt="Scene 1">
+        <img src="img/carsoul-b.webp" alt="Scene 1">
         <div class="carousel-content">
           <h2 class="carousel-heading">Explore Neom World</h2>
           <a href="aboutus.html" class="btn btn-primary carousel-btn">About Us</a>
@@ -989,7 +1034,7 @@
       </div>
   
       <div class="carousel-item active">
-        <img src="img/main-main.webp" alt="Scene 2">
+        <img src="img/carsoul-a.webp" alt="Scene 2">
         <div class="carousel-content">
           <h2 class="carousel-heading">Get in Touch with Us</h2>
           <a href="contactus.html" class="btn btn-primary carousel-btn">Contact Us</a>
@@ -997,7 +1042,7 @@
       </div>
   
       <div class="carousel-item ">
-        <img src="image/background_c.webp" alt="Scene 3">
+        <img src="img/carsoul-c.webp" alt="Scene 3">
         <div class="carousel-content">
           <h2 class="carousel-heading">Welcome to Our Store</h2>
           <a href="ourproduct.html" class="btn btn-primary carousel-btn">See Our Products</a>
