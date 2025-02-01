@@ -8,12 +8,17 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
 
-    /* Prevent horizontal and vertical overflow */
+
+
 html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Disable horizontal scrolling */
+  overflow: hidden; /* Hide scrolling */
+  height: 100%; /* Ensure full height */
+  width: 100%; /* Ensure full width */
+  margin: 0;
+  padding: 0;
+  position: fixed; /* Prevent movement */
 }
+
 
 /* Box-sizing reset */
 * {
