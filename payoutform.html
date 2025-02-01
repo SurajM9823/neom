@@ -1661,8 +1661,8 @@ orderSummary.innerHTML = `
                 <td style="padding: 5px; border: 1px solid #ddd;">${item.name}</td>
                 <td style="padding: 5px; border: 1px solid #ddd;">${item.size}</td>
                 <td style="padding: 5px; border: 1px solid #ddd;">${item.quantity}</td>
-                <td style="padding: 5px; border: 1px solid #ddd;">$${item.price.toFixed(2)}</td>
-                <td style="padding: 5px; border: 1px solid #ddd;">$${(item.price * item.quantity).toFixed(2)}</td>
+                <td style="padding: 5px; border: 1px solid #ddd;">${item.price.toFixed(2)}</td>
+                <td style="padding: 5px; border: 1px solid #ddd;">${(item.price * item.quantity).toFixed(2)}</td>
             </tr>
         `)
         .join("");
