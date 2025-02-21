@@ -1,0 +1,163 @@
+
+
+/* Hero Slider */
+.hero-slide {
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.hero-content {
+    position: relative;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+/* Products Section */
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+/* Distributors Section */
+.distributor-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.distributor-card h3 {
+    color: var(--brand-color);
+    margin-bottom: 0.5rem;
+}
+
+.distributor-card ul li {
+    margin-bottom: 0.5rem;
+}
+
+.map-container {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(90,188,230,0.9);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Sustainability Section */
+.sustainability-section {
+    background-color: #f8f9fa;
+}
+
+.sustainability-content {
+    padding: 2rem 0;
+}
+
+.feature-item {
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.feature-item:hover {
+    background-color: rgba(90,188,230,0.1);
+}
+
+.feature-item i {
+    font-size: 2rem;
+    color: var(--brand-color);
+}
+
+/* Footer */
+.footer-logo {
+    height: 30px;
+    width: 180px;
+    object-fit: cover;
+}
+
+footer a:hover {
+    color: var(--brand-color) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .brand-logo {
+        height: 30px;
+        width: 180px;
+    }
+    
+    .hero-slide {
+        height: 60vh;
+    }
+    
+    .sustainability-content {
+        padding: 1rem 0;
+    }
+}

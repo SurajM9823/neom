@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RocketLaunch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-icons/dist/umd/lucide.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href=".css">
+
+    <style>
+      /* Navbar Styles */
+.navbar {
+    padding: 0.4rem 0;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5ABCE6;
+}
+
+.brand-subtitle {
+    font-size: 0.875rem;
+    color: #012576;
+}
+
+/* Logo Styles */
+.lucide-rocket {
+    width: 2.5rem;
+    height: 2.5rem;
+    stroke-width: 1.5;
+}
+
+/* Navigation Links */
+.primary-link {
+    font-weight: 500;
+    color: #012576 !important;
+    margin: 0 0.5rem !important;
+    padding: 0.5rem 0.25rem !important;
+    transition: color 0.2s;
+}
+
+.primary-link:hover {
+    color: #5ABCE6 !important;
+}
+
+.secondary-link {
+    font-size: 0.875rem;
+    color: #6b7280 !important;
+    margin: 0 0.375rem !important;
+    padding: 0.5rem 0.25rem !important;
+    transition: color 0.2s;
+}
+
+.secondary-link:hover {
+    color: #1a1a1a !important;
+}
+
+/* Video Container */
+.video-container {
+    position: relative;
+    width: 12rem;
+    height: 2.5rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.2s;
+}
+
+.video-overlay span {
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.video-container:hover .video-overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Sidebar */
+.mobile-section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #6b7280;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.list-group-item {
+    border: none;
+    padding: 0.75rem 0;
+    color: #1a1a1a;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.list-group-item:hover {
+    color: #5ABCE6;
+    background-color: transparent;
+}
+
+.list-group-item i {
+    color: #9ca3af;
+    font-size: 1.25rem;
+}
+
+/* Mobile Video */
+.mobile-video-container {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.mobile-video-container video {
+    height: 8rem;
+    object-fit: cover;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #5ABCE6;
+    border-color: #5ABCE6;
+    padding: 0.375rem 1rem;
+    font-weight: 500;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    background-color:#5ABCE6;
+    border-color: #5ABCE6;
+}
+
+.text-primary-custom {
+    color: #012576 !important;
+    font-weight: 500;
+}
+
+.list-group-item {
+    border: none; /* Removes borders for a cleaner look */
+    padding: 12px 0;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+    .navbar-brand {
+        max-width: 60%;
+    }
+    
+    .brand-title {
+        font-size: 1.25rem;
+    }
+    
+    .brand-subtitle {
+        font-size: 0.75rem;
+    }
+}
+    </style>
+
+
+
+
+
+<style>
+  
+/* Hero Slider Styles */
+#heroSlider {
+    position: relative;
+    height: 80vh;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: relative;
+    height: 80vh;
+    min-height: 600px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+   
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: white;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease-out 0.2s;
+}
+
+.hero-content .btn-lg {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    animation: fadeInUp 0.8s ease-out 0.4s;
+    height: auto;
+    display: inline-flex;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#heroSlider:hover .carousel-control-prev,
+#heroSlider:hover .carousel-control-next {
+    opacity: 0.8;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem;
+    height: 3rem;
+    background-size: 100%;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    margin-bottom: 2rem;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 6px;
+    background-color: white;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators button.active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments for Hero */
+@media (max-width: 768px) {
+    #heroSlider {
+        height: 70vh;
+        min-height: 500px;
+    }
+
+    .hero-slide {
+        height: 70vh;
+        min-height: 500px;
+    }
+
+    .hero-content {
+        left: 5%;
+        right: 5%;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none;
+    }
+}
+</style>
+
+
+<style>
+
+  /* Products Section */
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+
+</style>
+
+
+<style>
+  /* Sustainability Section */
+.sustainability-section {
+    background-color: #f8f9fa;
+}
+
+.sustainability-content {
+    padding: 2rem 0;
+}
+
+.feature-item {
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgba(90,188,230,0.1)
+}
+
+.feature-item:hover {
+    background-color: rgba(90,188,230,0.1);
+}
+
+.feature-item i {
+    font-size: 2rem;
+    color: var(--brand-color);
+}
+
+/* Footer */
+.footer-logo {
+    height: 30px;
+    width: 180px;
+    object-fit: cover;
+}
+
+footer a:hover {
+    color: var(--brand-color) !important;
+}
+
+</style>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <!-- Logo and Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/lo.png" class="lucide-rocket text-primary" >
+                    
+               
+                <div class="ms-2">
+                    <h1 class="brand-title mb-0">NEOM </h1>
+                    <p class="brand-subtitle mb-0"> WORLD TRADE PVT LTD</p>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas">
+                <svg xmlns="http://www.w3.org/2000/svg" class="lucide-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Primary Links -->
+                    <li class="nav-item"><a class="nav-link primary-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link primary-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link primary-link" href="product.html">Product</a></li>
+                    <li class="nav-item"><a class="nav-link primary-link" href="sustainability.html">Sustainability</a></li>
+                </ul>
+
+                <!-- Secondary Links -->
+                <ul class="navbar-nav me-4">
+                    <li class="nav-item"><a class="nav-link secondary-link" href="careers.html">Careers</a></li>
+                    <li class="nav-item"><a class="nav-link secondary-link" href="notice.html">Notice</a></li>
+                    <li class="nav-item"><a class="nav-link secondary-link" href="contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Video Section -->
+                <div class="video-container me-4">
+                    <video autoplay loop muted playsinline>
+                        <source src="img/branding.mp4 " type="video/mp4">
+                    </video>
+                   
+                </div>
+
+                <!-- Buy Now Button -->
+                <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidebar -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Mobile Primary Links -->
+            <div class="mobile-section">
+              <h6 class="mobile-section-title text-center">Main Navigation</h6>
+              <div class="list-group list-group-flush">
+                  <a href="index.html" class="list-group-item list-group-item-action text-center text-primary-custom">HOME</a>
+                  <a href="about.html" class="list-group-item list-group-item-action text-center text-primary-custom">About Us</a>
+                  <a href="product.html" class="list-group-item list-group-item-action text-center text-primary-custom">Products</a>
+                  <a href="sustanibality.html" class="list-group-item list-group-item-action text-center text-primary-custom">Sustainability</a>
+              </div>
+          </div>
+
+            <!-- Mobile Secondary Links -->
+            <div class="mobile-section mt-4">
+              <h6 class="mobile-section-title text-center">Resources</h6>
+              <div class="list-group list-group-flush">
+                  <a href="careers.html" class="list-group-item list-group-item-action text-center text-primary-custom">Careers</a>
+                  <a href="notice.html" class="list-group-item list-group-item-action text-center text-primary-custom">Notice</a>
+                  <a href="contact.html" class="list-group-item list-group-item-action text-center text-primary-custom">Contact</a>
+              </div>
+          </div>
+
+          <!-- Mobile Buy Now Button -->
+<div class="button d-flex justify-content-center align-items-center mt-3">
+  <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
+</div>
+
+<!-- Mobile Video -->
+<div class="mobile-video-container mt-4">
+  <video autoplay loop muted playsinline class="w-100">
+      <source src="img/branding.mp4" type="video/mp4">
+  </video>
+</div>
+          
+</div>
+</div>
+
+
+<!--Baby Charm Product Detail Main Container-->
+
+
+
+<div class="main-content" style="margin-top: 50px; ">
+    
+    <div class=" mt-4 detail-product-container" style="padding:30px;"  >
+
+        <div class="row">
+         <div class="col-md-6">
+          <div class="d-flex">
+            <div id="main-image-container" class="d-flex">
+                <img id="main-image" alt="Main product image" class="img-fluid" height="200" src="img/baby-charm-diaper-roduct-1.jpg" width="400"/>
+                <div id="thumbnails" class="ms-2 vertical-thumbnails">
+                    <img id="thumb-1" alt="Thumbnail 1" class="img-thumbnail mb-2" height="50" src="img/baby-charm-product-2.jpg" width="50" />
+                    <img id="thumb-2" alt="Thumbnail 2" class="img-thumbnail mb-2" height="50" src="img/baby-charm-product-3.jpg" width="50" />
+                    <img id="thumb-3" alt="Thumbnail 3" class="img-thumbnail mb-2" height="50" src="img/baby-charm-index-brand.jpg" width="50" />
+                    <img id="thumb-4" alt="Thumbnail 4" class="img-thumbnail mb-2" height="50" src="img/baby-charm-many.jpg" width="50" />
+                </div>
+            </div>
+            
+         
+
+         <script>
+           // Select the main image and all thumbnail images using their IDs
+const mainImage = document.getElementById('main-image');
+const thumbnails = [
+    document.getElementById('thumb-1'),
+    document.getElementById('thumb-2'),
+    document.getElementById('thumb-3'),
+    document.getElementById('thumb-4')
+];
+
+// Function to update the main image based on the thumbnail index
+function updateMainImage(index) {
+    mainImage.src = thumbnails[index].src;
+}
+
+// Variable to track the current index of the thumbnail being shown
+let currentIndex = 0;
+
+// Function to change the main image every 3 seconds
+function changeMainImage() {
+    // Update the main image to the current thumbnail's image
+    updateMainImage(currentIndex);
+
+    // Increment the index for the next image
+    currentIndex++;
+
+    // If we reach the end of the thumbnails, reset to the first one
+    if (currentIndex >= thumbnails.length) {
+        currentIndex = 0;
+    }
+}
+
+// Start the automatic image change every 3 seconds
+setInterval(changeMainImage, 3000); // 3000 ms = 3 seconds
+
+         </script>
+         <style>
+             .vertical-thumbnails {
+                 display: flex;
+                 flex-direction: column; /* Stack items vertically */
+                 align-items: center; /* Center-align images horizontally */
+                 gap: 10px; /* Add spacing between images */
+             }
+             .vertical-thumbnails img {
+                 border-radius: 8px; /* Optional: Rounded corners */
+                 cursor: pointer;
+                 transition: transform 0.3s; /* Optional: Smooth zoom effect */
+             }
+             .vertical-thumbnails img:hover {
+                 transform: scale(1.1); /* Optional: Enlarge on hover */
+             }
+         </style>
+         
+          </div>
+         </div>
+         <div class="col-md-6">
+            <div class="product-title">
+               Baby Charm Baby  50 pcs Plane pants  All sizes -new born, Maxi, Junior and XL 
+            
+               
+            </div>
+        
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                15 Ratings
+            </div>
+        
+            <div class="price mt-2">
+                Rs. 13,889
+               
+            </div>
+        
+            <!-- Available Sizes -->
+            <div class="available-sizes mt-3">
+                <strong>Available Sizes:</strong>
+                <div class="size-options">
+                    <span class="size-option">new born</span>
+                    <span class="size-option">Maxi</span>
+                    <span class="size-option">Junior</span>
+                    <span class="size-option">XL</span>
+                </div>
+            </div>
+        
+            <!-- Best Features with Icons -->
+            <div class="best-features mt-3">
+                <div class="row">
+                    <div class="col-6 feature-item">
+                        <i class="fas fa-balance-scale"></i>
+                        <span>50     pieces per pack</span>
+                    </div>
+                    <div class="col-6 feature-item">
+                        <i class="fas fa-baby"></i>
+                        <span>Between 2 and 16kgs</span>
+                    </div>
+                    <div class="col-6 feature-item">
+                        <i class="fas fa-hourglass-half"></i>
+                        <span>12 hours protection</span>
+                    </div>
+                    <div class="col-6 feature-item">
+                        <i class="fas fa-moon"></i>
+                        <span>Day and night use</span>
+                    </div>
+                </div>
+            </div>
+        
+            <button class="btn btn-primary btn-buy">
+                Buy Now
+            </button>
+        </div>
+        
+
+        <style>
+            /* General Product Card Container Styling */
+
+
+
+
+/* Product Title */
+.product-title {
+    font-size: 1.2rem; /* Adjust font size */
+    font-weight: bold; /* Make the title bold */
+    color: #333; /* Dark gray color for better readability */
+    line-height: 1.5; /* Make title more readable */
+    margin-bottom: 15px; /* Space below the title */
+}
+
+/* Rating Stars */
+.rating {
+    font-size: 1rem; /* Adjust font size */
+    color: #f4c150; /* Yellow color for stars */
+    margin-bottom: 10px; /* Space below the rating */
+}
+
+.rating i {
+    margin-right: 3px; /* Space between stars */
+}
+
+/* Price Styling */
+.price {
+    font-size: 1.4rem; /* Larger font size for the price */
+    font-weight: bold; /* Bold price */
+    color: #5ABCE6; /* Green color for the price */
+    margin-bottom: 10px; /* Space below the price */
+}
+
+
+
+.old-price {
+    font-size: 1.2rem; /* Smaller size for old price */
+    color: #888; /* Light gray color for the old price */
+    text-decoration: line-through; /* Strikethrough old price */
+    margin-left: 10px; /* Space between prices */
+}
+
+/* Price Discount */
+.price span {
+    color: #5ABCE6; /* Red color for the discount percentage */
+    font-size: 1rem; /* Adjust font size */
+    font-weight: normal; /* Regular weight for the discount text */
+}
+
+
+/* Available Sizes Styling */
+.available-sizes {
+    margin-top: 15px;
+}
+
+.size-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.size-option {
+    background-color: #f1f1f1;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.size-option:hover {
+    background-color: #5ABCE6;
+    color: white;
+}
+
+/* Best Features Styling */
+.best-features {
+    margin-top: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.feature-item i {
+    font-size: 1.5rem;
+    color: #5ABCE6;
+    margin-right: 10px;
+
+}
+
+.feature-item span {
+    font-weight: bold;
+}
+
+
+/* Button Styling */
+.btn-buy {
+    display: block; /* Block button to span full width */
+    width: 100%; /* Button takes full width */
+    padding: 12px; /* Add padding for button */
+    font-size: 1.2rem; /* Adjust font size */
+    background-color: #5ABCE6; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 30px; /* Rounded corners for the button */
+    text-align: center; /* Center text in button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Hover effect for button */
+.btn-buy:hover {
+    background-color: blue; /* Darker green on hover */
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Mobile Responsiveness (optional for better mobile design) */
+@media (max-width: 768px) {
+    .col-md-6 {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .product-title {
+        font-size: 1.1rem; /* Slightly smaller font size for smaller screens */
+    }
+
+    .price {
+        font-size: 1.2rem; /* Adjust price size */
+    }
+
+    .btn-buy {
+        font-size: 1.1rem; /* Adjust button size for smaller screens */
+    }
+}
+
+            </style>
+     
+     <style>
+         .full-width-box {
+             width: 100%;
+             padding: 15px;
+             border: 1px solid #ccc;
+             border-radius: 8px;
+             background-color: #f9f9f9;
+         }
+         .flex-item {
+             flex: 1;
+             margin: 0 10px;
+             padding: 15px;
+             border: 1px solid #ddd;
+             border-radius: 8px;
+             background-color: #ffffff;
+         }
+         .flex-item h5 {
+             margin-bottom: 15px;
+         }
+         .qr-code {
+             display: block;
+             margin-top: 10px;
+         }
+         .d-flex {
+             display: flex;
+         }
+         .justify-content-between {
+             justify-content: space-between;
+         }
+     </style>
+     
+     </div>
+     
+     
+     
+     <style>
+       
+         .product-details, .specifications, .ratings-reviews {
+             margin-bottom: 20px;
+         }
+         .ratings-reviews .rating-stars {
+             color: #FFD700;
+         }
+         .ratings-reviews .rating-bar {
+             height: 10px;
+             background-color: #FFD700;
+         }
+         .ratings-reviews .rating-bar-bg {
+             height: 10px;
+             background-color: #e0e0e0;
+         }
+     </style>
+     <div class="product-details" style="margin-top: 50px; padding: 20px;">
+        <h5>Product Details of Baby Charm Pants - Soft, Comfortable & Leak-Proof (50 Pcs)</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <ul>
+                    <li><strong>Ultimate Comfort:</strong> Baby Charm Pants are designed with ultra-soft and flexible materials to ensure your baby’s maximum comfort throughout the day.</li>
+                    <li><strong>Quick Absorption:</strong> Equipped with advanced absorption technology, these pants lock in moisture instantly, keeping your baby’s skin dry and fresh.</li>
+                    <li><strong>360° Stretch Fit:</strong> The 360° elastic waistband adapts to your baby’s movements, providing a snug and secure fit without causing any marks or irritation.</li>
+                    <li><strong>Breathable Design:</strong> The pants feature a breathable outer layer that allows airflow, preventing heat buildup and keeping your baby cool and happy.</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul>
+                    <li><strong>Leak-Proof Protection:</strong> Double-layered leak guards ensure protection against side and back leakage, giving you peace of mind during playtime or sleep.</li>
+                    <li><strong>Gentle on Skin:</strong> Dermatologically tested and hypoallergenic, Baby Charm Pants are crafted to care for your baby’s sensitive skin, reducing the risk of irritation or rashes.</li>
+                    <li><strong>Easy-to-Wear Design:</strong> Pull-up style pants make changing time quick and hassle-free for both parents and babies.</li>
+                    <li><strong>Odor Control:</strong> Advanced odor-lock technology keeps unpleasant smells at bay, ensuring a fresh experience for you and your baby.</li>
+                    <li><strong>Environmentally Friendly:</strong> Baby Charm Pants are made with eco-friendly materials, ensuring safety for your baby and sustainability for the planet.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    <!-- Hero Section -->
+    <header class="hero-section text-center d-flex align-items-center">
+        <div class="container">
+            <h1 class="display-2 fw-bold text-purple mb-4">Meet Baby Charm Pants</h1>
+            <p class="lead text-purple-dark mb-5">Your ultimate partner in keeping your baby happy and comfortable</p>
+        </div>
+    </header>
+
+    <!-- Who Are Baby Charm Pants Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center display-4 mb-5">Who Are Baby Charm Pants?</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <p class="lead text-muted">
+                        Baby Charm Pants are your ultimate partner in keeping your baby happy and comfortable. 
+                        These pants are designed for the busy mom next door, the caring dad at the park, 
+                        or the loving parent shopping for their little one.
+                    </p>
+                    <p class="display-6 text-center text-purple my-5">Baby Charm Pants are for every parent who wants the best for their child.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="text-center p-4">
+                        <i class="bi bi-heart-fill text-purple display-4 mb-3"></i>
+                        <h3 class="h4 mb-3">Premium Comfort</h3>
+                        <p class="text-muted">Designed for your baby's ultimate comfort and happiness</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-4">
+                        <i class="bi bi-shield-check text-purple display-4 mb-3"></i>
+                        <h3 class="h4 mb-3">Advanced Protection</h3>
+                        <p class="text-muted">Superior leak protection for worry-free days and nights</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-4">
+                        <i class="bi bi-leaf-fill text-purple display-4 mb-3"></i>
+                        <h3 class="h4 mb-3">Eco-Friendly</h3>
+                        <p class="text-muted">Committed to sustainable and innovative solutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Production Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center display-4 mb-5">About Production</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-building text-purple display-4 mb-3"></i>
+                            <h3 class="h4 mb-3">European Production</h3>
+                            <p class="text-muted">Manufactured in state-of-the-art Ontex facilities across Europe</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-award text-purple display-4 mb-3"></i>
+                            <h3 class="h4 mb-3">Quality Standards</h3>
+                            <p class="text-muted">Adhering to the highest standards of safety and quality assurance</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-people-fill text-purple display-4 mb-3"></i>
+                            <h3 class="h4 mb-3">Dedicated Team</h3>
+                            <p class="text-muted">Our passionate team works tirelessly for your baby's comfort</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <style>
+
+
+        /* Custom Colors */
+        :root {
+            --purple-primary: #5ABCE6;
+            --purple-dark: #5ABCE6;
+            --purple-light: #9F7AEA;
+        }
+        
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #2D3748;
+        }
+        
+        .text-purple {
+            color: var(--purple-primary);
+        }
+        
+        .bg-purple {
+            background-color: var(--purple-primary);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 40vh;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                        url('https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        /* Card Hover Effects */
+        .card {
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Icon Colors */
+        .bi {
+            color: var(--purple-primary);
+        }
+        
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            .display-2 {
+                font-size: 3.5rem;
+            }
+            .display-4 {
+                font-size: 2.5rem;
+            }
+            .display-6 {
+                font-size: 1.75rem;
+            }
+        }
+</style>        
+
+
+
+<script>
+      function toggleDetails(header) {
+        const details = header.nextElementSibling;
+        const icon = header.querySelector('i');
+  
+        header.classList.toggle('active');
+        details.style.display = details.style.display === 'block' ? 'none' : 'block';
+      }
+    </script>
+</section>
+
+</div>
+</div>
+</div>
+<style>
+  /* Footer */
+footer {
+  background-color: #5ABCE6;
+  color: white;
+  padding: 40px 0;
+}
+
+.footer-logo {
+  width: 50px;  /* Adjusted size */
+  height: auto;
+}
+
+/* Footer Links */
+footer a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: white;
+}
+
+/* Footer Contact */
+footer ul {
+  padding: 0;
+}
+
+footer ul li {
+  font-size: 0.95em;
+}
+
+/* Border Top */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding-top: 20px;
+  font-size: 0.85em;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .footer-logo {
+    width: 40px; /* Adjusted for tablets */
+  }
+  
+  footer h5 {
+    font-size: 1.1em;
+  }
+  
+  footer ul li {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 768px) {
+  footer .row {
+    text-align: center;
+  }
+  
+  .footer-logo {
+    width: 35px; /* Adjusted for mobile */
+  }
+
+  footer h5 {
+    font-size: 1em;
+    margin-top: 20px;
+  }
+
+  footer ul li {
+    font-size: 0.85em;
+  }
+}
+
+</style>
+
+
+ <!-- Footer -->
+ <footer class="text-white py-5 " style="background-color: #5ABCE6;">
+  <div class="container">
+      <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+              <div class="d-flex align-items-center mb-3">
+                  <img src="img/lo.png" style="width: 50px; height: auto;">
+                  <span class="h4 mb-0">NEOM</span>
+              </div>
+              <p class="text-muted">Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal.</p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <h5 class="mb-3">Products</h5>
+              <ul class="list-unstyled">
+                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Baby Charm</a></li>
+                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Halen Harper</a></li>
+                  <li><a href="upcoming.html" class="text-muted text-decoration-none mb-2 d-block">Upcoming</a></li>
+              </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <h5 class="mb-3">Company</h5>
+              <ul class="list-unstyled">
+                  <li><a href="about.html" class="text-muted text-decoration-none mb-2 d-block">About Us</a></li>
+                  <li><a href="sustainability.html" class="text-muted text-decoration-none mb-2 d-block">Sustainability</a></li>
+                  <li><a href="news.html" class="text-muted text-decoration-none mb-2 d-block">News</a></li>
+                  <li><a href="notice.html" class="text-muted text-decoration-none mb-2 d-block">Notice</a></li>
+              </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <h5 class="mb-3">Contact</h5>
+              <ul class="list-unstyled text-muted">
+                  <li class="mb-2">info@ontex.com</li>
+                  <li class="mb-2">+977 1234567890</li>
+                  <li class="mb-2">Kathmandu, Nepal</li>
+              </ul>
+          </div>
+      </div>
+      <div class="border-top border-secondary mt-4 pt-4 text-center text-muted">
+          <p class="mb-0">&copy; 2025 NEOM World Trade Pvt Ltd. All rights reserved.</p>
+          <p class="mb-0" style="color: wheat;"> Designed By &copy;Brandwave</p>
+      </div>
+  </div>
+</footer>
+
+
+
+ 
+   
+    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

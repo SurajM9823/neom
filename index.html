@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RocketLaunch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-icons/dist/umd/lucide.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href=".css">
+
+    <style>
+      /* Navbar Styles */
+.navbar {
+    padding: 0.4rem 0;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5ABCE6;
+}
+
+.brand-subtitle {
+    font-size: 0.875rem;
+    color: #012576;
+}
+
+/* Logo Styles */
+.lucide-rocket {
+    width: 2.5rem;
+    height: 2.5rem;
+    stroke-width: 1.5;
+}
+
+/* Navigation Links */
+.primary-link {
+    font-weight: 500;
+    color: #012576 !important;
+    margin: 0 0.5rem !important;
+    padding: 0.5rem 0.25rem !important;
+    transition: color 0.2s;
+}
+
+.primary-link:hover {
+    color: #5ABCE6 !important;
+}
+
+.secondary-link {
+    font-size: 0.875rem;
+    color: #6b7280 !important;
+    margin: 0 0.375rem !important;
+    padding: 0.5rem 0.25rem !important;
+    transition: color 0.2s;
+}
+
+.secondary-link:hover {
+    color: #1a1a1a !important;
+}
+
+/* Video Container */
+.video-container {
+    position: relative;
+    width: 12rem;
+    height: 2.5rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.2s;
+}
+
+.video-overlay span {
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.video-container:hover .video-overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Sidebar */
+.mobile-section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #6b7280;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.list-group-item {
+    border: none;
+    padding: 0.75rem 0;
+    color: #1a1a1a;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.list-group-item:hover {
+    color: #5ABCE6;
+    background-color: transparent;
+}
+
+.list-group-item i {
+    color: #9ca3af;
+    font-size: 1.25rem;
+}
+
+/* Mobile Video */
+.mobile-video-container {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.mobile-video-container video {
+    height: 8rem;
+    object-fit: cover;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #5ABCE6;
+    border-color: #5ABCE6;
+    padding: 0.375rem 1rem;
+    font-weight: 500;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    background-color:#5ABCE6;
+    border-color: #5ABCE6;
+}
+
+.text-primary-custom {
+    color: #012576 !important;
+    font-weight: 500;
+}
+
+.list-group-item {
+    border: none; /* Removes borders for a cleaner look */
+    padding: 12px 0;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+    .navbar-brand {
+        max-width: 60%;
+    }
+    
+    .brand-title {
+        font-size: 1.25rem;
+    }
+    
+    .brand-subtitle {
+        font-size: 0.75rem;
+    }
+}
+    </style>
+
+
+
+
+
+<style>
+  
+/* Hero Slider Styles */
+#heroSlider {
+    position: relative;
+    height: 80vh;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: relative;
+    height: 80vh;
+    min-height: 600px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.1) 100%
+    );
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: white;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease-out 0.2s;
+}
+
+.hero-content .btn-lg {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    animation: fadeInUp 0.8s ease-out 0.4s;
+    height: auto;
+    display: inline-flex;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#heroSlider:hover .carousel-control-prev,
+#heroSlider:hover .carousel-control-next {
+    opacity: 0.8;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem;
+    height: 3rem;
+    background-size: 100%;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    margin-bottom: 2rem;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 6px;
+    background-color: white;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators button.active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments for Hero */
+@media (max-width: 768px) {
+    #heroSlider {
+        height: 70vh;
+        min-height: 500px;
+    }
+
+    .hero-slide {
+        height: 70vh;
+        min-height: 500px;
+    }
+
+    .hero-content {
+        left: 5%;
+        right: 5%;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none;
+    }
+}
+</style>
+
+
+<style>
+
+  /* Products Section */
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+
+</style>
+
+
+<style>
+  /* Sustainability Section */
+.sustainability-section {
+    background-color: #f8f9fa;
+}
+
+.sustainability-content {
+    padding: 2rem 0;
+}
+
+.feature-item {
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgba(90,188,230,0.1)
+}
+
+.feature-item:hover {
+    background-color: rgba(90,188,230,0.1);
+}
+
+.feature-item i {
+    font-size: 2rem;
+    color: var(--brand-color);
+}
+
+/* Footer */
+.footer-logo {
+    height: 30px;
+    width: 180px;
+    object-fit: cover;
+}
+
+footer a:hover {
+    color: var(--brand-color) !important;
+}
+
+</style>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <!-- Logo and Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/lo.png" class="lucide-rocket text-primary" >
+                    
+               
+                <div class="ms-2">
+                    <h1 class="brand-title mb-0">NEOM </h1>
+                    <p class="brand-subtitle mb-0"> WORLD TRADE PVT LTD</p>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas">
+                <svg xmlns="http://www.w3.org/2000/svg" class="lucide-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Primary Links -->
+                    <li class="nav-item"><a class="nav-link primary-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link primary-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link primary-link" href="product.html">Product</a></li>
+                    <li class="nav-item"><a class="nav-link primary-link" href="sustainability.html">Sustainability</a></li>
+                </ul>
+
+                <!-- Secondary Links -->
+                <ul class="navbar-nav me-4">
+                    <li class="nav-item"><a class="nav-link secondary-link" href="careers.html">Careers</a></li>
+                    <li class="nav-item"><a class="nav-link secondary-link" href="notice.html">Notice</a></li>
+                    <li class="nav-item"><a class="nav-link secondary-link" href="contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Video Section -->
+                <div class="video-container me-4">
+                    <video autoplay loop muted playsinline>
+                        <source src="img/branding.mp4 " type="video/mp4">
+                    </video>
+                   
+                </div>
+
+                <!-- Buy Now Button -->
+                <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidebar -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Mobile Primary Links -->
+            <div class="mobile-section">
+              <h6 class="mobile-section-title text-center">Main Navigation</h6>
+              <div class="list-group list-group-flush">
+                  <a href="index.html" class="list-group-item list-group-item-action text-center text-primary-custom">HOME</a>
+                  <a href="about.html" class="list-group-item list-group-item-action text-center text-primary-custom">About Us</a>
+                  <a href="product.html" class="list-group-item list-group-item-action text-center text-primary-custom">Products</a>
+                  <a href="sustanibality.html" class="list-group-item list-group-item-action text-center text-primary-custom">Sustainability</a>
+              </div>
+          </div>
+
+            <!-- Mobile Secondary Links -->
+            <div class="mobile-section mt-4">
+              <h6 class="mobile-section-title text-center">Resources</h6>
+              <div class="list-group list-group-flush">
+                  <a href="careers.html" class="list-group-item list-group-item-action text-center text-primary-custom">Careers</a>
+                  <a href="notice.html" class="list-group-item list-group-item-action text-center text-primary-custom">Notice</a>
+                  <a href="contact.html" class="list-group-item list-group-item-action text-center text-primary-custom">Contact</a>
+              </div>
+          </div>
+
+          <!-- Mobile Buy Now Button -->
+<div class="button d-flex justify-content-center align-items-center mt-3">
+  <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
+</div>
+
+<!-- Mobile Video -->
+<div class="mobile-video-container mt-4">
+  <video autoplay loop muted playsinline class="w-100">
+      <source src="img/branding.mp4" type="video/mp4">
+  </video>
+</div>
+          
+        </div>
+    </div>
+
+
+ <!-- mAIN bODY SECTION -->
+
+
+ 
+
+
+ 
+    <!-- Hero Slider Section -->
+    <div id="heroSlider" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="2"></button>
+      </div>
+      <div class="carousel-inner">
+
+          <div class="carousel-item active">
+              <div class="hero-slide" style="background-image: url('img/landscape-main-carsoul-f.png')">
+                  <div class="hero-content">
+                    <h1>Quality Products<br>You Can Trust</h1>
+                    <p>Trusted by millions worldwide</p>
+                    <button class="btn btn-primary btn-lg" onclick="window.location.href='sell.php'">Shop Now</button>
+                </div>
+              </div>
+          </div>
+
+          <div class="carousel-item ">
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+              <div class="hero-content">
+                <h1>Sustainable Future<br>For Everyone</h1>
+                <p>Committed to environmental responsibility</p>
+                <button class="btn btn-primary btn-lg"  onclick="window.location.href='sustainability.html'">Our Impact</button>
+            </div>
+            </div>
+        </div>
+        
+          <div class="carousel-item">
+              <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                <div class="hero-content">
+                  <h1>Shaping the Future of Global Innovation</h1>
+                  <p>Neom is redefining the boundaries of trade, technology, and sustainable living, creating a visionary destination for the world.</p>
+                  <button class="btn btn-primary btn-lg" onclick="window.location.href='about.html'">Discover More</button>
+              </div>
+              
+              </div>
+          </div>
+          
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+      </button>
+  </div>
+
+
+
+  <!-- Best Selling Products -->
+  <section class="products-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Best Selling Products</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="product-card">
+                    <img src="img/helen-product-2.jpg" alt="Product 1" class="product-image">
+                    <div class="product-info">
+                        <h3>HELEN HARPER -Junior</h3>
+                        <p class="text-muted">Ultra-soft comfort for babies</p>
+                        <button class="btn btn-primary w-100" style="text-align: center; justify-content: center;"> Shop Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card">
+                    <img src="img/baby-cham-roduct-1.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <h3>BABY CHARM- maxi</h3>
+                        <p class="text-muted">Comfort and protection</p>
+                        <button class="btn btn-primary w-100" style="text-align: center; justify-content: center;">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card">
+                    <img src="img/baby-charm-diaper-roduct-1.jpg" alt="Product 3" class="product-image">
+                    <div class="product-info">
+                        <h3>BABY CHARM PANTS-XL</h3>
+                        <p class="text-muted">Dignity and comfort</p>
+                        <button class="btn btn-primary w-100" style="text-align: center; justify-content: center;">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card">
+                    <img src="img/helen-product-2.jpg" alt="Product 4" class="product-image">
+                    <div class="product-info">
+                        <h3>HELEN HARPER-Maxi</h3>
+                        <p class="text-muted">24hr Leakage protection</p>
+                        <button class="btn btn-primary w-100" style="text-align: center; justify-content: center;">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="aboutUs-section py-5 bg-light">
+  <style>
+    
+      .section {
+        background-color: rgba(90, 188, 230, 0.1); /* Transparent background */
+        padding: 60px 0;
+        border-radius: 15px;
+        margin: 20px 0;
+      }
+      .dropcap::first-letter {
+        font-size: 3.5em;
+        float: left;
+        line-height: 0.8;
+        margin-right: 10px;
+        color: #5ABCE6;
+        font-weight: bold;
+      }
+      .read-more {
+        color: #5ABCE6;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      .stats {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        margin-top: 40px;
+      }
+      .stat {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s forwards;
+      }
+      .stat h3 {
+        font-size: 2.5em;
+        color: #5ABCE6;
+        margin-bottom: 10px;
+      }
+      .stat p {
+        font-size: 1.2em;
+        color: #666;
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .stat:nth-child(1) { animation-delay: 0.2s; }
+      .stat:nth-child(2) { animation-delay: 0.4s; }
+      .stat:nth-child(3) { animation-delay: 0.6s; }
+      .stat:nth-child(4) { animation-delay: 0.8s; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="section">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-center mb-4" style="color: #5ABCE6;">Ontex & NEOM</h2>
+            <p class="dropcap">ONTEX is a Belgium-based multinational company, known for its global reach and remarkable revenue of billion dollars. Ontex is a global leader in personal hygiene, providing high-quality products for Baby Care, Feminine Care, and Adult Care. Trusted by consumers, retailers, and healthcare providers worldwide, Ontex is the partner of choice for quality and reliability.</p>
+            <p id="more-content" style="display: none;" class="dropcap">NEOM World Trade Pvt. Ltd., operating under the Pathivara Group, is the authorized distributor of Ontex Global. With a strong presence across all seven provinces of the country, Neom specializes in distributing high-quality baby care and cosmetic products, with adult care solutions set to launch soon. Committed to excellence, Neom ensures that every product meets the highest standards of quality and hygiene, making it a trusted name for consumers nationwide. Its extensive distribution network and dedication to customer satisfaction have solidified its position as a leading player in the market.</p>
+            <p class="text-center mt-3">
+              <span class="read-more" onclick="toggleReadMore()">Read More</span>
+            </p>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <h3>20</h3>
+            <p>Ontex Products</p>
+          </div>
+          <div class="stat">
+            <h3>7</h3>
+            <p>NEOM Distributors</p>
+          </div>
+          <div class="stat">
+            <h3>11</h3>
+            <p>Our Experience</p>
+          </div>
+          <div class="stat">
+            <h3>4</h3>
+            <p>Partner Brands</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <script>
+      function toggleReadMore() {
+        const content = document.getElementById('more-content');
+        const link = document.querySelector('.read-more');
+        if (content.style.display === 'none') {
+          content.style.display = 'block';
+          link.textContent = 'Read Less';
+        } else {
+          content.style.display = 'none';
+          link.textContent = 'Read More';
+        }
+      }
+    </script>
+
+</section>
+
+
+<section class="product-section py-5 bg-light">
+
+  <style>
+   
+      .section-title {
+        font-size: 1.5em;
+        font-weight: 400;
+        color: #5ABCE6;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+      .product-card {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .product-card:hover img {
+        transform: scale(1.1);
+      }
+      .product-card-body {
+        padding: 20px;
+        text-align: center;
+      }
+      .product-card-title {
+        font-size: 1em;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .product-card-text {
+        font-size: 0.7em;
+        color: #666;
+        margin-bottom: 20px;
+      }
+      .btn-custom {
+        background-color: #5ABCE6;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 0.6em;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .btn-custom:hover {
+        background-color: #4aa6cc;
+      }
+      .btn-custom i {
+        font-size: 1.2em;
+      }
+      .video-section-production {
+        background: rgba(90, 188, 230, 0.1);
+        padding: 60px 0;
+        border-radius: 15px;
+      }
+      .video-container-production {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 15px;
+      }
+      .video-container-production iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .upcoming-product {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .upcoming-product:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
+      .upcoming-product img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+      .upcoming-product h4 {
+        font-size: 1.5em;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .upcoming-product p {
+        font-size: 1em;
+        color: #666;
+      }
+      .product-card-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #5ABCE6;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.7em;
+        font-weight: 500;
+      }
+    </style>
+
+<h2 class="text-center mb-5">Our Products</h2>
+    <!-- Product Listing Section -->
+    <div class="section" style="background-color: white;">
+      <div class="container" style="background-color: white;">
+        
+        <!-- Baby Charm Products -->
+        <div class="row">
+          <div class="col-md-3 mb-4">
+            <div class="product-card">
+              <span class="product-card-badge">New</span>
+              <img src="img/helen-product-1.jpg" alt="Product 4">
+              <div class="product-card-body">
+                <h3 class="product-card-title">HALEN HARPER -NEW BORN</h3>
+                <p class="product-card-text">High-quality product from Baby Charm.</p>
+                <div class="card-btn-one-line" style="display: flex; flex-direction: row; justify-content: center; gap: 20px;">
+                  <div class="card-btn-one-line" style="display: flex; justify-content: center;">
+                <button class="btn btn-primary me-2"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                <button class="btn btn-primary"><i class="fas fa-info-circle"></i> </button>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="product-card">
+              <span class="product-card-badge">Popular</span>
+              <img src="img/helen-product-2.jpg" alt="Product 5">
+              <div class="product-card-body">
+                <h3 class="product-card-title">HALEN HARPER - MAXI</h3>
+                <p class="product-card-text">High-quality product from Baby Charm.</p>
+                  <div class="card-btn-one-line" style="display: flex; flex-direction: row; justify-content: center; gap: 20px;">
+                <button class="btn btn-primary me-2"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                <button class="btn btn-primary"><i class="fas fa-info-circle"></i> </button>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="product-card">
+              <span class="product-card-badge">Popular</span>
+              <img src="img/baby-charm-product-2.jpg" alt="Product 6">
+              <div class="product-card-body">
+                <h3 class="product-card-title">BABY CHARM PANTS-JUNIOR</h3>
+                <p class="product-card-text">High-quality product from Baby Charm.</p>
+                  <div class="card-btn-one-line" style="display: flex; flex-direction: row; justify-content: center; gap: 20px;">
+                <button class="btn btn-primary me-2"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                <button class="btn btn-primary"><i class="fas fa-info-circle"></i> </button>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="product-card">
+              <span class="product-card-badge">New</span>
+              <img src="img/baby-charm-product-3.jpg" alt="Product 7">
+              <div class="product-card-body">
+                <h3 class="product-card-title">BABY CHARM PANTS-XL</h3>
+                <p class="product-card-text">High-quality product from Baby Charm.</p>
+                  <div class="card-btn-one-line" style="display: flex; flex-direction: row; justify-content: center; gap: 20px;">
+                <button class="btn btn-primary me-2"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                <button class="btn btn-primary"><i class="fas fa-info-circle"></i> </button>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center" style="margin-top: 30px;" >
+          <a class="discover-btn" href="product.html" style="background-color: #5ABCE6; color: white; padding: 8px 20px; border-radius: 8px; text-decoration: none;">
+           Discover More Products
+           <i class="fas fa-arrow-right">
+           </i>
+          </a>
+         </div>
+  
+      </div>
+    </div>
+
+     <!-- Branding Video & Upcoming Products Section -->
+     <div class="video-section-production">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            
+            <div class="video-container-production">
+           
+              <iframe src="img/production.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2 class="section-title">Upcoming Products</h2>
+           
+
+    <style>
+        .upcoming-product {
+            text-align: center;
+            display: none;
+        }
+        .upcoming-product.active {
+            display: block;
+        }
+       
+    </style>
+
+
+    <div class="upcoming-product active">
+        <img src="img/cosmetic.jpg" alt="Upcoming Product 1">
+        <h4>Cosmetic Product</h4>
+        <p>Exciting new product launching soon!</p>
+    </div>
+
+    <div class="upcoming-product">
+        <img src="img/femini.jpg" alt="Upcoming Product 2">
+        <h4>Feminine Care Product</h4>
+        <p>Another amazing product coming your way!</p>
+    </div>
+
+
+
+    <script>
+        let currentIndex = 0;
+        const products = document.querySelectorAll(".upcoming-product");
+
+        function showNextProduct() {
+            products[currentIndex].classList.remove("active");
+            currentIndex = (currentIndex + 1) % products.length;
+            products[currentIndex].classList.add("active");
+        }
+
+        setInterval(showNextProduct, 3000);
+    </script>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>
+
+  
+
+<!-- Sustainability at NEOM -->
+<section class="sustainability-section py-5">
+  <div class="container">
+      <div class="row align-items-center">
+          <div class="col-lg-6">
+              <img src="https://images.unsplash.com/photo-1536882240095-0379873feb4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="NEOM Sustainability" class="img-fluid rounded shadow-lg">
+          </div>
+          <div class="col-lg-6">
+              <div class="sustainability-content ps-lg-5">
+                  <h2 class="mb-4">Sustainability at NEOM</h2>
+                  <p class="lead mb-4">Leading the way in sustainable practices and environmental responsibility at NEOM World Trade.</p>
+                 
+                  <div class="sustainability-features">
+                   
+                      <div class="feature-item mb-4" onclick="window.location.href='forplanet.html'">
+                          <i class="fas fa-leaf text-primary mb-3"></i>
+                          <h3 class="h5">Better for the planet</h3>
+                          <p>Using biodegradable and sustainable materials in our products.</p>
+                      </div>
+
+               
+                      <div class="feature-item mb-4" onclick="window.location.href='forcommunity.html'">
+                          <i class="fas fa-user text-primary mb-3"></i>
+                          <h3 class="h5">Better for commnunity</h3>
+                          <p>Implementing comprehensive recycling and waste reduction programs.</p>
+                      </div>
+                    
+                     
+                      <div class="feature-item" onclick="window.location.href='forpeople.html'">
+                          <i class="fas fa-solar-panel text-primary mb-3"></i>
+                          <h3 class="h5">Better for people</h3>
+                          <p>Powered by 100% renewable energy sources at our facilities.</p>
+                      </div>
+                  
+                  </div>
+
+
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section>
+  <style>
+   
+      
+      .distributor-container {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+      }
+  
+      .distributor-image {
+        flex: 1;
+        width: 50%;
+        height: 100vh; /* Full viewport height */
+     
+        background-size: cover;
+      }
+  
+      .distributor-list {
+        flex: 1;
+        width: 50%;
+        padding: 20px;
+      }
+  
+      .province-item {
+        margin-bottom: 15px;
+      }
+  
+      .province-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px;
+        transition: background 0.3s ease;
+      }
+  
+      .province-header:hover {
+        background: rgba(90, 188, 230, 0.1);
+      }
+  
+      .province-header h3 {
+        font-size: 1.2em;
+        font-weight: 500;
+        color: #333;
+        margin: 0;
+      }
+  
+      .province-header i {
+        font-size: 1.2em;
+        color: #5ABCE6;
+        transition: transform 0.3s ease;
+      }
+  
+      .province-header.active i {
+        transform: rotate(180deg);
+      }
+  
+      .province-details {
+        padding: 10px;
+        margin-top: 10px;
+        display: none;
+      }
+  
+      .province-details p {
+        font-size: 0.9em;
+        color: #666;
+        margin: 5px 0;
+      }
+  
+      .province-details .buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+  
+      .province-details .buttons a {
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 12px;
+        font-size: 0.9em;
+        font-weight: 500;
+        transition: background 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+  
+      .btn-map {
+        background: rgba(90, 188, 230, 0.1);
+        color: #5ABCE6;
+      }
+  
+      .btn-map:hover {
+        background: rgba(90, 188, 230, 0.2);
+      }
+  
+      .btn-whatsapp {
+        background: rgba(37, 211, 102, 0.1);
+        color: #25D366;
+      }
+  
+      .btn-whatsapp:hover {
+        background: rgba(37, 211, 102, 0.2);
+      }
+  
+      hr {
+        border: 0;
+        height: 1px;
+        background: rgba(0, 0, 0, 0.1);
+        margin: 15px 0;
+      }
+  
+      @media (max-width: 768px) {
+        .distributor-container {
+          flex-direction: column;
+        }
+  
+        .distributor-image,
+        .distributor-list {
+          width: 100%;
+        }
+  
+        .distributor-image {
+          height: 300px; /* Adjust height for mobile */
+        }
+      }
+
+      .distributor-image {
+  flex: 1;
+  width: 50%;
+  height: 80vh; /* Adjusted height for better responsiveness */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevents overflow issues */
+}
+
+.distributor-image img {
+  width: 100%;  /* Makes image responsive */
+  height: auto; /* Maintains aspect ratio */
+  max-height: 100%; /* Ensures it does not exceed div height */
+  object-fit: cover; /* Keeps it properly scaled */
+}
+
+/* Tablet View */
+@media (max-width: 1024px) {
+  .distributor-image {
+    height: 60vh;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .distributor-container {
+    flex-direction: column;
+  }
+
+  .distributor-image {
+    width: 100%;
+    height: 250px;
+  }
+}
+
+    </style>
+
+    <section class="distributors-section py-5">
+      <div class="container">
+        <h1 class="section-title">NEOM Distributors Across Nepal</h1>
+        <p class="section-subtitle">
+          NEOM has operations in all 7 provinces of Nepal. The set-up keeps us flexible and close to our customers and consumers to ensure they get the best value from our products.
+        </p>
+  
+        <!-- Distributor Container -->
+        <div class="distributor-container">
+          <!-- Left Side: Image -->
+          <div class="distributor-image">
+              <img src="img/a.png">
+          </div>
+  
+          <!-- Right Side: Province List -->
+          <div class="distributor-list">
+         <div class="province-item">
+                  <div class="province-header" onclick="toggleDetails(this)">
+                    <h3>Bagmati Province</h3>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="province-details">
+                    <p><strong>Location:</strong> Khumaltar, Lalitpur</p>
+                    <p><strong>Contact:</strong> +977-9842145414</p>
+                    <p><strong>Email:</strong> bagmati@neom.com</p>
+                    <div class="buttons">
+                      <a href="#" class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i>View Map
+                      </a>
+                      <a href="https://wa.me/9779842145414" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>Chat on WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                
+                <div class="province-item">
+                  <div class="province-header" onclick="toggleDetails(this)">
+                    <h3>Gandaki Province</h3>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="province-details">
+                    <p><strong>Location:</strong> Pokhara, Kaski</p>
+                    <p><strong>Contact:</strong> +977-9842145415</p>
+                    <p><strong>Email:</strong> gandaki@neom.com</p>
+                    <div class="buttons">
+                      <a href="#" class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i>View Map
+                      </a>
+                      <a href="https://wa.me/9779842145415" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>Chat on WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                
+                <div class="province-item">
+                  <div class="province-header" onclick="toggleDetails(this)">
+                    <h3>Koshi Province</h3>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="province-details">
+                    <p><strong>Location:</strong> Biratnagar, Morang</p>
+                    <p><strong>Contact:</strong> +977-9842145416</p>
+                    <p><strong>Email:</strong> koshi@neom.com</p>
+                    <div class="buttons">
+                      <a href="#" class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i>View Map
+                      </a>
+                      <a href="https://wa.me/9779842145416" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>Chat on WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                
+                <div class="province-item">
+                  <div class="province-header" onclick="toggleDetails(this)">
+                    <h3>Madhesh Province</h3>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="province-details">
+                    <p><strong>Location:</strong> Janakpur, Dhanusha</p>
+                    <p><strong>Contact:</strong> +977-9842145417</p>
+                    <p><strong>Email:</strong> madhesh@neom.com</p>
+                    <div class="buttons">
+                      <a href="#" class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i>View Map
+                      </a>
+                      <a href="https://wa.me/9779842145417" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>Chat on WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                
+                <div class="province-item">
+                  <div class="province-header" onclick="toggleDetails(this)">
+                    <h3>Lumbini Province</h3>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="province-details">
+                    <p><strong>Location:</strong> Butwal, Rupandehi</p>
+                    <p><strong>Contact:</strong> +977-9842145418</p>
+                    <p><strong>Email:</strong> lumbini@neom.com</p>
+                    <div class="buttons">
+                      <a href="#" class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i>View Map
+                      </a>
+                      <a href="https://wa.me/9779842145418" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>Chat on WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                
+                <div class="province-item">
+                  <div class="province-header" onclick="toggleDetails(this)">
+                    <h3>Karnali Province</h3>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="province-details">
+                    <p><strong>Location:</strong> Birendranagar, Surkhet</p>
+                    <p><strong>Contact:</strong> +977-9842145419</p>
+                    <p><strong>Email:</strong> karnali@neom.com</p>
+                    <div class="buttons">
+                      <a href="#" class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i>View Map
+                      </a>
+                      <a href="https://wa.me/9779842145419" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>Chat on WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                
+                <div class="province-item">
+                  <div class="province-header" onclick="toggleDetails(this)">
+                    <h3>Sudurpaschim Province</h3>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="province-details">
+                    <p><strong>Location:</strong> Dhangadhi, Kailali</p>
+                    <p><strong>Contact:</strong> +977-9842145420</p>
+                    <p><strong>Email:</strong> sudurpaschim@neom.com</p>
+                    <div class="buttons">
+                      <a href="#" class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i>View Map
+                      </a>
+                      <a href="https://wa.me/9779842145420" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>Chat on WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+  
+            <!-- Add more provinces here -->
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <script>
+      function toggleDetails(header) {
+        const details = header.nextElementSibling;
+        const icon = header.querySelector('i');
+  
+        header.classList.toggle('active');
+        details.style.display = details.style.display === 'block' ? 'none' : 'block';
+      }
+    </script>
+</section>
+
+
+<style>
+  /* Footer */
+footer {
+  background-color: #5ABCE6;
+  color: white;
+  padding: 40px 0;
+}
+
+.footer-logo {
+  width: 50px;  /* Adjusted size */
+  height: auto;
+}
+
+/* Footer Links */
+footer a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: white;
+}
+
+/* Footer Contact */
+footer ul {
+  padding: 0;
+}
+
+footer ul li {
+  font-size: 0.95em;
+}
+
+/* Border Top */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding-top: 20px;
+  font-size: 0.85em;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .footer-logo {
+    width: 40px; /* Adjusted for tablets */
+  }
+  
+  footer h5 {
+    font-size: 1.1em;
+  }
+  
+  footer ul li {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 768px) {
+  footer .row {
+    text-align: center;
+  }
+  
+  .footer-logo {
+    width: 35px; /* Adjusted for mobile */
+  }
+
+  footer h5 {
+    font-size: 1em;
+    margin-top: 20px;
+  }
+
+  footer ul li {
+    font-size: 0.85em;
+  }
+}
+
+</style>
+
+
+ <!-- Footer -->
+ <footer class="text-white py-5 " style="background-color: #5ABCE6;">
+  <div class="container">
+      <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+              <div class="d-flex align-items-center mb-3">
+                  <img src="img/lo.png" style="width: 50px; height: auto;">
+                  <span class="h4 mb-0">NEOM</span>
+              </div>
+              <p class="text-muted">Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal.</p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <h5 class="mb-3">Products</h5>
+              <ul class="list-unstyled">
+                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Baby Charm</a></li>
+                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Halen Harper</a></li>
+                  <li><a href="upcoming.html" class="text-muted text-decoration-none mb-2 d-block">Upcoming</a></li>
+              </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <h5 class="mb-3">Company</h5>
+              <ul class="list-unstyled">
+                  <li><a href="about.html" class="text-muted text-decoration-none mb-2 d-block">About Us</a></li>
+                  <li><a href="sustainability.html" class="text-muted text-decoration-none mb-2 d-block">Sustainability</a></li>
+                  <li><a href="news.html" class="text-muted text-decoration-none mb-2 d-block">News</a></li>
+                  <li><a href="notice.html" class="text-muted text-decoration-none mb-2 d-block">Notice</a></li>
+              </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <h5 class="mb-3">Contact</h5>
+              <ul class="list-unstyled text-muted">
+                  <li class="mb-2">info@ontex.com</li>
+                  <li class="mb-2">+977 1234567890</li>
+                  <li class="mb-2">Kathmandu, Nepal</li>
+              </ul>
+          </div>
+      </div>
+      <div class="border-top border-secondary mt-4 pt-4 text-center text-muted">
+          <p class="mb-0">&copy; 2025 NEOM World Trade Pvt Ltd. All rights reserved.</p>
+          <p class="mb-0" style="color: wheat;"> Designed By &copy;Brandwave</p>
+      </div>
+  </div>
+</footer>
+
+
+
+ 
+   
+    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

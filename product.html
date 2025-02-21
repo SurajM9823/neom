@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RocketLaunch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-icons/dist/umd/lucide.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href=".css">
+
+    <style>
+      /* Navbar Styles */
+.navbar {
+    padding: 0.4rem 0;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5ABCE6;
+}
+
+.brand-subtitle {
+    font-size: 0.875rem;
+    color: #012576;
+}
+
+/* Logo Styles */
+.lucide-rocket {
+    width: 2.5rem;
+    height: 2.5rem;
+    stroke-width: 1.5;
+}
+
+/* Navigation Links */
+.primary-link {
+    font-weight: 500;
+    color: #012576 !important;
+    margin: 0 0.5rem !important;
+    padding: 0.5rem 0.25rem !important;
+    transition: color 0.2s;
+}
+
+.primary-link:hover {
+    color: #5ABCE6 !important;
+}
+
+.secondary-link {
+    font-size: 0.875rem;
+    color: #6b7280 !important;
+    margin: 0 0.375rem !important;
+    padding: 0.5rem 0.25rem !important;
+    transition: color 0.2s;
+}
+
+.secondary-link:hover {
+    color: #1a1a1a !important;
+}
+
+/* Video Container */
+.video-container {
+    position: relative;
+    width: 12rem;
+    height: 2.5rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: background-color 0.2s;
+}
+
+.video-overlay span {
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.video-container:hover .video-overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Sidebar */
+.mobile-section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #6b7280;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.list-group-item {
+    border: none;
+    padding: 0.75rem 0;
+    color: #1a1a1a;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.list-group-item:hover {
+    color: #5ABCE6;
+    background-color: transparent;
+}
+
+.list-group-item i {
+    color: #9ca3af;
+    font-size: 1.25rem;
+}
+
+/* Mobile Video */
+.mobile-video-container {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.mobile-video-container video {
+    height: 8rem;
+    object-fit: cover;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #5ABCE6;
+    border-color: #5ABCE6;
+    padding: 0.375rem 1rem;
+    font-weight: 500;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    background-color:#5ABCE6;
+    border-color: #5ABCE6;
+}
+
+.text-primary-custom {
+    color: #012576 !important;
+    font-weight: 500;
+}
+
+.list-group-item {
+    border: none; /* Removes borders for a cleaner look */
+    padding: 12px 0;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+    .navbar-brand {
+        max-width: 60%;
+    }
+    
+    .brand-title {
+        font-size: 1.25rem;
+    }
+    
+    .brand-subtitle {
+        font-size: 0.75rem;
+    }
+}
+    </style>
+
+
+
+
+
+<style>
+  
+/* Hero Slider Styles */
+#heroSlider {
+    position: relative;
+    height: 80vh;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: relative;
+    height: 80vh;
+    min-height: 600px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+   
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: white;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease-out 0.2s;
+}
+
+.hero-content .btn-lg {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    animation: fadeInUp 0.8s ease-out 0.4s;
+    height: auto;
+    display: inline-flex;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#heroSlider:hover .carousel-control-prev,
+#heroSlider:hover .carousel-control-next {
+    opacity: 0.8;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem;
+    height: 3rem;
+    background-size: 100%;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    margin-bottom: 2rem;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 6px;
+    background-color: white;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators button.active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments for Hero */
+@media (max-width: 768px) {
+    #heroSlider {
+        height: 70vh;
+        min-height: 500px;
+    }
+
+    .hero-slide {
+        height: 70vh;
+        min-height: 500px;
+    }
+
+    .hero-content {
+        left: 5%;
+        right: 5%;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none;
+    }
+}
+</style>
+
+
+<style>
+
+  /* Products Section */
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+
+</style>
+
+
+<style>
+  /* Sustainability Section */
+.sustainability-section {
+    background-color: #f8f9fa;
+}
+
+.sustainability-content {
+    padding: 2rem 0;
+}
+
+.feature-item {
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgba(90,188,230,0.1)
+}
+
+.feature-item:hover {
+    background-color: rgba(90,188,230,0.1);
+}
+
+.feature-item i {
+    font-size: 2rem;
+    color: var(--brand-color);
+}
+
+/* Footer */
+.footer-logo {
+    height: 30px;
+    width: 180px;
+    object-fit: cover;
+}
+
+footer a:hover {
+    color: var(--brand-color) !important;
+}
+
+</style>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <!-- Logo and Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/lo.png" class="lucide-rocket text-primary" >
+                    
+               
+                <div class="ms-2">
+                    <h1 class="brand-title mb-0">NEOM </h1>
+                    <p class="brand-subtitle mb-0"> WORLD TRADE PVT LTD</p>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas">
+                <svg xmlns="http://www.w3.org/2000/svg" class="lucide-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Primary Links -->
+                    <li class="nav-item"><a class="nav-link primary-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link primary-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link primary-link" href="product.html">Product</a></li>
+                    <li class="nav-item"><a class="nav-link primary-link" href="sustainability.html">Sustainability</a></li>
+                </ul>
+
+                <!-- Secondary Links -->
+                <ul class="navbar-nav me-4">
+                    <li class="nav-item"><a class="nav-link secondary-link" href="careers.html">Careers</a></li>
+                    <li class="nav-item"><a class="nav-link secondary-link" href="notice.html">Notice</a></li>
+                    <li class="nav-item"><a class="nav-link secondary-link" href="contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Video Section -->
+                <div class="video-container me-4">
+                    <video autoplay loop muted playsinline>
+                        <source src="img/branding.mp4 " type="video/mp4">
+                    </video>
+                   
+                </div>
+
+                <!-- Buy Now Button -->
+                <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidebar -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Mobile Primary Links -->
+            <div class="mobile-section">
+              <h6 class="mobile-section-title text-center">Main Navigation</h6>
+              <div class="list-group list-group-flush">
+                  <a href="index.html" class="list-group-item list-group-item-action text-center text-primary-custom">HOME</a>
+                  <a href="about.html" class="list-group-item list-group-item-action text-center text-primary-custom">About Us</a>
+                  <a href="product.html" class="list-group-item list-group-item-action text-center text-primary-custom">Products</a>
+                  <a href="sustanibality.html" class="list-group-item list-group-item-action text-center text-primary-custom">Sustainability</a>
+              </div>
+          </div>
+
+            <!-- Mobile Secondary Links -->
+            <div class="mobile-section mt-4">
+              <h6 class="mobile-section-title text-center">Resources</h6>
+              <div class="list-group list-group-flush">
+                  <a href="careers.html" class="list-group-item list-group-item-action text-center text-primary-custom">Careers</a>
+                  <a href="notice.html" class="list-group-item list-group-item-action text-center text-primary-custom">Notice</a>
+                  <a href="contact.html" class="list-group-item list-group-item-action text-center text-primary-custom">Contact</a>
+              </div>
+          </div>
+
+          <!-- Mobile Buy Now Button -->
+<div class="button d-flex justify-content-center align-items-center mt-3">
+  <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
+</div>
+
+<!-- Mobile Video -->
+<div class="mobile-video-container mt-4">
+  <video autoplay loop muted playsinline class="w-100">
+      <source src="img/branding.mp4" type="video/mp4">
+  </video>
+</div>       
+</div>
+</div>
+
+
+
+<style>
+    .container {
+        width: 1200px;
+
+    }
+    
+    .card {
+        background-color: #fff;
+        border: none;
+        border-radius: 10px;
+        width: 240px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 10px; /* Added to create spacing between cards */
+    }
+    
+    .image-container {
+        position: relative;
+    }
+    
+    .thumbnail-image {
+        border-radius: 10px !important;
+    }
+    
+    .discount {
+        background-color: #5ABCE6;
+        padding: 1px 4px;
+        font-size: 10px;
+        border-radius: 6px;
+        color: #fff;
+    }
+    
+    .wishlist {
+        height: 25px;
+        width: 25px;
+        background-color: #5ABCE6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .first {
+        position: absolute;
+        width: 100%;
+        padding: 9px;
+    }
+    
+    .dress-name {
+        font-size: 13px;
+        font-weight: bold;
+        width: 75%;
+    }
+    
+    .new-price {
+        font-size: 15px;
+        font-weight: bold;
+        color: #5ABCE6;
+    }
+    
+    .old-price {
+        font-size: 12px;
+        font-weight: bold;
+        color: grey;
+        text-decoration: line-through; /* Added strike-through line */
+    }
+    
+    .btn-card {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        padding: 3px;
+    }
+    
+    .creme {
+        background-color: #fff;
+        border: 2px solid grey;
+    }
+    
+    .creme:hover {
+        border: 3px solid grey;
+    }
+    
+    .creme:focus {
+        background-color: grey;
+    }
+    
+    .red {
+        background-color: #fff;
+        border: 2px solid red;
+    }
+    
+    .red:hover {
+        border: 3px solid red;
+    }
+    
+    .red:focus {
+        background-color: red;
+    }
+    
+    .blue {
+        background-color: #fff;
+        border: 2px solid #40C4FF;
+    }
+    
+    .blue:hover {
+        border: 3px solid #40C4FF;
+    }
+    
+    .blue:focus {
+        background-color: #40C4FF;
+    }
+    
+    .darkblue {
+        background-color: #fff;
+        border: 2px solid #01579B;
+    }
+    
+    .darkblue:hover {
+        border: 3px solid #01579B;
+    }
+    
+    .darkblue:focus {
+        background-color: #01579B;
+    }
+    
+    .yellow {
+        background-color: #fff;
+        border: 2px solid #FFCA28;
+    }
+    
+    .yellow:hover {
+        border-radius: 3px solid #FFCA28;
+    }
+    
+    .yellow:focus {
+        background-color: #FFCA28;
+    }
+    
+    .item-size {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #fff;
+        border: 1px solid grey;
+        color: grey;
+        font-size: 10px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .rating-star {
+        font-size: 10px !important;
+    }
+    
+    .rating-number {
+        font-size: 10px;
+        color: grey;
+    }
+    
+    .buy {
+        font-size: 12px;
+        color: purple;
+        font-weight: 500;
+    }
+    
+    .voutchers {
+        background-color: #fff;
+        border: none;
+        border-radius: 10px;
+        width: 220px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        overflow: hidden;
+    }
+    
+    .voutcher-divider {
+        display: flex;
+    }
+    
+    .voutcher-left {
+        width: 60%;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .voutcher-name {
+        color: grey;
+        font-size: 9px;
+        font-weight: 500;
+    }
+    
+    .voutcher-code {
+        color: #5ABCE6;
+        font-size: 11px;
+        font-weight: bold;
+    }
+    
+    .voutcher-right {
+        width: 40%;
+        background-color: #5ABCE6;
+        color: #fff;
+    }
+    
+    .discount-percent {
+        font-size: 12px;
+        font-weight: bold;
+        position: relative;
+        top: 5px;
+    }
+    
+    .off {
+        font-size: 14px;
+        position: relative;
+        bottom: 5px;
+    }
+
+    
+    </style>
+
+<style>
+    .centered-heading {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #5ABCE6;
+        position: relative;
+        margin: 20px 0;
+    }
+    .centered-heading::after {
+        content: '';
+        display: block;
+        width: 50%;
+        height: 5px;
+        background-color: #5ABCE6;
+        margin: 10px auto 0;
+    }
+</style>
+
+
+<style>
+    .tabs {
+            display: flex;
+            border-bottom: 2px solid #ccc;
+            align-items: center;
+            justify-content: center;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+            
+        }
+        .tab:not(:last-child) {
+            margin-right: 20px;
+        }
+        .tab::after {
+            content: '';
+            display: block;
+            height: 4px;
+            background-color: transparent;
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            transition: background-color 0.3s;
+        }
+        .tab.active::after {
+            background-color: #5ABCE6;
+        }
+        .content {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .content.active {
+            display: block;
+        }
+</style>
+    
+    <div class="container" style="margin-top: 30px;">
+        <h2 class="text-center mb-5">Our Products</h2>
+       
+
+        <div class="tabs">
+            <div class="tab active" onclick="showContent('baby-charm')">Baby Charm</div>
+            <div class="tab" onclick="showContent('helen-harper')">Helen Harper</div>
+        </div>
+
+
+        <div id="baby-charm" class="content active">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Product Card -->
+                    <div class="card">
+                        <div class="image-container">
+                            <div class="first">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="discount">-15%</span>
+                                    <span class="wishlist" style="cursor: pointer;"><i class="fa fa-info-circle"></i></span>
+                                </div>
+                            </div>
+                            <img src="img/baby-charm-diaper-roduct-1.jpg" class="img-fluid rounded thumbnail-image">
+                        </div>
+                        <div class="product-detail-container p-2">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="dress-name">BABY CHARM-New Born</h5>
+                                <div class="d-flex flex-column mb-2">
+                                    <span class="new-price">Rs 3.99</span>
+                                    <small class="old-price text-right">Rs 5.99</small>
+                                </div>
+                            </div>
+                         
+                          
+                    <!-- Voucher Card -->
+                    <div class="card voutchers">
+                        <div class="voutcher-divider">
+                            <div class="voutcher-left text-center"  style="cursor: pointer;" onclick="window.location.href='sell.php'">
+                                <h5 class="voutcher-code" style="margin-top: 16px; font-size: 14px;">Buy Now</h5>
+                            </div>
+                            <div class="voutcher-right text-center border-left">
+                                <h5 class="discount-percent">20%</h5>
+                                <span class="off">Off</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div> 
+                </div>
+                
+                
+                
+                <div class="col-md-3">
+                    <!-- Product Card -->
+                    <div class="card">
+                        <div class="image-container">
+                            <div class="first">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="discount">-15%</span>
+                                    <span class="wishlist" style="cursor: pointer;"><i class="fa fa-info-circle"></i></span>
+                                </div>
+                            </div>
+                            <img src="img/baby-charm-3.jpg" class="img-fluid rounded thumbnail-image">
+                        </div>
+                        <div class="product-detail-container p-2">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="dress-name">BABY CHARM- Maxi</h5>
+                                <div class="d-flex flex-column mb-2">
+                                    <span class="new-price">Rs 3.99</span>
+                                    <small class="old-price text-right">Rs 5.99</small>
+                                </div>
+                            </div>
+                         
+                          
+                    <!-- Voucher Card -->
+                    <div class="card voutchers">
+                        <div class="voutcher-divider">
+                            <div class="voutcher-left text-center"  style="cursor: pointer;" onclick="window.location.href='sell.php'">
+                                <h5 class="voutcher-code" style="margin-top: 16px; font-size: 14px;">Buy Now</h5>
+                            </div>
+                            <div class="voutcher-right text-center border-left">
+                                <h5 class="discount-percent">20%</h5>
+                                <span class="off">Off</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div> 
+                </div>
+                
+                
+                
+                <div class="col-md-3">
+                    <!-- Product Card -->
+                    <div class="card">
+                        <div class="image-container">
+                            <div class="first">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="discount">-15%</span>
+                                    <span class="wishlist" style="cursor: pointer;"><i class="fa fa-info-circle"></i></span>
+                                </div>
+                            </div>
+                            <img src="img/baby-charm-product-2.jpg" class="img-fluid rounded thumbnail-image">
+                        </div>
+                        <div class="product-detail-container p-2">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="dress-name">BABY CHARM PANTS-JUNIOR</h5>
+                                <div class="d-flex flex-column mb-2">
+                                    <span class="new-price">Rs 3.99</span>
+                                    <small class="old-price text-right">Rs 5.99</small>
+                                </div>
+                            </div>
+                         
+                          
+                    <!-- Voucher Card -->
+                    <div class="card voutchers">
+                        <div class="voutcher-divider">
+                            <div class="voutcher-left text-center"  style="cursor: pointer;" onclick="window.location.href='sell.php'">
+                                <h5 class="voutcher-code" style="margin-top: 16px; font-size: 14px;">Buy Now</h5>
+                            </div>
+                            <div class="voutcher-right text-center border-left">
+                                <h5 class="discount-percent">20%</h5>
+                                <span class="off">Off</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div> 
+                </div>
+                
+                
+                
+                <div class="col-md-3">
+                    <!-- Product Card -->
+                    <div class="card">
+                        <div class="image-container">
+                            <div class="first">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="discount">-15%</span>
+                                    <span class="wishlist" style="cursor: pointer;"><i class="fa fa-info-circle"></i></span>
+                                </div>
+                            </div>
+                            <img src="img/baby-charm-product-3.jpg" class="img-fluid rounded thumbnail-image">
+                        </div>
+                        <div class="product-detail-container p-2">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="dress-name">BABY CHARM PANTS-XL</h5>
+                                <div class="d-flex flex-column mb-2">
+                                    <span class="new-price">Rs 3.99</span>
+                                    <small class="old-price text-right">Rs 5.99</small>
+                                </div>
+                            </div>
+                         
+                          
+                    <!-- Voucher Card -->
+                    <div class="card voutchers">
+                        <div class="voutcher-divider">
+                            <div class="voutcher-left text-center"  style="cursor: pointer;" onclick="window.location.href='sell.php'">
+                                <h5 class="voutcher-code" style="margin-top: 16px; font-size: 14px;">Buy Now</h5>
+                            </div>
+                            <div class="voutcher-right text-center border-left">
+                                <h5 class="discount-percent">20%</h5>
+                                <span class="off">Off</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div> 
+                </div>
+                </div>
+        </div>
+        
+
+
+
+
+
+<div id="helen-harper" class="content">
+<div class="row">
+<div class="col-md-3">
+    <!-- Product Card -->
+    <div class="card">
+        <div class="image-container">
+            <div class="first">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="discount">-15%</span>
+                    <span class="wishlist" style="cursor: pointer;"><i class="fa fa-info-circle"></i></span>
+                </div>
+            </div>
+            <img src="img/helen-product-1.jpg" class="img-fluid rounded thumbnail-image">
+        </div>
+        <div class="product-detail-container p-2">
+            <div class="d-flex justify-content-between">
+                <h5 class="dress-name">HELEN HARPER -Junior</h5>
+                <div class="d-flex flex-column mb-2">
+                    <span class="new-price">Rs 3.99</span>
+                    <small class="old-price text-right">Rs 5.99</small>
+                </div>
+            </div>
+         
+          
+    <!-- Voucher Card -->
+    <div class="card voutchers">
+        <div class="voutcher-divider">
+            <div class="voutcher-left text-center"  style="cursor: pointer;" onclick="window.location.href='sell.php'">
+                <h5 class="voutcher-code" style="margin-top: 16px; font-size: 14px;">Buy Now</h5>
+            </div>
+            <div class="voutcher-right text-center border-left">
+                <h5 class="discount-percent">20%</h5>
+                <span class="off">Off</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div> 
+</div>
+
+
+
+<div class="col-md-3">
+<!-- Product Card -->
+<div class="card">
+<div class="image-container">
+    <div class="first">
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="discount">-15%</span>
+            <span class="wishlist" style="cursor: pointer;"><i class="fa fa-info-circle"></i></span>
+        </div>
+    </div>
+    <img src="img/helen-product-2.jpg" class="img-fluid rounded thumbnail-image">
+</div>
+<div class="product-detail-container p-2">
+    <div class="d-flex justify-content-between">
+        <h5 class="dress-name">HELEN HARPER-Maxi</h5>
+        <div class="d-flex flex-column mb-2">
+            <span class="new-price">Rs 3.99</span>
+            <small class="old-price text-right">Rs 5.99</small>
+        </div>
+    </div>
+ 
+  
+<!-- Voucher Card -->
+<div class="card voutchers">
+<div class="voutcher-divider">
+    <div class="voutcher-left text-center"  style="cursor: pointer;" onclick="window.location.href='sell.php'">
+        <h5 class="voutcher-code" style="margin-top: 16px; font-size: 14px;">Buy Now</h5>
+    </div>
+    <div class="voutcher-right text-center border-left">
+        <h5 class="discount-percent">20%</h5>
+        <span class="off">Off</span>
+    </div>
+</div>
+</div>
+</div>
+</div> 
+</div>
+
+
+
+
+<div class="col-md-3">
+<!-- Product Card -->
+<div class="card">
+<div class="image-container">
+<div class="first">
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="discount">-15%</span>
+        <span class="wishlist" style="cursor: pointer;"><i class="fa fa-info-circle"></i></span>
+    </div>
+</div>
+<img src="img/elen-3.jpg" class="img-fluid rounded thumbnail-image">
+</div>
+<div class="product-detail-container p-2">
+<div class="d-flex justify-content-between">
+    <h5 class="dress-name">HELEN HARPER - XL</h5>
+    <div class="d-flex flex-column mb-2">
+        <span class="new-price">Rs 3.99</span>
+        <small class="old-price text-right">Rs 5.99</small>
+    </div>
+</div>
+
+
+<!-- Voucher Card -->
+<div class="card voutchers">
+<div class="voutcher-divider">
+<div class="voutcher-left text-center"  style="cursor: pointer;" onclick="window.location.href='sell.php'">
+    <h5 class="voutcher-code" style="margin-top: 16px; font-size: 14px;">Buy Now</h5>
+</div>
+<div class="voutcher-right text-center border-left">
+    <h5 class="discount-percent">20%</h5>
+    <span class="off">Off</span>
+</div>
+</div>
+</div>
+</div>
+</div> 
+</div>
+
+</div>
+
+
+
+
+</div>
+</div>
+
+
+
+ <!-- Footer -->
+ <footer class="text-white py-5 " style="background-color: #5ABCE6;">
+  <div class="container">
+      <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+              <div class="d-flex align-items-center mb-3">
+                  <img src="img/lo.png" style="width: 50px; height: auto;">
+                  <span class="h4 mb-0">NEOM</span>
+              </div>
+              <p class="text-muted">Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal.</p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <h5 class="mb-3">Products</h5>
+              <ul class="list-unstyled">
+                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Baby Charm</a></li>
+                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Halen Harper</a></li>
+                  <li><a href="upcoming.html" class="text-muted text-decoration-none mb-2 d-block">Upcoming</a></li>
+              </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <h5 class="mb-3">Company</h5>
+              <ul class="list-unstyled">
+                  <li><a href="about.html" class="text-muted text-decoration-none mb-2 d-block">About Us</a></li>
+                  <li><a href="sustainability.html" class="text-muted text-decoration-none mb-2 d-block">Sustainability</a></li>
+                  <li><a href="news.html" class="text-muted text-decoration-none mb-2 d-block">News</a></li>
+                  <li><a href="notice.html" class="text-muted text-decoration-none mb-2 d-block">Notice</a></li>
+              </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <h5 class="mb-3">Contact</h5>
+              <ul class="list-unstyled text-muted">
+                  <li class="mb-2">info@ontex.com</li>
+                  <li class="mb-2">+977 1234567890</li>
+                  <li class="mb-2">Kathmandu, Nepal</li>
+              </ul>
+          </div>
+      </div>
+      <div class="border-top border-secondary mt-4 pt-4 text-center text-muted">
+          <p class="mb-0">&copy; 2025 NEOM World Trade Pvt Ltd. All rights reserved.</p>
+          <p class="mb-0" style="color: wheat;"> Designed By &copy;Brandwave</p>
+      </div>
+  </div>
+</footer>
+
+
+
+<script>
+    function showContent(brand) {
+        // Remove active class from all tabs
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        // Hide all content sections
+        document.querySelectorAll('.content').forEach(content => {
+            content.classList.remove('active');
+        });
+
+        // Add active class to the clicked tab
+        document.querySelector(`.tab[onclick="showContent('${brand}')"]`).classList.add('active');
+
+        // Show the corresponding content section
+        document.getElementById(brand).classList.add('active');
+    }
+</script>
+ 
+   
+    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
