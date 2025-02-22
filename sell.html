@@ -163,7 +163,7 @@
     <div class="container py-5">
         <header class="mb-4">
             <div class="d-flex justify-content-between align-items-center">
-                <h1 class="store-title">Fashion Store Nepal</h1>
+                <h1 class="store-title">NEOM WORLD TRADE PVT LTD</h1>
                 <div class="step-indicator">Step <span id="currentStep">1</span> of 3</div>
             </div>
         </header>
@@ -248,9 +248,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="municipality" class="form-label">Municipality</label>
-                                <select class="form-select" id="municipality" required disabled>
-                                    <option value="">Select Municipality</option>
-                                </select>
+                                     <input type="text" class="form-control" id="municipality" required>
                             </div>
                             <div class="col-md-3">
                                 <label for="ward" class="form-label">Ward No.</label>
@@ -292,7 +290,7 @@
                     <div id="bankDetails" class="payment-details bg-light p-3 rounded mb-4">
                         <h3 class="h5 mb-3">Bank Details</h3>
                         <p class="mb-1">Bank: Nepal Bank Limited</p>
-                        <p class="mb-1">Account Holder: Fashion Store Nepal</p>
+                        <p class="mb-1">Account Holder: NEOM WORLD TRADE PVT LTD</p>
                         <p class="mb-1">Account Number: 0123456789</p>
                     </div>
 
@@ -336,7 +334,6 @@
                     </div>
                     <div class="modal-body">
                         <p>Your order has been successfully placed. Thank you for shopping with us!</p>
-                        <p>Your order details have been sent to your email.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" id="downloadInvoice">Download Invoice</button>
@@ -356,27 +353,21 @@
 const products = [
     {
         id: 1,
-        name: "Classic T-Shirt",
+        name: "Baby Charm",
         price: 1200,
         sizes: ["S", "M", "L", "XL"]
     },
     {
         id: 2,
-        name: "Denim Jeans",
+        name: "Helen Harper",
         price: 2500,
         sizes: ["28", "30", "32", "34", "36"]
-    },
-    {
-        id: 3,
-        name: "Sneakers",
-        price: 3500,
-        sizes: ["7", "8", "9", "10", "11"]
     }
 ];
 
 // Location data
 const provinces = [
-    "Province 1",
+    "Koshi",
     "Madhesh",
     "Bagmati",
     "Gandaki",
@@ -386,14 +377,13 @@ const provinces = [
 ];
 
 const districts = {
-    "Province 1": ["Taplejung", "Panchthar", "Ilam", "Jhapa"],
-    "Madhesh": ["Saptari", "Siraha", "Dhanusha", "Mahottari"],
-    "Bagmati": ["Kathmandu", "Bhaktapur", "Lalitpur", "Kavrepalanchok"]
-};
-
-const municipalities = {
-    "Kathmandu": ["Kathmandu Metropolitan", "Kirtipur", "Chandragiri"],
-    "Lalitpur": ["Lalitpur Metropolitan", "Godawari", "Mahalaxmi"]
+    "Koshi": ["Bhojpur", "Dhankuta", "Ilam", "Jhapa", "Khotang", "Morang", "Okhaldhunga", "Panchthar", "Sankhuwasabha", "Solukhumbu", "Sunsari", "Taplejung", "Terhathum", "Udayapur"],
+    "Madhesh": ["Saptari", "Siraha", "Dhanusha", "Mahottari", "Sarlahi", "Rautahat", "Bara", "Parsa"],
+    "Bagmati": ["Bhaktapur", "Chitwan", "Dhading", "Dolakha", "Kathmandu", "Kavrepalanchok", "Lalitpur", "Makwanpur", "Nuwakot", "Ramechhap", "Rasuwa", "Sindhuli", "Sindhupalchok"],
+    "Gandaki": ["Baglung", "Gorkha", "Kaski", "Lamjung", "Manang", "Mustang", "Myagdi", "Nawalpur", "Parbat", "Syangja", "Tanahun"],
+    "Lumbini": ["Arghakhanchi", "Banke", "Bardiya", "Dang", "Eastern Rukum", "Gulmi", "Kapilvastu", "Parasi", "Palpa", "Pyuthan", "Rolpa", "Rupandehi"],
+    "Karnali": ["Dailekh", "Dolpa", "Humla", "Jajarkot", "Jumla", "Kalikot", "Mugu", "Salyan", "Surkhet", "Western Rukum"],
+    "Sudurpashchim": ["Achham", "Baitadi", "Bajhang", "Bajura", "Dadeldhura", "Darchula", "Doti", "Kailali", "Kanchanpur"]
 };
 
 // State management
@@ -625,26 +615,11 @@ function handleProvinceChange(e) {
     } else {
         districtSelect.disabled = true;
     }
-    municipalitySelect.disabled = true;
+    municipalitySelect.disabled = false;
 }
 
 function handleDistrictChange(e) {
-    const district = e.target.value;
-    const municipalitySelect = document.getElementById('municipality');
-
-    municipalitySelect.innerHTML = '<option value="">Select Municipality</option>';
-
-    if (district && municipalities[district]) {
-        municipalities[district].forEach(municipality => {
-            const option = document.createElement('option');
-            option.value = municipality;
-            option.textContent = municipality;
-            municipalitySelect.appendChild(option);
-        });
-        municipalitySelect.disabled = false;
-    } else {
-        municipalitySelect.disabled = true;
-    }
+    
 }
 
 // Payment handlers
@@ -672,85 +647,155 @@ function handleOrderConfirmation() {
     const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
     modal.show();
 }
-
-// PDF generation
 function generatePDF() {
+    // Create the content container
     const content = document.createElement('div');
+    content.style.fontFamily = 'Arial, sans-serif';
+    content.style.width = '100%';
+    content.style.maxHeight = '10in'; // Approx letter size height to force single page
+    content.style.boxSizing = 'border-box';
+
     content.innerHTML = `
-        <div style="padding: 20px;">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <h1>Fashion Store Nepal</h1>
-                <p>Thamel, Kathmandu</p>
-                <p>Phone: +977-1-4XXXXXX</p>
-                <p>Email: info@fashionstore.com.np</p>
-            </div>
-            
-            <div style="margin-bottom: 20px;">
-                <h2>Order Details</h2>
-                <p><strong>Order Date:</strong> ${new Date().toLocaleDateString()}</p>
-                <p><strong>Customer Name:</strong> ${orderData.address.name}</p>
-                <p><strong>Email:</strong> ${orderData.address.email}</p>
-                <p><strong>Phone:</strong> ${orderData.address.phone}</p>
+        <div style="padding: 15px; line-height: 1.5; color: #333; background: linear-gradient(to bottom, #f8f9fa, #ffffff); border: 1px solid #dee2e6;">
+            <!-- Header -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-bottom: 15px;">
+                <div>
+                    <h1 style="margin: 0; font-size: 26px; color: #007bff; font-weight: bold;">NEOM World Trade PVT. LTD.</h1>
+                    <p style="margin: 2px 0; font-size: 12px; color: #555;">Thamel, Kathmandu, Nepal</p>
+                    <p style="margin: 2px 0; font-size: 12px; color: #555;">+977-9842145414 | support@neom.com.np</p>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-size: 14px; color: #28a745; font-weight: bold;">INVOICE</span><br>
+                    <span style="font-size: 12px; color: #666;">Order ID: ${Date.now()}</span>
+                </div>
             </div>
 
-            <div style="margin-bottom: 20px;">
-                <h2>Delivery Address</h2>
-                <p>${orderData.address.tole}, Ward ${orderData.address.ward}</p>
-                <p>${orderData.address.municipality}</p>
-                <p>${orderData.address.district}, ${orderData.address.province}</p>
+            <!-- Order & Customer Info -->
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 13px;">
+                <div style="background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); width: 48%;">
+                    <h2 style="font-size: 16px; margin: 0 0 8px; color: #007bff;">Order Information</h2>
+                    <p style="margin: 2px 0;"><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
+                    <p style="margin: 2px 0;"><strong>Time:</strong> ${new Date().toLocaleTimeString()}</p>
+                </div>
+                <div style="background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); width: 48%;">
+                    <h2 style="font-size: 16px; margin: 0 0 8px; color: #007bff;">Customer Details</h2>
+                    <p style="margin: 2px 0;"><strong>Name:</strong> ${orderData.address.name}</p>
+                    <p style="margin: 2px 0;"><strong>Email:</strong> ${orderData.address.email}</p>
+                    <p style="margin: 2px 0;"><strong>Phone:</strong> ${orderData.address.phone}</p>
+                </div>
             </div>
 
-            <div style="margin-bottom: 20px;">
-                <h2>Products</h2>
-                <table style="width: 100%; border-collapse: collapse;">
+            <!-- Delivery Address -->
+            <div style="margin-bottom: 15px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); font-size: 13px;">
+                <h2 style="font-size: 16px; margin: 0 0 8px; color: #007bff;">Delivery Address</h2>
+                <p style="margin: 0;">${orderData.address.name}, ${orderData.address.tole}, Ward ${orderData.address.ward},</p>
+                <p style="margin: 0;">${orderData.address.municipality}, ${orderData.address.district}, ${orderData.address.province}, Nepal</p>
+            </div>
+
+            <!-- Product Table -->
+            <div style="margin-bottom: 15px;">
+                <h2 style="font-size: 16px; margin: 0 0 8px; color: #007bff;">Order Items</h2>
+                <table style="width: 100%; border-collapse: collapse; font-size: 12px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
                     <thead>
-                        <tr>
-                            <th style="border: 1px solid #ddd; padding: 8px;">Product</th>
-                            <th style="border: 1px solid #ddd; padding: 8px;">Size</th>
-                            <th style="border: 1px solid #ddd; padding: 8px;">Price</th>
-                            <th style="border: 1px solid #ddd; padding: 8px;">Quantity</th>
-                            <th style="border: 1px solid #ddd; padding: 8px;">Total</th>
+                        <tr style="background: #007bff; color: #fff;">
+                            <th style="padding: 8px; text-align: left; border-bottom: 2px solid #0056b3;">Item</th>
+                            <th style="padding: 8px; text-align: center; border-bottom: 2px solid #0056b3;">Size</th>
+                            <th style="padding: 8px; text-align: right; border-bottom: 2px solid #0056b3;">Unit Price</th>
+                            <th style="padding: 8px; text-align: center; border-bottom: 2px solid #0056b3;">Quantity</th>
+                            <th style="padding: 8px; text-align: right; border-bottom: 2px solid #0056b3;">Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        ${orderData.items.map(item => `
-                            <tr>
-                                <td style="border: 1px solid #ddd; padding: 8px;">${item.name}</td>
-                                <td style="border: 1px solid #ddd; padding: 8px;">${item.size}</td>
-                                <td style="border: 1px solid #ddd; padding: 8px;">Rs. ${item.price}</td>
-                                <td style="border: 1px solid #ddd; padding: 8px;">${item.quantity}</td>
-                                <td style="border: 1px solid #ddd; padding: 8px;">Rs. ${item.price * item.quantity}</td>
+                        ${orderData.items.map((item, index) => `
+                            <tr style="${index % 2 === 0 ? 'background: #f8f9fa;' : ''}">
+                                <td style="padding: 8px; border-bottom: 1px solid #dee2e6;">${item.name}</td>
+                                <td style="padding: 8px; text-align: center; border-bottom: 1px solid #dee2e6;">${item.size}</td>
+                                <td style="padding: 8px; text-align: right; border-bottom: 1px solid #dee2e6;">Rs. ${item.price.toFixed(2)}</td>
+                                <td style="padding: 8px; text-align: center; border-bottom: 1px solid #dee2e6;">${item.quantity}</td>
+                                <td style="padding: 8px; text-align: right; border-bottom: 1px solid #dee2e6;">Rs. ${(item.price * item.quantity).toFixed(2)}</td>
                             </tr>
                         `).join('')}
                     </tbody>
                 </table>
             </div>
 
-            <div style="text-align: right; margin-bottom: 20px;">
-                <h3>Total Amount: Rs. ${orderData.items.reduce((sum, item) => sum + (item.price * item.quantity), 0)}</h3>
+            <!-- Total Amount -->
+            <div style="text-align: right; margin-bottom: 15px;">
+                <table style="width: 40%; float: right; border-collapse: collapse; font-size: 13px; background: #fff; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <tr>
+                        <td style="padding: 8px; text-align: right; color: #555;">Subtotal:</td>
+                        <td style="padding: 8px; text-align: right;">Rs. ${orderData.items.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; text-align: right; color: #555;">Shipping:</td>
+                        <td style="padding: 8px; text-align: right;">Rs. 0.00</td>
+                    </tr>
+                    <tr style="border-top: 2px solid #007bff;">
+                        <td style="padding: 8px; text-align: right; font-weight: bold; color: #007bff;">Grand Total:</td>
+                        <td style="padding: 8px; text-align: right; font-weight: bold; color: #007bff;">Rs. ${orderData.items.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}</td>
+                    </tr>
+                </table>
             </div>
 
-            <div style="margin-bottom: 20px;">
-                <h2>Payment Details</h2>
-                <p><strong>Payment Method:</strong> ${orderData.payment.method === 'bank' ? 'Bank Transfer' : 'eSewa'}</p>
+            <!-- Payment Details -->
+            <div style="margin-bottom: 15px; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); font-size: 13px; clear: both;">
+                <h2 style="font-size: 16px; margin: 0 0 8px; color: #007bff;">Payment Details</h2>
+                <p style="margin: 2px 0;"><strong>Method:</strong> ${orderData.payment.method === 'bank' ? 'Bank Transfer' : 'eSewa'}</p>
+                ${orderData.payment.slip ? `<p style="margin: 2px 0;"><strong>Payment Slip:</strong> ${orderData.payment.slip.name}</p>` : ''}
             </div>
 
-            <div style="margin-top: 40px; text-align: center;">
-                <p>Thank you for shopping with us!</p>
+            <!-- Footer -->
+            <div style="border-top: 2px solid #007bff; padding-top: 10px; text-align: center; font-size: 11px; color: #666; margin-top: 15px;">
+                <p style="margin: 2px 0;">Thank you for shopping with <strong>NEOM World Trade!</strong></p>
+                <p style="margin: 2px 0;">For queries: +977-9842145414 | support@neom.com</p>
+                <p style="margin: 2px 0; font-style: italic;">This is a computer-generated invoice</p>
             </div>
         </div>
     `;
 
+    // PDF generation options
     const opt = {
-        margin: 1,
-        filename: 'order-invoice.pdf',
+        margin: [0.3, 0.5, 0.3, 0.5], // Reduced top/bottom margins for single-page fit
+        filename: `invoice-${Date.now()}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        html2canvas: { 
+            scale: 2,
+            logging: false,
+            useCORS: true,
+            scrollY: 0,
+            windowHeight: 1100 // Approximate letter height in pixels to capture all content
+        },
+        jsPDF: { 
+            unit: 'in', 
+            format: 'letter', 
+            orientation: 'portrait',
+            compress: true
+        },
+        pagebreak: { 
+            mode: ['css'], // Rely on CSS for page breaks
+            avoid: ['table', '.avoid-break'] // Avoid breaking tables
+        }
     };
 
-    html2pdf().set(opt).from(content).save();
+    // Generate and save the PDF
+    html2pdf()
+        .set(opt)
+        .from(content)
+        .toPdf()
+        .get('pdf')
+        .then(pdf => {
+            // Ensure single page by adjusting content scaling if needed
+            const totalPages = pdf.internal.getNumberOfPages();
+            if (totalPages > 1) {
+                console.warn('Content exceeds one page; consider reducing content size.');
+            }
+        })
+        .save()
+        .catch(err => console.error('PDF generation error:', err));
 }
-    </script>
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </body>
 </html>
