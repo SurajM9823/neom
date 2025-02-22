@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-icons/dist/umd/lucide.min.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS (with Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href=".css">
@@ -180,614 +185,338 @@
 }
     </style>
 
+    <style>
+        /* Custom Styles */
+        #sustainability {
+        background-color: #f8f9fa;
+        }
 
+        .hover-zoom {
+        transition: transform 0.3s ease;
+        }
 
+        .hover-zoom:hover {
+        transform: scale(1.05);
+        }
 
+        .accordion-button {
+        font-weight: 600;
+        color: #2c3e50;
+        }
 
-<style>
-  
-/* Hero Slider Styles */
-#heroSlider {
-    position: relative;
-    height: 80vh;
-    min-height: 600px;
-    overflow: hidden;
-}
+        .accordion-button:not(.collapsed) {
+        background-color: #e9f5ff;
+        color: #2c3e50;
+        }
 
-.hero-slide {
-    position: relative;
-    height: 80vh;
-    min-height: 600px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+        .accordion-body {
+        background-color: #ffffff;
+        border: 1px solid #e9ecef;
+        border-top: none;
+        }
 
-.hero-slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-   
-}
+        @media (max-width: 767.98px) {
+        .responsive-center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        }
+    </style>
 
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
+    <style>
+    /* Footer */
+  footer {
+    background-color: #5ABCE6;
     color: white;
-    max-width: 600px;
-    z-index: 2;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.hero-content p {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 0.8s ease-out 0.2s;
-}
-
-.hero-content .btn-lg {
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 50px;
-    animation: fadeInUp 0.8s ease-out 0.4s;
+    padding: 40px 0;
+  }
+  
+  .footer-logo {
+    width: 50px;  /* Adjusted size */
     height: auto;
-    display: inline-flex;
-}
-
-/* Carousel Controls */
-.carousel-control-prev,
-.carousel-control-next {
-    width: 5%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#heroSlider:hover .carousel-control-prev,
-#heroSlider:hover .carousel-control-next {
-    opacity: 0.8;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    width: 3rem;
-    height: 3rem;
-    background-size: 100%;
-}
-
-/* Carousel Indicators */
-.carousel-indicators {
-    margin-bottom: 2rem;
-}
-
-.carousel-indicators button {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin: 0 6px;
-    background-color: white;
-    opacity: 0.5;
-    transition: all 0.3s ease;
-}
-
-.carousel-indicators button.active {
-    opacity: 1;
-    transform: scale(1.2);
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+  }
+  
+  /* Footer Links */
+  footer a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+  }
+  
+  footer a:hover {
+    color: white;
+  }
+  
+  /* Footer Contact */
+  footer ul {
+    padding: 0;
+  }
+  
+  footer ul li {
+    font-size: 0.95em;
+  }
+  
+  /* Border Top */
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.85em;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .footer-logo {
+      width: 40px; /* Adjusted for tablets */
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive Adjustments for Hero */
-@media (max-width: 768px) {
-    #heroSlider {
-        height: 70vh;
-        min-height: 500px;
-    }
-
-    .hero-slide {
-        height: 70vh;
-        min-height: 500px;
-    }
-
-    .hero-content {
-        left: 5%;
-        right: 5%;
-        text-align: center;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-content p {
-        font-size: 1.1rem;
-    }
-
-    .carousel-control-prev,
-    .carousel-control-next {
-        display: none;
-    }
-}
-</style>
-
-
-<style>
-
-  /* Products Section */
-.product-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-}
-
-.product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.product-info {
-    padding: 1.5rem;
-}
-
-.product-info h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-
-</style>
-
-
-<style>
-  /* Sustainability Section */
-.sustainability-section {
-    background-color: #f8f9fa;
-}
-
-.sustainability-content {
-    padding: 2rem 0;
-}
-
-.feature-item {
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: rgba(90,188,230,0.1)
-}
-
-.feature-item:hover {
-    background-color: rgba(90,188,230,0.1);
     
-}
-
-.feature-item i {
-    font-size: 2rem;
-    color: var(--brand-color);
-}
-
-/* Footer */
-.footer-logo {
-    height: 30px;
-    width: 180px;
-    object-fit: cover;
-}
-
-footer a:hover {
-    color: var(--brand-color) !important;
-}
-
-</style>
+    footer h5 {
+      font-size: 1.1em;
+    }
+    
+    footer ul li {
+      font-size: 0.9em;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    footer .row {
+      text-align: center;
+    }
+    
+    .footer-logo {
+      width: 35px; /* Adjusted for mobile */
+    }
+  
+    footer h5 {
+      font-size: 1em;
+      margin-top: 20px;
+    }
+  
+    footer ul li {
+      font-size: 0.85em;
+    }
+  }
+  
+    </style>
 
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container">
-            <!-- Logo and Brand -->
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="img/lo.png" class="lucide-rocket text-primary" >
-                    
-               
-                <div class="ms-2">
-                    <h1 class="brand-title mb-0">NEOM </h1>
-                    <p class="brand-subtitle mb-0"> WORLD TRADE PVT LTD</p>
-                </div>
-            </a>
-
-            <!-- Mobile Toggle Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas">
-                <svg xmlns="http://www.w3.org/2000/svg" class="lucide-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="4" x2="20" y1="12" y2="12"></line>
-                    <line x1="4" x2="20" y1="6" y2="6"></line>
-                    <line x1="4" x2="20" y1="18" y2="18"></line>
-                </svg>
-            </button>
-
-            <!-- Desktop Navigation -->
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <!-- Primary Links -->
-                    <li class="nav-item"><a class="nav-link primary-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link primary-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link primary-link" href="product.html">Product</a></li>
-                    <li class="nav-item"><a class="nav-link primary-link" href="sustainability.html">Sustainability</a></li>
-                </ul>
-
-                <!-- Secondary Links -->
-                <ul class="navbar-nav me-4">
-                    <li class="nav-item"><a class="nav-link secondary-link" href="careers.html">Careers</a></li>
-                    <li class="nav-item"><a class="nav-link secondary-link" href="notice.html">Notice</a></li>
-                    <li class="nav-item"><a class="nav-link secondary-link" href="contact.html">Contact</a></li>
-                </ul>
-
-                <!-- Video Section -->
-                <div class="video-container me-4">
-                    <video autoplay loop muted playsinline>
-                        <source src="img/branding.mp4 " type="video/mp4">
-                    </video>
-                   
-                </div>
-
-                <!-- Buy Now Button -->
-                <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Sidebar -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title"></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-            <!-- Mobile Primary Links -->
-            <div class="mobile-section">
-              <h6 class="mobile-section-title text-center">Main Navigation</h6>
-              <div class="list-group list-group-flush">
-                  <a href="index.html" class="list-group-item list-group-item-action text-center text-primary-custom">HOME</a>
-                  <a href="about.html" class="list-group-item list-group-item-action text-center text-primary-custom">About Us</a>
-                  <a href="product.html" class="list-group-item list-group-item-action text-center text-primary-custom">Products</a>
-                  <a href="sustanibality.html" class="list-group-item list-group-item-action text-center text-primary-custom">Sustainability</a>
-              </div>
-          </div>
-
-            <!-- Mobile Secondary Links -->
-            <div class="mobile-section mt-4">
-              <h6 class="mobile-section-title text-center">Resources</h6>
-              <div class="list-group list-group-flush">
-                  <a href="careers.html" class="list-group-item list-group-item-action text-center text-primary-custom">Careers</a>
-                  <a href="notice.html" class="list-group-item list-group-item-action text-center text-primary-custom">Notice</a>
-                  <a href="contact.html" class="list-group-item list-group-item-action text-center text-primary-custom">Contact</a>
-              </div>
-          </div>
-
-          <!-- Mobile Buy Now Button -->
-<div class="button d-flex justify-content-center align-items-center mt-3">
-  <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
-</div>
-
-<!-- Mobile Video -->
-<div class="mobile-video-container mt-4">
-  <video autoplay loop muted playsinline class="w-100">
-      <source src="img/branding.mp4" type="video/mp4">
-  </video>
-</div>
-          
-</div>
-</div>
-
-
-<!--Baby Charm Product Detail Main Container-->
-
-
-<div class="mb-8" id="better-for-planet">
-    <!-- Carbon Emissions Goal Section -->
-    <div class="container carbon-goal-section" id="carbonGoalSection" style="text-align: justify; font-size: 13px;">
-        <h2 class="carbon-goal-title">Our Goal</h2>
-        <div class="row">
-            <div class="col-md-6 carbon-goal-chart">
-                <img alt="" height="auto" src="Carbonemission.webp" width="100%" />
-            </div>
-            <div class="col-md-6 carbon-goal-content" style="margin-top: 40px;">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <!-- Logo and Brand -->
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="img/lo.png" class="lucide-rocket text-primary" >
+                        
                 
-                <p>
-                    Our goal is to contribute to the preservation of the planet by focusing on reducing emissions,
-                    mitigating glacier melt, and fostering sustainable practices. Here’s how we aim to make a
-                    difference:
-                </p>
-                <p>
-                    <b>Reducing Carbon Emissions:</b>
-                    Carbon emissions are a significant driver of global warming, which impacts the planet. By
-                    promoting renewable energy solutions, reducing reliance on fossil fuels, and encouraging
-                    energy-efficient practices, we aim to lessen the burden on this vital region.
-                </p>
-                <p>
-                    <b>Addressing Glacier/ Himalaya Melt:</b>
-                    The accelerated melting of glaciers threatens water resources, biodiversity, and livelihoods.
-                    We are committed to raising awareness about this critical issue, supporting climate resilience
-                    initiatives, and investing in research to monitor and mitigate glacier retreat.
-                </p>
-                <p>
-                    <b>Community Contribution and Cleanup Efforts:</b>
-                    Preserving the planet requires collective action. We are partnering with local communities to
-                    organize large-scale cleanup campaigns, removing plastic waste and other pollutants from these
-                    pristine landscapes. 
-                </p>
-                <p>
-                    <b>Plantation Drives for Greener Landscapes:</b>
-                    Reforestation and afforestation are key to combating soil erosion and promoting carbon
-                    sequestration. We are spearheading plantation drives across the region, focusing on native
-                    species to restore balance and enhance biodiversity.
-                </p>
+                    <div class="ms-2">
+                        <h1 class="brand-title mb-0">NEOM </h1>
+                        <p class="brand-subtitle mb-0"> WORLD TRADE PVT LTD</p>
+                    </div>
+                </a>
+
+                <!-- Mobile Toggle Button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="lucide-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- Primary Links -->
+                        <li class="nav-item"><a class="nav-link primary-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link primary-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link primary-link" href="product.html">Product</a></li>
+                        <li class="nav-item"><a class="nav-link primary-link" href="sustainability.html">Sustainability</a></li>
+                    </ul>
+
+                    <!-- Secondary Links -->
+                    <ul class="navbar-nav me-4">
+                        <li class="nav-item"><a class="nav-link secondary-link" href="careers.html">Careers</a></li>
+                        <li class="nav-item"><a class="nav-link secondary-link" href="notice.html">Notice</a></li>
+                        <li class="nav-item"><a class="nav-link secondary-link" href="contact.html">Contact</a></li>
+                    </ul>
+
+                    <!-- Video Section -->
+                    <div class="video-container me-4">
+                        <video autoplay loop muted playsinline>
+                            <source src="img/branding.mp4 " type="video/mp4">
+                        </video>
+                    
+                    </div>
+
+                    <!-- Buy Now Button -->
+                    <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Sidebar -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+                <!-- Mobile Primary Links -->
+                <div class="mobile-section">
+                <h6 class="mobile-section-title text-center">Main Navigation</h6>
+                <div class="list-group list-group-flush">
+                    <a href="index.html" class="list-group-item list-group-item-action text-center text-primary-custom">HOME</a>
+                    <a href="about.html" class="list-group-item list-group-item-action text-center text-primary-custom">About Us</a>
+                    <a href="product.html" class="list-group-item list-group-item-action text-center text-primary-custom">Products</a>
+                    <a href="sustanibality.html" class="list-group-item list-group-item-action text-center text-primary-custom">Sustainability</a>
+                </div>
+            </div>
+
+                <!-- Mobile Secondary Links -->
+                <div class="mobile-section mt-4">
+                <h6 class="mobile-section-title text-center">Resources</h6>
+                <div class="list-group list-group-flush">
+                    <a href="careers.html" class="list-group-item list-group-item-action text-center text-primary-custom">Careers</a>
+                    <a href="notice.html" class="list-group-item list-group-item-action text-center text-primary-custom">Notice</a>
+                    <a href="contact.html" class="list-group-item list-group-item-action text-center text-primary-custom">Contact</a>
+                </div>
+            </div>
+
+            <!-- Mobile Buy Now Button -->
+    <div class="button d-flex justify-content-center align-items-center mt-3">
+    <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
+    </div>
+
+    <!-- Mobile Video -->
+    <div class="mobile-video-container mt-4">
+    <video autoplay loop muted playsinline class="w-100">
+        <source src="img/branding.mp4" type="video/mp4">
+    </video>
+    </div>
+            
+    </div>
+        </div>
+
+        <!-- Sustainability Section -->
+        <section id="sustainability" class="py-5">
+            <div class="container">
+            <div class="row align-items-center">
+                <!-- Image Column -->
+                <div class="col-md-6 mb-4 mb-md-0">
+                <img src="img/planet.webp" alt="Sustainability Image" class="img-fluid rounded shadow-lg hover-zoom" style="height: 650px;">
+                </div>
+                <!-- Content Column -->
+                <div class="col-md-6 "><div class="responsive-center">
+                    <h2 class="display-5 fw-bold mb-4" style="color: #5ABCE6;">Sustainability for Our Planet</h2>
+                    <p class="lead mb-4">Our goal is to contribute to the preservation of the planet by focusing on reducing emissions, mitigating glacier melt, and fostering sustainable practices.</p>
+                  </div>
+                  <div class="accordion" id="sustainabilityAccordion">
+                    <!-- Reducing Carbon Emissions -->
+                    <div class="accordion-item shadow-sm mb-3">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Reducing Carbon Emissions
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#sustainabilityAccordion">
+                        <div class="accordion-body">
+                        By promoting renewable energy solutions, reducing reliance on fossil fuels, and encouraging energy-efficient practices, we aim to lessen the burden on our planet.
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Addressing Glacier Melt -->
+                    <div class="accordion-item shadow-sm mb-3">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Addressing Glacier Melt
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#sustainabilityAccordion">
+                        <div class="accordion-body">
+                        We are committed to raising awareness, supporting climate resilience initiatives, and investing in research to monitor and mitigate glacier retreat.
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Community Contribution -->
+                    <div class="accordion-item shadow-sm mb-3">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Community Contribution
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#sustainabilityAccordion">
+                        <div class="accordion-body">
+                        We partner with local communities to organize large-scale cleanup campaigns, removing plastic waste and pollutants from pristine landscapes.
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Plantation Drives -->
+                    <div class="accordion-item shadow-sm">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Plantation Drives
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#sustainabilityAccordion">
+                        <div class="accordion-body">
+                        We spearhead plantation drives, focusing on native species to restore balance, combat soil erosion, and enhance biodiversity.
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-white py-5 " style="background-color: #5ABCE6;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="img/lo.png" style="width: 50px; height: auto;">
+                        <span class="h4 mb-0">NEOM</span>
+                    </div>
+                    <p class="text-muted">Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Products</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Baby Charm</a></li>
+                        <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Halen Harper</a></li>
+                        <li><a href="upcoming.html" class="text-muted text-decoration-none mb-2 d-block">Upcoming</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Company</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-muted text-decoration-none mb-2 d-block">About Us</a></li>
+                        <li><a href="sustainability.html" class="text-muted text-decoration-none mb-2 d-block">Sustainability</a></li>
+                        <li><a href="news.html" class="text-muted text-decoration-none mb-2 d-block">News</a></li>
+                        <li><a href="notice.html" class="text-muted text-decoration-none mb-2 d-block">Notice</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Contact</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-2">info@ontex.com</li>
+                        <li class="mb-2">+977 1234567890</li>
+                        <li class="mb-2">Kathmandu, Nepal</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-4 pt-4 text-center text-muted">
+                <p class="mb-0">&copy; 2025 NEOM World Trade Pvt Ltd. All rights reserved.</p>
+                <p class="mb-0" style="color: wheat;"> Designed By &copy;Brandwave</p>
             </div>
         </div>
-    </div>
-   
-    <!-- Our Footprint Section -->
-    <div class="container-fluid footprint-section" id="footprintSection" style="text-align: justify; font-size: 13px;">
-        <h2 class="carbon-goal-title" style="margin-bottom: 50px;">Our Footprint</h2>
-   
-        <div class="row">
-            <div class="col-md-6">
-               
-                <p class="footprint-text">
-                    We’re deeply committed to reducing our product’s climate footprint by gaining a thorough
-                    understanding of its entire lifecycle. This means assessing every stage—from sourcing raw
-                    materials and manufacturing to transportation, usage, and eventual disposal. By examining
-                    each step, we can better track our sustainability goals.
-                </p>
-            </div>
-            <div class="col-md-6 footprint-image-container">
-                <img alt="Sustainable Living" height="500"
-                    src="https://storage.googleapis.com/a1aa/image/nKrI7HLyUdKHJ19GKOB1dOjVhaeR3cQq4RrxySexNqOSf5FoA.jpg"
-                    width="800" />
-            </div>
-        </div>
-    </div>
-   </div>
-   
-   <script>
-    // JavaScript to toggle visibility of both sections
-    document.getElementById('exploreButton').addEventListener('click', function () {
-        document.getElementById('carbonGoalSection').style.display = 'block';
-        document.getElementById('footprintSection').style.display = 'block';
-    });
-   </script>
-   
-   
-   </div>
-   
-   
-   
-   
-   
-   </div>
-   
-   
-    
-   <style>
-   
-     .section {
-         padding: 50px 0;
-     }
-     .section img {
-         max-width: 100%;
-         height: auto;
-     }
-     .section h2 {
-         font-size: 2.5rem;
-         font-weight: bold;
-     }
-     .section p {
-         font-size: 1rem;
-         color: #555;
-     }
-     .btn-custom {
-         border: 1px solid #000;
-         padding: 10px 20px;
-         text-decoration: none;
-         color: #000;
-         display: inline-block;
-         margin-top: 20px;
-     }
-     .btn-custom:hover {
-         background-color: #f0f0f0;
-     }
-   </style>
-   
-   
-   
-      
-    </div>
-    
-    
-    
-   
-   
-   
-
-
-
-   
-
-
-
-<script>
-      function toggleDetails(header) {
-        const details = header.nextElementSibling;
-        const icon = header.querySelector('i');
-  
-        header.classList.toggle('active');
-        details.style.display = details.style.display === 'block' ? 'none' : 'block';
-      }
-    </script>
-</section>
-
-</div>
-</div>
-</div>
-<style>
-  /* Footer */
-footer {
-  background-color: #5ABCE6;
-  color: white;
-  padding: 40px 0;
-}
-
-.footer-logo {
-  width: 50px;  /* Adjusted size */
-  height: auto;
-}
-
-/* Footer Links */
-footer a {
-  color: rgba(255, 255, 255, 0.8);
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: white;
-}
-
-/* Footer Contact */
-footer ul {
-  padding: 0;
-}
-
-footer ul li {
-  font-size: 0.95em;
-}
-
-/* Border Top */
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  text-align: center;
-  padding-top: 20px;
-  font-size: 0.85em;
-}
-
-/* Responsive Design */
-@media (max-width: 992px) {
-  .footer-logo {
-    width: 40px; /* Adjusted for tablets */
-  }
-  
-  footer h5 {
-    font-size: 1.1em;
-  }
-  
-  footer ul li {
-    font-size: 0.9em;
-  }
-}
-
-@media (max-width: 768px) {
-  footer .row {
-    text-align: center;
-  }
-  
-  .footer-logo {
-    width: 35px; /* Adjusted for mobile */
-  }
-
-  footer h5 {
-    font-size: 1em;
-    margin-top: 20px;
-  }
-
-  footer ul li {
-    font-size: 0.85em;
-  }
-}
-
-</style>
-
-
- <!-- Footer -->
- <footer class="text-white py-5 " style="background-color: #5ABCE6;">
-  <div class="container">
-      <div class="row g-4">
-          <div class="col-lg-3 col-md-6">
-              <div class="d-flex align-items-center mb-3">
-                  <img src="img/lo.png" style="width: 50px; height: auto;">
-                  <span class="h4 mb-0">NEOM</span>
-              </div>
-              <p class="text-muted">Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal.</p>
-          </div>
-          <div class="col-lg-3 col-md-6">
-              <h5 class="mb-3">Products</h5>
-              <ul class="list-unstyled">
-                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Baby Charm</a></li>
-                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Halen Harper</a></li>
-                  <li><a href="upcoming.html" class="text-muted text-decoration-none mb-2 d-block">Upcoming</a></li>
-              </ul>
-          </div>
-          <div class="col-lg-3 col-md-6">
-              <h5 class="mb-3">Company</h5>
-              <ul class="list-unstyled">
-                  <li><a href="about.html" class="text-muted text-decoration-none mb-2 d-block">About Us</a></li>
-                  <li><a href="sustainability.html" class="text-muted text-decoration-none mb-2 d-block">Sustainability</a></li>
-                  <li><a href="news.html" class="text-muted text-decoration-none mb-2 d-block">News</a></li>
-                  <li><a href="notice.html" class="text-muted text-decoration-none mb-2 d-block">Notice</a></li>
-              </ul>
-          </div>
-          <div class="col-lg-3 col-md-6">
-              <h5 class="mb-3">Contact</h5>
-              <ul class="list-unstyled text-muted">
-                  <li class="mb-2">info@ontex.com</li>
-                  <li class="mb-2">+977 1234567890</li>
-                  <li class="mb-2">Kathmandu, Nepal</li>
-              </ul>
-          </div>
-      </div>
-      <div class="border-top border-secondary mt-4 pt-4 text-center text-muted">
-          <p class="mb-0">&copy; 2025 NEOM World Trade Pvt Ltd. All rights reserved.</p>
-          <p class="mb-0" style="color: wheat;"> Designed By &copy;Brandwave</p>
-      </div>
-  </div>
-</footer>
-
-
-
- 
-   
-    
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        </footer>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
