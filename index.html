@@ -429,11 +429,16 @@ footer a:hover {
     align-self: center; /* Center the button */
 }
 
+.py-5 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
 /* Mobile View Styles */
 @media (max-width: 767.98px) {
     .mobile-product-container {
         position: relative;
-        height: 400px; /* Adjust height as needed */
+        height: 420px; /* Adjust height as needed */
         overflow: hidden;
     }
 
@@ -805,8 +810,8 @@ footer a:hover {
   </div>
 </section>
 <section class="aboutUs-section py-5 bg-light">
-  <style>
-    
+  <section class="aboutUs-section py-5 bg-light">
+    <style>
       .section {
         background-color: rgba(90, 188, 230, 0.1); /* Transparent background */
         padding: 60px 0;
@@ -831,11 +836,14 @@ footer a:hover {
         justify-content: space-around;
         text-align: center;
         margin-top: 40px;
+        flex-wrap: wrap; /* Allow stats to wrap on smaller screens */
       }
       .stat {
         opacity: 0;
         transform: translateY(20px);
         animation: fadeInUp 1s forwards;
+        flex: 1 1 200px; /* Allow stats to grow and shrink, with a minimum width */
+        margin: 10px; /* Add margin for spacing */
       }
       .stat h3 {
         font-size: 2.5em;
@@ -844,6 +852,7 @@ footer a:hover {
       }
       .stat p {
         font-size: 1.2em;
+       
         color: #666;
       }
       @keyframes fadeInUp {
@@ -856,16 +865,38 @@ footer a:hover {
       .stat:nth-child(2) { animation-delay: 0.4s; }
       .stat:nth-child(3) { animation-delay: 0.6s; }
       .stat:nth-child(4) { animation-delay: 0.8s; }
+  
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        .section {
+          padding: 40px 0; /* Reduce padding for smaller screens */
+        }
+        .col-lg-8 {
+          padding: 0 15px; /* Add padding to text content */
+        }
+        .stats {
+          flex-direction: column; /* Stack stats vertically on mobile */
+          align-items: center;
+        }
+        .stat {
+          flex: 1 1 auto; /* Allow stats to take full width */
+          margin: 20px 0; /* Add vertical spacing */
+        }
+        .stat h3 {
+          font-size: 2em; /* Reduce font size for mobile */
+        }
+        .stat p {
+          font-size: 1em; /* Reduce font size for mobile */
+        }
+      }
     </style>
-  </head>
-  <body>
     <div class="container">
       <div class="section">
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2 class="text-center mb-4" style="color: #5ABCE6;">Ontex & NEOM</h2>
-            <p class="dropcap">ONTEX is a Belgium-based multinational company, known for its global reach and remarkable revenue of billion dollars. Ontex is a global leader in personal hygiene, providing high-quality products for Baby Care, Feminine Care, and Adult Care. Trusted by consumers, retailers, and healthcare providers worldwide, Ontex is the partner of choice for quality and reliability.</p>
-            <p id="more-content" style="display: none;" class="dropcap">NEOM World Trade Pvt. Ltd., operating under the Pathivara Group, is the authorized distributor of Ontex Global. With a strong presence across all seven provinces of the country, Neom specializes in distributing high-quality baby care and cosmetic products, with adult care solutions set to launch soon. Committed to excellence, Neom ensures that every product meets the highest standards of quality and hygiene, making it a trusted name for consumers nationwide. Its extensive distribution network and dedication to customer satisfaction have solidified its position as a leading player in the market.</p>
+            <p class="dropcap" style=" text-align: justify;">ONTEX is a Belgium-based multinational company, known for its global reach and remarkable revenue of billion dollars. Ontex is a global leader in personal hygiene, providing high-quality products for Baby Care, Feminine Care, and Adult Care. Trusted by consumers, retailers, and healthcare providers worldwide, Ontex is the partner of choice for quality and reliability.</p>
+            <p id="more-content" style="display: none; text-align: justify;" class="dropcap" >NEOM World Trade Pvt. Ltd., operating under the Pathivara Group, is the authorized distributor of Ontex Global. With a strong presence across all seven provinces of the country, Neom specializes in distributing high-quality baby care and cosmetic products, with adult care solutions set to launch soon. Committed to excellence, Neom ensures that every product meets the highest standards of quality and hygiene, making it a trusted name for consumers nationwide. Its extensive distribution network and dedication to customer satisfaction have solidified its position as a leading player in the market.</p>
             <p class="text-center mt-3">
               <span class="read-more" onclick="toggleReadMore()">Read More</span>
             </p>
@@ -891,21 +922,22 @@ footer a:hover {
         </div>
       </div>
     </div>
+  </section>
   
-    <script>
-      function toggleReadMore() {
-        const content = document.getElementById('more-content');
-        const link = document.querySelector('.read-more');
-        if (content.style.display === 'none') {
-          content.style.display = 'block';
-          link.textContent = 'Read Less';
-        } else {
-          content.style.display = 'none';
-          link.textContent = 'Read More';
-        }
+  <script>
+    function toggleReadMore() {
+      const moreContent = document.getElementById("more-content");
+      const readMoreLink = document.querySelector(".read-more");
+  
+      if (moreContent.style.display === "none") {
+        moreContent.style.display = "block";
+        readMoreLink.textContent = "Read Less";
+      } else {
+        moreContent.style.display = "none";
+        readMoreLink.textContent = "Read More";
       }
-    </script>
-
+    }
+  </script>
 </section>
 <section class="product-section py-5 bg-light">
 <h2 class="text-center mb-5">Our Products</h2>
