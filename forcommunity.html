@@ -12,403 +12,490 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href=".css">
 
+    <!-- Navbar -->
     <style>
       /* Navbar Styles */
-.navbar {
-    padding: 0.4rem 0;
-}
+        .navbar {
+            padding: 0.4rem 0;
+        }
 
-.brand-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #5ABCE6;
-}
+        .brand-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #5ABCE6;
+        }
 
-.brand-subtitle {
-    font-size: 0.875rem;
-    color: #012576;
-}
+        .brand-subtitle {
+            font-size: 0.875rem;
+            color: #012576;
+        }
 
-/* Logo Styles */
-.lucide-rocket {
-    width: 2.5rem;
-    height: 2.5rem;
-    stroke-width: 1.5;
-}
+        /* Logo Styles */
+        .lucide-rocket {
+            width: 2.5rem;
+            height: 2.5rem;
+            stroke-width: 1.5;
+        }
 
-/* Navigation Links */
-.primary-link {
-    font-weight: 500;
-    color: #012576 !important;
-    margin: 0 0.5rem !important;
-    padding: 0.5rem 0.25rem !important;
-    transition: color 0.2s;
-}
+        /* Navigation Links */
+        .primary-link {
+            font-weight: 500;
+            color: #012576 !important;
+            margin: 0 0.5rem !important;
+            padding: 0.5rem 0.25rem !important;
+            transition: color 0.2s;
+        }
 
-.primary-link:hover {
-    color: #5ABCE6 !important;
-}
+        .primary-link:hover {
+            color: #5ABCE6 !important;
+        }
 
-.secondary-link {
-    font-size: 0.875rem;
-    color: #6b7280 !important;
-    margin: 0 0.375rem !important;
-    padding: 0.5rem 0.25rem !important;
-    transition: color 0.2s;
-}
+        .secondary-link {
+            font-size: 0.875rem;
+            color: #6b7280 !important;
+            margin: 0 0.375rem !important;
+            padding: 0.5rem 0.25rem !important;
+            transition: color 0.2s;
+        }
 
-.secondary-link:hover {
-    color: #1a1a1a !important;
-}
+        .secondary-link:hover {
+            color: #1a1a1a !important;
+        }
 
-/* Video Container */
-.video-container {
-    position: relative;
-    width: 12rem;
-    height: 2.5rem;
-    overflow: hidden;
-    border-radius: 0.5rem;
-}
+        /* Video Container */
+        .video-container {
+            position: relative;
+            width: 12rem;
+            height: 2.5rem;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
 
-.video-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.video-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.4);
-    transition: background-color 0.2s;
-}
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.4);
+            transition: background-color 0.2s;
+        }
 
-.video-overlay span {
-    color: white;
-    font-size: 0.875rem;
-    font-weight: 500;
-}
+        .video-overlay span {
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
 
-.video-container:hover .video-overlay {
-    background-color: rgba(0, 0, 0, 0.3);
-}
+        .video-container:hover .video-overlay {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
 
-/* Mobile Sidebar */
-.mobile-section-title {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #6b7280;
-    letter-spacing: 0.05em;
-    margin-bottom: 1rem;
-}
+        /* Mobile Sidebar */
+        .mobile-section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #6b7280;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
 
-.list-group-item {
-    border: none;
-    padding: 0.75rem 0;
-    color: #1a1a1a;
-    font-weight: 500;
-    transition: color 0.2s;
-}
+        .list-group-item {
+            border: none;
+            padding: 0.75rem 0;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
 
-.list-group-item:hover {
-    color: #5ABCE6;
-    background-color: transparent;
-}
+        .list-group-item:hover {
+            color: #5ABCE6;
+            background-color: transparent;
+        }
 
-.list-group-item i {
-    color: #9ca3af;
-    font-size: 1.25rem;
-}
+        .list-group-item i {
+            color: #9ca3af;
+            font-size: 1.25rem;
+        }
 
-/* Mobile Video */
-.mobile-video-container {
-    position: relative;
-    border-radius: 0.5rem;
-    overflow: hidden;
-}
+        /* Mobile Video */
+        .mobile-video-container {
+            position: relative;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
 
-.mobile-video-container video {
-    height: 8rem;
-    object-fit: cover;
-}
+        .mobile-video-container video {
+            height: 8rem;
+            object-fit: cover;
+        }
 
-/* Button Styles */
-.btn-primary {
-    background-color: #5ABCE6;
-    border-color: #5ABCE6;
-    padding: 0.375rem 1rem;
-    font-weight: 500;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    transition: all 0.2s;
-}
+        /* Button Styles */
+        .btn-primary {
+            background-color: #5ABCE6;
+            border-color: #5ABCE6;
+            padding: 0.375rem 1rem;
+            font-weight: 500;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s;
+        }
 
-.btn-primary:hover {
-    background-color:#5ABCE6;
-    border-color: #5ABCE6;
-}
+        .btn-primary:hover {
+            background-color:#5ABCE6;
+            border-color: #5ABCE6;
+        }
 
-.text-primary-custom {
-    color: #012576 !important;
-    font-weight: 500;
-}
+        .text-primary-custom {
+            color: #012576 !important;
+            font-weight: 500;
+        }
 
-.list-group-item {
-    border: none; /* Removes borders for a cleaner look */
-    padding: 12px 0;
-}
+        .list-group-item {
+            border: none; /* Removes borders for a cleaner look */
+            padding: 12px 0;
+        }
 
 
-/* Responsive Adjustments */
-@media (max-width: 991.98px) {
-    .navbar-brand {
-        max-width: 60%;
-    }
-    
-    .brand-title {
-        font-size: 1.25rem;
-    }
-    
-    .brand-subtitle {
-        font-size: 0.75rem;
-    }
-}
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .navbar-brand {
+                max-width: 60%;
+            }
+            
+            .brand-title {
+                font-size: 1.25rem;
+            }
+            
+            .brand-subtitle {
+                font-size: 0.75rem;
+            }
+        }
     </style>
 
-
-
-
-
-<style>
-  
-/* Hero Slider Styles */
-#heroSlider {
-    position: relative;
-    height: 80vh;
-    min-height: 600px;
-    overflow: hidden;
-}
-
-.hero-slide {
-    position: relative;
-    height: 80vh;
-    min-height: 600px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.hero-slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-   
-}
-
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
+    <style>
+    /* Footer */
+  footer {
+    background-color: #5ABCE6;
     color: white;
-    max-width: 600px;
-    z-index: 2;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.hero-content p {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 0.8s ease-out 0.2s;
-}
-
-.hero-content .btn-lg {
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 50px;
-    animation: fadeInUp 0.8s ease-out 0.4s;
+    padding: 40px 0;
+  }
+  
+  .footer-logo {
+    width: 50px;  /* Adjusted size */
     height: auto;
-    display: inline-flex;
-}
-
-/* Carousel Controls */
-.carousel-control-prev,
-.carousel-control-next {
-    width: 5%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#heroSlider:hover .carousel-control-prev,
-#heroSlider:hover .carousel-control-next {
-    opacity: 0.8;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    width: 3rem;
-    height: 3rem;
-    background-size: 100%;
-}
-
-/* Carousel Indicators */
-.carousel-indicators {
-    margin-bottom: 2rem;
-}
-
-.carousel-indicators button {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin: 0 6px;
-    background-color: white;
-    opacity: 0.5;
-    transition: all 0.3s ease;
-}
-
-.carousel-indicators button.active {
-    opacity: 1;
-    transform: scale(1.2);
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+  }
+  
+  /* Footer Links */
+  footer a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+  }
+  
+  footer a:hover {
+    color: white;
+  }
+  
+  /* Footer Contact */
+  footer ul {
+    padding: 0;
+  }
+  
+  footer ul li {
+    font-size: 0.95em;
+  }
+  
+  /* Border Top */
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.85em;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .footer-logo {
+      width: 40px; /* Adjusted for tablets */
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    
+    footer h5 {
+      font-size: 1.1em;
     }
-}
-
-/* Responsive Adjustments for Hero */
-@media (max-width: 768px) {
-    #heroSlider {
-        height: 70vh;
-        min-height: 500px;
+    
+    footer ul li {
+      font-size: 0.9em;
     }
-
-    .hero-slide {
-        height: 70vh;
-        min-height: 500px;
+  }
+  
+  @media (max-width: 768px) {
+    footer .row {
+      text-align: center;
     }
-
-    .hero-content {
-        left: 5%;
-        right: 5%;
-        text-align: center;
+    
+    .footer-logo {
+      width: 35px; /* Adjusted for mobile */
     }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
+  
+    footer h5 {
+      font-size: 1em;
+      margin-top: 20px;
     }
-
-    .hero-content p {
-        font-size: 1.1rem;
+  
+    footer ul li {
+      font-size: 0.85em;
     }
+  }
+    </style>
 
-    .carousel-control-prev,
-    .carousel-control-next {
-        display: none;
-    }
-}
-</style>
+    <style>
+        .image-container-abc {
+            position: relative;
+            width: 100%;
+            height: 40vh;
+        }
+        .image-container-abc img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-container-abc .center-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white; /* Ensures the text is visible */
+        
+            padding: 10px 20px; /* Optional: Adds some padding around the text */
+            border-radius: 8px; /* Optional: Adds rounded corners to the background */
+        }
+        .image-container h4 {
+            margin: 0;
+            font-size: 2rem; /* Adjust the font size as needed */
+        }
+    </style>
+
+    <!-- content -->
+    <style>
+        .container-main-wrapper {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .working-conditions-section {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .working-conditions-title {
+            font-size: 2rem;
+            color: #5ABCE6;
+            font-weight: bold;
+        }
+
+        .working-conditions-text {
+            font-size: 1.3rem;
+            line-height: 1.6;
+        }
+
+        .working-conditions-img img {
+            width: 90%;
+            height: auto;
+        }
 
 
-<style>
+        .diversity-section-wrapper {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
 
-  /* Products Section */
-.product-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
+        .diversity-left-wrapper {
+            flex: 1;
+            padding: 20px;
+            font-size: 19px;
+        }
 
-.product-card:hover {
-    transform: translateY(-5px);
-}
+        .diversity-right-wrapper {
+            flex: 1;
+            padding: 20px;
+            background-color: #5ABCE6;
+            text-align: center;
+        }
 
-.product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
+        .diversity-right-text {
+            font-size: 25px;
+            color: white;
+        }
 
-.product-info {
-    padding: 1.5rem;
-}
+        .diversity-right-line {
+            width: 50%;
+            border: 1px solid white;
+            margin: 20px auto 0;
+        }
+    </style>
 
-.product-info h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
+    <style>
+        .working-conditions-section {
+            display: flex;
+            flex-wrap: wrap; /* Enables wrapping for smaller screens */
+            margin: 20px 0;
+            align-items: center; /* Centers content vertically in horizontal mode */
+        }
 
+        .working-conditions-img {
+            text-align: center; /* Centers the image for smaller screens */
+            padding: 20px;
+        }
 
-</style>
+        .working-conditions-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px; /* Optional: Adds rounded corners */
+        }
 
+        .working-conditions-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
 
-<style>
-  /* Sustainability Section */
-.sustainability-section {
-    background-color: #f8f9fa;
-}
+        .working-conditions-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
 
-.sustainability-content {
-    padding: 2rem 0;
-}
+        /* For larger screens, keep horizontal layout */
+        @media (min-width: 768px) {
+            .working-conditions-section {
+                flex-direction: row; /* Horizontal layout for larger screens */
+            }
 
-.feature-item {
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: rgba(90,188,230,0.1)
-}
+            .working-conditions-img,
+            .col-md-6 {
+                flex: 1; /* Equal width for both columns */
+            }
+        }
 
-.feature-item:hover {
-    background-color: rgba(90,188,230,0.1);
-}
+        /* For smaller screens, switch to vertical layout */
+        @media (max-width: 767px) {
+            .working-conditions-section {
+                flex-direction: column; /* Vertical layout for smaller screens */
+            }
 
-.feature-item i {
-    font-size: 2rem;
-    color: var(--brand-color);
-}
+            .working-conditions-img,
+            .col-md-6 {
+                width: 100%; /* Full width for each column */
+            }
 
-/* Footer */
-.footer-logo {
-    height: 30px;
-    width: 180px;
-    object-fit: cover;
-}
+            .working-conditions-img {
+                padding-bottom: 20px; /* Adds spacing below the image */
+            }
+        }
+    </style>
 
-footer a:hover {
-    color: var(--brand-color) !important;
-}
+    <style>
+        .diversity-section-wrapper {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping of columns for smaller screens */
+            margin: 20px 0;
+        }
 
-</style>
+        .diversity-left-wrapper,
+        .diversity-right-wrapper {
+            padding: 20px;
+        }
+
+        .diversity-left-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #5ABCE6;
+            margin-bottom: 15px;
+        }
+
+        /* For larger screens, keep the horizontal layout */
+        @media (min-width: 768px) {
+            .diversity-section-wrapper {
+                flex-direction: row; /* Horizontal layout for larger screens */
+            }
+            .diversity-left-wrapper,
+            .diversity-right-wrapper {
+                flex: 1; /* Both columns take equal width */
+            }
+        }
+
+        /* For smaller screens, switch to vertical layout */
+        @media (max-width: 767px) {
+            .diversity-section-wrapper {
+                flex-direction: column; /* Stacks the columns vertically */
+            }
+            .diversity-left-wrapper,
+            .diversity-right-wrapper {
+                width: 100%; /* Each column takes full width */
+            }
+
+            .diversity-left-title {
+            font-size: 1.5rem;
+            margin-top: -20px;
+            
+            }
+
+            .working-conditions-title {
+            font-size: 1.5rem;
+            }
+
+            .image-container-abc {
+            height: 30vh;
+            }
+
+        }
+
+        .diversity-right-line {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    <style>
+    
+        .section {
+            padding: 20px 0;
+        }
+        .section img {
+            max-width: 100%;
+            height: auto;
+        }
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .section p {
+            font-size: 1rem;
+            color: #555;
+        }
+        .btn-custom {
+            border: 1px solid #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #000;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn-custom:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
 
 </head>
 <body>
@@ -507,161 +594,106 @@ footer a:hover {
 </div>
           
 </div>
-</div>
-
-
-<!--Baby Charm Product Detail Main Container-->
-
-
-
-
-
-   
-
-
-
-<script>
-      function toggleDetails(header) {
-        const details = header.nextElementSibling;
-        const icon = header.querySelector('i');
-  
-        header.classList.toggle('active');
-        details.style.display = details.style.display === 'block' ? 'none' : 'block';
-      }
-    </script>
-</section>
-
-</div>
-</div>
-</div>
-<style>
-  /* Footer */
-footer {
-  background-color: #5ABCE6;
-  color: white;
-  padding: 40px 0;
-}
-
-.footer-logo {
-  width: 50px;  /* Adjusted size */
-  height: auto;
-}
-
-/* Footer Links */
-footer a {
-  color: rgba(255, 255, 255, 0.8);
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: white;
-}
-
-/* Footer Contact */
-footer ul {
-  padding: 0;
-}
-
-footer ul li {
-  font-size: 0.95em;
-}
-
-/* Border Top */
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  text-align: center;
-  padding-top: 20px;
-  font-size: 0.85em;
-}
-
-/* Responsive Design */
-@media (max-width: 992px) {
-  .footer-logo {
-    width: 40px; /* Adjusted for tablets */
-  }
-  
-  footer h5 {
-    font-size: 1.1em;
-  }
-  
-  footer ul li {
-    font-size: 0.9em;
-  }
-}
-
-@media (max-width: 768px) {
-  footer .row {
-    text-align: center;
-  }
-  
-  .footer-logo {
-    width: 35px; /* Adjusted for mobile */
-  }
-
-  footer h5 {
-    font-size: 1em;
-    margin-top: 20px;
-  }
-
-  footer ul li {
-    font-size: 0.85em;
-  }
-}
-
-</style>
-
-
- <!-- Footer -->
- <footer class="text-white py-5 " style="background-color: #5ABCE6;">
-  <div class="container">
-      <div class="row g-4">
-          <div class="col-lg-3 col-md-6">
-              <div class="d-flex align-items-center mb-3">
-                  <img src="img/lo.png" style="width: 50px; height: auto;">
-                  <span class="h4 mb-0">NEOM</span>
-              </div>
-              <p class="text-muted">Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal.</p>
-          </div>
-          <div class="col-lg-3 col-md-6">
-              <h5 class="mb-3">Products</h5>
-              <ul class="list-unstyled">
-                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Baby Charm</a></li>
-                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Halen Harper</a></li>
-                  <li><a href="upcoming.html" class="text-muted text-decoration-none mb-2 d-block">Upcoming</a></li>
-              </ul>
-          </div>
-          <div class="col-lg-3 col-md-6">
-              <h5 class="mb-3">Company</h5>
-              <ul class="list-unstyled">
-                  <li><a href="about.html" class="text-muted text-decoration-none mb-2 d-block">About Us</a></li>
-                  <li><a href="sustainability.html" class="text-muted text-decoration-none mb-2 d-block">Sustainability</a></li>
-                  <li><a href="news.html" class="text-muted text-decoration-none mb-2 d-block">News</a></li>
-                  <li><a href="notice.html" class="text-muted text-decoration-none mb-2 d-block">Notice</a></li>
-              </ul>
-          </div>
-          <div class="col-lg-3 col-md-6">
-              <h5 class="mb-3">Contact</h5>
-              <ul class="list-unstyled text-muted">
-                  <li class="mb-2">info@ontex.com</li>
-                  <li class="mb-2">+977 1234567890</li>
-                  <li class="mb-2">Kathmandu, Nepal</li>
-              </ul>
-          </div>
-      </div>
-      <div class="border-top border-secondary mt-4 pt-4 text-center text-muted">
-          <p class="mb-0">&copy; 2025 NEOM World Trade Pvt Ltd. All rights reserved.</p>
-          <p class="mb-0" style="color: wheat;"> Designed By &copy;Brandwave</p>
-      </div>
-  </div>
-</footer>
-
-
-
- 
-   
+    </div>
     
+    <div class="container-fluid-abc image-container-abc">
+        <img 
+            src="https://storage.googleapis.com/a1aa/image/7M02AOVRXzawHxNA8QPTfDouekdikVlDQ8onCOP3NCOFYI5TA.jpg" 
+            alt="A child holding a shopping basket with groceries in a store"
+        >
+        <div class="center-content">
+            <h4>Sustainability / For Community</h4>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="container-main-wrapper" id="better-for-community" style="text-align: justify; font-size: 13px;">
+            <!-- Section: Good and Healthy Working Conditions -->
+            <div class="working-conditions-section row">
+                <div class="col-md-6 working-conditions-img">
+                    <img src="img/chhaupadi.webp" alt="chhaupadhi" class="working-conditions-image">
+                </div>
+                <div class="col-md-6">
+                    <h1 class="working-conditions-title" style="text-align: left;">Awareness Against Social Taboo</h1>
+                    <p class="working-conditions-text">
+                        Our mission is to eradicate Chhaupadi Pratha by fostering awareness, empowering women, and advancing gender equality through education, healthcare initiatives, and community-centered solutions. We are committed to creating safe and inclusive spaces where women and girls can live with dignity, breaking the cycle of stigma and inequality associated with menstruation, and promoting a culture of respect and acceptance.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Section: Equality, Inclusion, and Diversity -->
+            <div class="diversity-section-wrapper row">
+                <div class="col-md-6 diversity-left-wrapper">
+                    <h1 class="diversity-left-title" style="text-align: left;">Equality, Inclusion, and Diversity</h1>
+                    <p class="diversity-left-text">
+                        We are dedicated to fostering openness, inclusivity, and the celebration of diversity in every facet of our operations. This commitment is reflected in our practices, from hiring individuals with diverse backgrounds, beliefs, and abilities to ensuring that our marketing materials authentically represent the vibrant diversity of our community.
+                    </p>
+                </div>
+                <div class="col-md-6 diversity-right-wrapper">
+                    <p class="diversity-right-text">
+                        "Diversity is the heart of progress, and inclusivity is the path to unity. By embracing every voice and every story, we create a community where everyone belongs."
+                    </p>
+                    <hr class="diversity-right-line">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-white py-5 " style="background-color: #5ABCE6;">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="img/lo.png" style="width: 50px; height: auto;">
+                    <span class="h4 mb-0">NEOM</span>
+                </div>
+                <p class="text-muted">Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal.</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="mb-3">Products</h5>
+                <ul class="list-unstyled">
+                    <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Baby Charm</a></li>
+                    <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Halen Harper</a></li>
+                    <li><a href="upcoming.html" class="text-muted text-decoration-none mb-2 d-block">Upcoming</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="mb-3">Company</h5>
+                <ul class="list-unstyled">
+                    <li><a href="about.html" class="text-muted text-decoration-none mb-2 d-block">About Us</a></li>
+                    <li><a href="sustainability.html" class="text-muted text-decoration-none mb-2 d-block">Sustainability</a></li>
+                    <li><a href="news.html" class="text-muted text-decoration-none mb-2 d-block">News</a></li>
+                    <li><a href="notice.html" class="text-muted text-decoration-none mb-2 d-block">Notice</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="mb-3">Contact</h5>
+                <ul class="list-unstyled text-muted">
+                    <li class="mb-2">info@ontex.com</li>
+                    <li class="mb-2">+977 1234567890</li>
+                    <li class="mb-2">Kathmandu, Nepal</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-top border-secondary mt-4 pt-4 text-center text-muted">
+            <p class="mb-0">&copy; 2025 NEOM World Trade Pvt Ltd. All rights reserved.</p>
+            <p class="mb-0" style="color: wheat;"> Designed By &copy;Brandwave</p>
+        </div>
+    </div>
+    </footer>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleDetails(header) {
+            const details = header.nextElementSibling;
+            const icon = header.querySelector('i');
+    
+            header.classList.toggle('active');
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+   
 </body>
 </html>
