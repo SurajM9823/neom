@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href=".css">
 
+    <!-- NavBar -->
     <style>
       /* Navbar Styles */
 .navbar {
@@ -226,6 +227,43 @@
         }
     </style>
 
+     <!-- Header -->
+     <style>
+        .image-container-abc {
+            position: relative;
+            width: 100%;
+            height: 40vh;
+        }
+        .image-container-abc img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-container-abc .center-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white; /* Ensures the text is visible */
+        
+            padding: 10px 20px; /* Optional: Adds some padding around the text */
+            border-radius: 8px; /* Optional: Adds rounded corners to the background */
+        }
+        .image-container h4 {
+            margin: 0;
+            font-size: 2rem; /* Adjust the font size as needed */
+        }
+
+      /* Media Queries for Responsiveness */
+      @media (max-width: 768px) {
+            .hideplanetimage img {
+                display: none;
+
+            }
+        }
+    </style>
+
     <style>
     /* Footer */
   footer {
@@ -401,12 +439,23 @@
     </div>
         </div>
 
+        <!-- Header -->
+        <div class="container-fluid-abc image-container-abc">
+            <img 
+                src="https://storage.googleapis.com/a1aa/image/7M02AOVRXzawHxNA8QPTfDouekdikVlDQ8onCOP3NCOFYI5TA.jpg" 
+                alt="A child holding a shopping basket with groceries in a store"
+            >
+            <div class="center-content">
+                <h4>Sustainability / For Planet</h4>
+            </div>
+        </div>
+
         <!-- Sustainability Section -->
         <section id="sustainability" class="py-5">
             <div class="container">
             <div class="row align-items-center">
                 <!-- Image Column -->
-                <div class="col-md-6 mb-4 mb-md-0">
+                <div class="col-md-6 mb-4 mb-md-0 hideplanetimage">
                 <img src="img/planet.webp" alt="Sustainability Image" class="img-fluid rounded shadow-lg hover-zoom" style="height: 650px;">
                 </div>
                 <!-- Content Column -->

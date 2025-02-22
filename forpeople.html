@@ -1,667 +1,742 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RocketLaunch</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-icons/dist/umd/lucide.min.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href=".css">
-
-    <style>
-      /* Navbar Styles */
-.navbar {
-    padding: 0.4rem 0;
-}
-
-.brand-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #5ABCE6;
-}
-
-.brand-subtitle {
-    font-size: 0.875rem;
-    color: #012576;
-}
-
-/* Logo Styles */
-.lucide-rocket {
-    width: 2.5rem;
-    height: 2.5rem;
-    stroke-width: 1.5;
-}
-
-/* Navigation Links */
-.primary-link {
-    font-weight: 500;
-    color: #012576 !important;
-    margin: 0 0.5rem !important;
-    padding: 0.5rem 0.25rem !important;
-    transition: color 0.2s;
-}
-
-.primary-link:hover {
-    color: #5ABCE6 !important;
-}
-
-.secondary-link {
-    font-size: 0.875rem;
-    color: #6b7280 !important;
-    margin: 0 0.375rem !important;
-    padding: 0.5rem 0.25rem !important;
-    transition: color 0.2s;
-}
-
-.secondary-link:hover {
-    color: #1a1a1a !important;
-}
-
-/* Video Container */
-.video-container {
-    position: relative;
-    width: 12rem;
-    height: 2.5rem;
-    overflow: hidden;
-    border-radius: 0.5rem;
-}
-
-.video-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.video-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.4);
-    transition: background-color 0.2s;
-}
-
-.video-overlay span {
-    color: white;
-    font-size: 0.875rem;
-    font-weight: 500;
-}
-
-.video-container:hover .video-overlay {
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-/* Mobile Sidebar */
-.mobile-section-title {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #6b7280;
-    letter-spacing: 0.05em;
-    margin-bottom: 1rem;
-}
-
-.list-group-item {
-    border: none;
-    padding: 0.75rem 0;
-    color: #1a1a1a;
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-.list-group-item:hover {
-    color: #5ABCE6;
-    background-color: transparent;
-}
-
-.list-group-item i {
-    color: #9ca3af;
-    font-size: 1.25rem;
-}
-
-/* Mobile Video */
-.mobile-video-container {
-    position: relative;
-    border-radius: 0.5rem;
-    overflow: hidden;
-}
-
-.mobile-video-container video {
-    height: 8rem;
-    object-fit: cover;
-}
-
-/* Button Styles */
-.btn-primary {
-    background-color: #5ABCE6;
-    border-color: #5ABCE6;
-    padding: 0.375rem 1rem;
-    font-weight: 500;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    transition: all 0.2s;
-}
-
-.btn-primary:hover {
-    background-color:#5ABCE6;
-    border-color: #5ABCE6;
-}
-
-.text-primary-custom {
-    color: #012576 !important;
-    font-weight: 500;
-}
-
-.list-group-item {
-    border: none; /* Removes borders for a cleaner look */
-    padding: 12px 0;
-}
-
-
-/* Responsive Adjustments */
-@media (max-width: 991.98px) {
-    .navbar-brand {
-        max-width: 60%;
-    }
-    
-    .brand-title {
-        font-size: 1.25rem;
-    }
-    
-    .brand-subtitle {
-        font-size: 0.75rem;
-    }
-}
-    </style>
-
-
-
-
-
-<style>
-  
-/* Hero Slider Styles */
-#heroSlider {
-    position: relative;
-    height: 80vh;
-    min-height: 600px;
-    overflow: hidden;
-}
-
-.hero-slide {
-    position: relative;
-    height: 80vh;
-    min-height: 600px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.hero-slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-   
-}
-
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
-    color: white;
-    max-width: 600px;
-    z-index: 2;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.hero-content p {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 0.8s ease-out 0.2s;
-}
-
-.hero-content .btn-lg {
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 50px;
-    animation: fadeInUp 0.8s ease-out 0.4s;
-    height: auto;
-    display: inline-flex;
-}
-
-/* Carousel Controls */
-.carousel-control-prev,
-.carousel-control-next {
-    width: 5%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#heroSlider:hover .carousel-control-prev,
-#heroSlider:hover .carousel-control-next {
-    opacity: 0.8;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    width: 3rem;
-    height: 3rem;
-    background-size: 100%;
-}
-
-/* Carousel Indicators */
-.carousel-indicators {
-    margin-bottom: 2rem;
-}
-
-.carousel-indicators button {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin: 0 6px;
-    background-color: white;
-    opacity: 0.5;
-    transition: all 0.3s ease;
-}
-
-.carousel-indicators button.active {
-    opacity: 1;
-    transform: scale(1.2);
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive Adjustments for Hero */
-@media (max-width: 768px) {
-    #heroSlider {
-        height: 70vh;
-        min-height: 500px;
-    }
-
-    .hero-slide {
-        height: 70vh;
-        min-height: 500px;
-    }
-
-    .hero-content {
-        left: 5%;
-        right: 5%;
-        text-align: center;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-content p {
-        font-size: 1.1rem;
-    }
-
-    .carousel-control-prev,
-    .carousel-control-next {
-        display: none;
-    }
-}
-</style>
-
-
-<style>
-
-  /* Products Section */
-.product-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-}
-
-.product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.product-info {
-    padding: 1.5rem;
-}
-
-.product-info h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-
-</style>
-
-
-<style>
-  /* Sustainability Section */
-.sustainability-section {
-    background-color: #f8f9fa;
-}
-
-.sustainability-content {
-    padding: 2rem 0;
-}
-
-.feature-item {
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: rgba(90,188,230,0.1)
-}
-
-.feature-item:hover {
-    background-color: rgba(90,188,230,0.1);
-}
-
-.feature-item i {
-    font-size: 2rem;
-    color: var(--brand-color);
-}
-
-/* Footer */
-.footer-logo {
-    height: 30px;
-    width: 180px;
-    object-fit: cover;
-}
-
-footer a:hover {
-    color: var(--brand-color) !important;
-}
-
-</style>
-
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container">
-            <!-- Logo and Brand -->
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="img/lo.png" class="lucide-rocket text-primary" >
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RocketLaunch</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-icons/dist/umd/lucide.min.css">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+        <!-- Nav -->
+        <style>
+        /* Navbar Styles */
+            .navbar {
+                padding: 0.4rem 0;
+            }
+
+            .brand-title {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #5ABCE6;
+            }
+
+            .brand-subtitle {
+                font-size: 0.875rem;
+                color: #012576;
+            }
+
+            /* Logo Styles */
+            .lucide-rocket {
+                width: 2.5rem;
+                height: 2.5rem;
+                stroke-width: 1.5;
+            }
+
+            /* Navigation Links */
+            .primary-link {
+                font-weight: 500;
+                color: #012576 !important;
+                margin: 0 0.5rem !important;
+                padding: 0.5rem 0.25rem !important;
+                transition: color 0.2s;
+            }
+
+            .primary-link:hover {
+                color: #5ABCE6 !important;
+            }
+
+            .secondary-link {
+                font-size: 0.875rem;
+                color: #6b7280 !important;
+                margin: 0 0.375rem !important;
+                padding: 0.5rem 0.25rem !important;
+                transition: color 0.2s;
+            }
+
+            .secondary-link:hover {
+                color: #1a1a1a !important;
+            }
+
+            /* Video Container */
+            .video-container {
+                position: relative;
+                width: 12rem;
+                height: 2.5rem;
+                overflow: hidden;
+                border-radius: 0.5rem;
+            }
+
+            .video-container video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .video-overlay {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(0, 0, 0, 0.4);
+                transition: background-color 0.2s;
+            }
+
+            .video-overlay span {
+                color: white;
+                font-size: 0.875rem;
+                font-weight: 500;
+            }
+
+            .video-container:hover .video-overlay {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+
+            /* Mobile Sidebar */
+            .mobile-section-title {
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: #6b7280;
+                letter-spacing: 0.05em;
+                margin-bottom: 1rem;
+            }
+
+            .list-group-item {
+                border: none;
+                padding: 0.75rem 0;
+                color: #1a1a1a;
+                font-weight: 500;
+                transition: color 0.2s;
+            }
+
+            .list-group-item:hover {
+                color: #5ABCE6;
+                background-color: transparent;
+            }
+
+            .list-group-item i {
+                color: #9ca3af;
+                font-size: 1.25rem;
+            }
+
+            /* Mobile Video */
+            .mobile-video-container {
+                position: relative;
+                border-radius: 0.5rem;
+                overflow: hidden;
+            }
+
+            .mobile-video-container video {
+                height: 8rem;
+                object-fit: cover;
+            }
+
+            /* Button Styles */
+            .btn-primary {
+                background-color: #5ABCE6;
+                border-color: #5ABCE6;
+                padding: 0.375rem 1rem;
+                font-weight: 500;
+                height: 2.5rem;
+                display: flex;
+                align-items: center;
+                transition: all 0.2s;
+            }
+
+            .btn-primary:hover {
+                background-color:#5ABCE6;
+                border-color: #5ABCE6;
+            }
+
+            .text-primary-custom {
+                color: #012576 !important;
+                font-weight: 500;
+            }
+
+            .list-group-item {
+                border: none; /* Removes borders for a cleaner look */
+                padding: 12px 0;
+            }
+
+
+            /* Responsive Adjustments */
+            @media (max-width: 991.98px) {
+                .navbar-brand {
+                    max-width: 60%;
+                }
+                
+                .brand-title {
+                    font-size: 1.25rem;
+                }
+                
+                .brand-subtitle {
+                    font-size: 0.75rem;
+                }
+            }
+        </style>
+
+        <!-- Header -->
+        <style>
+            .image-container-abc {
+                position: relative;
+                width: 100%;
+                height: 40vh;
+            }
+            .image-container-abc img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .image-container-abc .center-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: white; /* Ensures the text is visible */
+            
+                padding: 10px 20px; /* Optional: Adds some padding around the text */
+                border-radius: 8px; /* Optional: Adds rounded corners to the background */
+            }
+            .image-container h4 {
+                margin: 0;
+                font-size: 2rem; /* Adjust the font size as needed */
+            }
+        </style>
+
+        <!-- Container -->
+        <style>
+            .page-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .page-wrapper .content-wrapper {
+                display: flex;
+                flex-direction: row;
+                width: 80%;
+                max-width: 1200px;
+                margin: 40px auto;
+
+
+            }
+
+            .page-wrapper .main-text-section,
+            .page-wrapper .highlight-section {
+                padding: 20px;
+            }
+
+            .page-wrapper .main-text-section {
+                flex: 1;
+            }
+
+            .page-wrapper .highlight-section {
+                flex: 1;
+                background-color: #5ABCE6;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .page-wrapper .main-heading {
+                font-size: 3em;
+                font-weight: 700;
+                margin: 0 0 20px 0;
+            }
+
+            .page-wrapper .main-paragraph {
+                font-size: 1.2em;
+                line-height: 1.6;
+                margin: 0;
+            }
+
+            .page-wrapper .highlight-quote {
+                font-size: 2em;
+                font-weight: 700;
+                text-align: center;
+                color: white;
+                line-height: 1.5;
+                /* Adjusted line height for better spacing */
+            }
+
+            .page-wrapper .highlight-quote::before,
+            .page-wrapper .highlight-quote::after {
+
+                font-size: 2em;
+                color: white;
+            }
+
+
+
+            .page-wrapper .highlight-line {
+                width: 50%;
+                height: 2px;
+                background-color: #fbfdff;
+                margin: 20px auto 0 auto;
+            }
+
+            @media (max-width: 768px) {
+                .page-wrapper .content-wrapper {
+                    flex-direction: column;
+                }
+
+                .page-wrapper .highlight-section {
+                    padding: 20px;
+                }
+
+                .page-wrapper .highlight-quote {
+                    font-size: 1.5em;
+                }
+            }
+
+            .page-wrapper .info-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 10px;
+                width: 80%;
+                max-width: 1200px;
+                margin: 10px auto;
+                
+            }
+            .page-wrapper .info-right-column img {
+                width: 90%;
+                height: 400px;
+                
+            }
+            .page-wrapper h1,
+            .page-wrapper h2 {
+                font-family: Arial, sans-serif;
+                color: #333;
+            }
+
+            .page-wrapper h1 {
+                font-size: 2.5em;
+                margin-bottom: 20px;
+            }
+
+            .page-wrapper h2 {
+                font-size: 2em;
+                margin-top: 40px;
+                margin-bottom: 20px;
+            }
+
+            .page-wrapper p {
+                font-size: 1.1em;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            .page-wrapper .info-quote {
+
+                font-size: 1.8em;
+                color: white;
+                text-align: center;
+                padding: 20px;
+                line-height: 1.6;
+                /* Adjusted line height for better spacing */
+            }
+
+
+            .page-wrapper .info-quote::before,
+            .page-wrapper .info-quote::after {
+
+                font-size: 2em;
+                color: #f8f9fa;
+            }
+
+            .page-wrapper .info-line {
+                width: 50px;
+                height: 2px;
+                background-color: #fafbfc;
+                margin: 20px auto 0;
+            }
+
+            @media (max-width: 768px) {
+
+                .page-wrapper .info-left-column,
+                .page-wrapper .info-right-column {
+                    max-width: 100%;
+                    flex: 100%;
+                }
+            }
+        </style>
+
+        <style>
+                
+            .section img {
+                max-width: 100%;
+                height: auto;
+            }
+            .section h2 {
+                font-size: 2.5rem;
+                font-weight: bold;
+            }
+            .section p {
+                font-size: 1rem;
+                color: #555;
+            }
+            .btn-custom {
+                border: 1px solid #000;
+                padding: 10px 20px;
+                text-decoration: none;
+                color: #000;
+                display: inline-block;
+                margin-top: 20px;
+            }
+            .btn-custom:hover {
+                background-color: #f0f0f0;
+            }
+        </style>
+
+        <!-- DropDown Menu -->
+        <style>
+            .accordion-button {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            }
+
+            .accordion-button:not(.collapsed) {
+            background-color: #e9f5ff;
+            color: #2c3e50;
+            }
+
+            .accordion-body {
+            font-size: 13px;
+            text-align: justify;
+            background-color: #ffffff;
+            border-top: none;
+            }
+        </style>
+
+        <!-- Footer -->
+        <style>
+            /* Footer */
+        footer {
+            background-color: #5ABCE6;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-logo {
+            width: 50px;  /* Adjusted size */
+            height: auto;
+        }
+        
+        /* Footer Links */
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        /* Footer Contact */
+        footer ul {
+            padding: 0;
+        }
+        
+        footer ul li {
+            font-size: 0.95em;
+        }
+        
+        /* Border Top */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            padding-top: 20px;
+            font-size: 0.85em;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .footer-logo {
+            width: 40px; /* Adjusted for tablets */
+            }
+            
+            footer h5 {
+            font-size: 1.1em;
+            }
+            
+            footer ul li {
+            font-size: 0.9em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            footer .row {
+            text-align: center;
+            }
+            
+            .footer-logo {
+            width: 35px; /* Adjusted for mobile */
+            }
+        
+            footer h5 {
+            font-size: 1em;
+            margin-top: 20px;
+            }
+        
+            footer ul li {
+            font-size: 0.85em;
+            }
+        }
+        
+        </style>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <!-- Logo and Brand -->
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="img/lo.png" class="lucide-rocket text-primary" >
+                        
+                
+                    <div class="ms-2">
+                        <h1 class="brand-title mb-0">NEOM </h1>
+                        <p class="brand-subtitle mb-0"> WORLD TRADE PVT LTD</p>
+                    </div>
+                </a>
+
+                <!-- Mobile Toggle Button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="lucide-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- Primary Links -->
+                        <li class="nav-item"><a class="nav-link primary-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link primary-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link primary-link" href="product.html">Product</a></li>
+                        <li class="nav-item"><a class="nav-link primary-link" href="sustainability.html">Sustainability</a></li>
+                    </ul>
+
+                    <!-- Secondary Links -->
+                    <ul class="navbar-nav me-4">
+                        <li class="nav-item"><a class="nav-link secondary-link" href="careers.html">Careers</a></li>
+                        <li class="nav-item"><a class="nav-link secondary-link" href="notice.html">Notice</a></li>
+                        <li class="nav-item"><a class="nav-link secondary-link" href="contact.html">Contact</a></li>
+                    </ul>
+
+                    <!-- Video Section -->
+                    <div class="video-container me-4">
+                        <video autoplay loop muted playsinline>
+                            <source src="img/branding.mp4 " type="video/mp4">
+                        </video>
                     
-               
-                <div class="ms-2">
-                    <h1 class="brand-title mb-0">NEOM </h1>
-                    <p class="brand-subtitle mb-0"> WORLD TRADE PVT LTD</p>
+                    </div>
+
+                    <!-- Buy Now Button -->
+                    <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
                 </div>
-            </a>
+            </div>
+        </nav>
 
-            <!-- Mobile Toggle Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas">
-                <svg xmlns="http://www.w3.org/2000/svg" class="lucide-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="4" x2="20" y1="12" y2="12"></line>
-                    <line x1="4" x2="20" y1="6" y2="6"></line>
-                    <line x1="4" x2="20" y1="18" y2="18"></line>
-                </svg>
-            </button>
+        <!-- Mobile Sidebar -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+                <!-- Mobile Primary Links -->
+                <div class="mobile-section">
+                    <h6 class="mobile-section-title text-center">Main Navigation</h6>
+                    <div class="list-group list-group-flush">
+                        <a href="index.html" class="list-group-item list-group-item-action text-center text-primary-custom">HOME</a>
+                        <a href="about.html" class="list-group-item list-group-item-action text-center text-primary-custom">About Us</a>
+                        <a href="product.html" class="list-group-item list-group-item-action text-center text-primary-custom">Products</a>
+                        <a href="sustanibality.html" class="list-group-item list-group-item-action text-center text-primary-custom">Sustainability</a>
+                    </div>
+                </div>
 
-            <!-- Desktop Navigation -->
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <!-- Primary Links -->
-                    <li class="nav-item"><a class="nav-link primary-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link primary-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link primary-link" href="product.html">Product</a></li>
-                    <li class="nav-item"><a class="nav-link primary-link" href="sustainability.html">Sustainability</a></li>
-                </ul>
+                <!-- Mobile Secondary Links -->
+                <div class="mobile-section mt-4">
+                    <h6 class="mobile-section-title text-center">Resources</h6>
+                    <div class="list-group list-group-flush">
+                        <a href="careers.html" class="list-group-item list-group-item-action text-center text-primary-custom">Careers</a>
+                        <a href="notice.html" class="list-group-item list-group-item-action text-center text-primary-custom">Notice</a>
+                        <a href="contact.html" class="list-group-item list-group-item-action text-center text-primary-custom">Contact</a>
+                    </div>
+                </div>
 
-                <!-- Secondary Links -->
-                <ul class="navbar-nav me-4">
-                    <li class="nav-item"><a class="nav-link secondary-link" href="careers.html">Careers</a></li>
-                    <li class="nav-item"><a class="nav-link secondary-link" href="notice.html">Notice</a></li>
-                    <li class="nav-item"><a class="nav-link secondary-link" href="contact.html">Contact</a></li>
-                </ul>
+                <!-- Mobile Buy Now Button -->
+                <div class="button d-flex justify-content-center align-items-center mt-3">
+                    <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
+                </div>
 
-                <!-- Video Section -->
-                <div class="video-container me-4">
-                    <video autoplay loop muted playsinline>
-                        <source src="img/branding.mp4 " type="video/mp4">
+                <!-- Mobile Video -->
+                <div class="mobile-video-container mt-4">
+                    <video autoplay loop muted playsinline class="w-100">
+                        <source src="img/branding.mp4" type="video/mp4">
                     </video>
-                   
                 </div>
-
-                <!-- Buy Now Button -->
-                <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
             </div>
         </div>
-    </nav>
+        <!--Main Content-->
 
-    <!-- Mobile Sidebar -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title"></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        <div class="container-fluid-abc image-container-abc">
+            <img 
+                src="https://storage.googleapis.com/a1aa/image/7M02AOVRXzawHxNA8QPTfDouekdikVlDQ8onCOP3NCOFYI5TA.jpg" 
+                alt="A child holding a shopping basket with groceries in a store"
+            >
+            <div class="center-content">
+                <h4>Sustainability / For People</h4>
+            </div>
         </div>
-        <div class="offcanvas-body">
-            <!-- Mobile Primary Links -->
-            <div class="mobile-section">
-              <h6 class="mobile-section-title text-center">Main Navigation</h6>
-              <div class="list-group list-group-flush">
-                  <a href="index.html" class="list-group-item list-group-item-action text-center text-primary-custom">HOME</a>
-                  <a href="about.html" class="list-group-item list-group-item-action text-center text-primary-custom">About Us</a>
-                  <a href="product.html" class="list-group-item list-group-item-action text-center text-primary-custom">Products</a>
-                  <a href="sustanibality.html" class="list-group-item list-group-item-action text-center text-primary-custom">Sustainability</a>
-              </div>
-          </div>
 
-            <!-- Mobile Secondary Links -->
-            <div class="mobile-section mt-4">
-              <h6 class="mobile-section-title text-center">Resources</h6>
-              <div class="list-group list-group-flush">
-                  <a href="careers.html" class="list-group-item list-group-item-action text-center text-primary-custom">Careers</a>
-                  <a href="notice.html" class="list-group-item list-group-item-action text-center text-primary-custom">Notice</a>
-                  <a href="contact.html" class="list-group-item list-group-item-action text-center text-primary-custom">Contact</a>
-              </div>
-          </div>
+        <div class="container" >
+            <div class="page-wrapper" id="better-for-people" style=" padding:0">
+                <div class="content-wrapper" style="text-align: justify; font-size: 13px;">
+                    <div class="highlight-section">
+                        <div>
+                            <p class="highlight-quote">"A brighter future begins with how we care for and empower our
+                                children today. By championing their rights, we shape a world where every child has the
+                                chance to thrive."</p>
+                            <div class="highlight-line"></div>
+                        </div>
+                    </div>
+        
+                    <div class="main-text-section">
+                        <h1 class="main-heading">Children’s Rights</h1>
+                        <p class="main-paragraph">Children are at the heart of everything we do. Operating our business
+                            responsibly with a strong focus on their well-being has always been a core value for us. Guided
+                            by Save Children’s Rights and Business Principles, we ensure that
+                            every aspect of our operations—from production to marketing and distribution—champions the
+                            rights and dignity of children.
+        
+                            These principles serve as our playbook, shaping how we integrate the protection and empowerment
+                            of children into our daily practices. By adhering to these values, we’re not just making
+                            statements; we’re taking meaningful action to build a future that genuinely prioritizes the
+                            well-being, growth, and opportunities for children in Nepal.</p>
+                    </div>
+        
+                </div>
+        
+                <div class="info-container" style="text-align: justify; font-size: 13px; ">
+                    <div class="info-left-column">
+                        <div class="accordion" id="educationAccordion">
+                            <!-- Category 1: Our Mission -->
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  Our Mission
+                                </button>
+                              </h2>
+                              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#educationAccordion">
+                                <div class="accordion-body">
+                                  <p>We are steadfast in our mission to create equal educational opportunities for every child in Nepal, regardless of their socio-economic background, geographic location, or personal circumstances. Education is the cornerstone of progress, and we envision a future where every child in Nepal not only completes secondary school but does so with a robust foundation of knowledge, critical thinking skills, and confidence.</p>
+                                </div>
+                              </div>
+                            </div>
+                          
+                            <!-- Category 2: Our Aim -->
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  Our Aim
+                                </button>
+                              </h2>
+                              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#educationAccordion">
+                                <div class="accordion-body">
+                                  <p>Our aim is to empower children to pursue higher education and specialized fields of their choice, enabling them to achieve their aspirations and compete successfully in the global workforce. We believe that when children are given the tools to excel, they not only transform their own lives but also contribute to the sustainable growth and development of their communities and the nation as a whole.</p>
+                                </div>
+                              </div>
+                            </div>
+                          
+                            <!-- Category 3: Our Commitment -->
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                  Our Commitment
+                                </button>
+                              </h2>
+                              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#educationAccordion">
+                                <div class="accordion-body">
+                                  <p>Through this commitment, we strive to bridge gaps in access, quality, and opportunity, ensuring that education becomes a universal right rather than a privilege. We work tirelessly to create an inclusive, supportive, and equitable learning environment where every child has the opportunity to unlock their full potential and build a brighter future.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>     
 
-          <!-- Mobile Buy Now Button -->
-<div class="button d-flex justify-content-center align-items-center mt-3">
-  <button class="btn btn-primary" onclick="window.location.href='sell.php'">Buy Now</button>
-</div>
+        <!-- Footer -->
+        <footer class="text-white py-5 " style="background-color: #5ABCE6;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="img/lo.png" style="width: 50px; height: auto;">
+                        <span class="h4 mb-0">NEOM</span>
+                    </div>
+                    <p class="text-muted">Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Products</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Baby Charm</a></li>
+                        <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Halen Harper</a></li>
+                        <li><a href="upcoming.html" class="text-muted text-decoration-none mb-2 d-block">Upcoming</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Company</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-muted text-decoration-none mb-2 d-block">About Us</a></li>
+                        <li><a href="sustainability.html" class="text-muted text-decoration-none mb-2 d-block">Sustainability</a></li>
+                        <li><a href="news.html" class="text-muted text-decoration-none mb-2 d-block">News</a></li>
+                        <li><a href="notice.html" class="text-muted text-decoration-none mb-2 d-block">Notice</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Contact</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-2">info@ontex.com</li>
+                        <li class="mb-2">+977 1234567890</li>
+                        <li class="mb-2">Kathmandu, Nepal</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-4 pt-4 text-center text-muted">
+                <p class="mb-0">&copy; 2025 NEOM World Trade Pvt Ltd. All rights reserved.</p>
+                <p class="mb-0" style="color: wheat;"> Designed By &copy;Brandwave</p>
+            </div>
+        </div>
+        </footer>
 
-<!-- Mobile Video -->
-<div class="mobile-video-container mt-4">
-  <video autoplay loop muted playsinline class="w-100">
-      <source src="img/branding.mp4" type="video/mp4">
-  </video>
-</div>
-          
-</div>
-</div>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap JS (with Popper) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <script>
+            function toggleDetails(header) {
+            const details = header.nextElementSibling;
+            const icon = header.querySelector('i');
 
-
-<!--Baby Charm Product Detail Main Container-->
-
-
-
-
-
-   
-
-
-
-<script>
-      function toggleDetails(header) {
-        const details = header.nextElementSibling;
-        const icon = header.querySelector('i');
-  
-        header.classList.toggle('active');
-        details.style.display = details.style.display === 'block' ? 'none' : 'block';
-      }
-    </script>
-</section>
-
-</div>
-</div>
-</div>
-<style>
-  /* Footer */
-footer {
-  background-color: #5ABCE6;
-  color: white;
-  padding: 40px 0;
-}
-
-.footer-logo {
-  width: 50px;  /* Adjusted size */
-  height: auto;
-}
-
-/* Footer Links */
-footer a {
-  color: rgba(255, 255, 255, 0.8);
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: white;
-}
-
-/* Footer Contact */
-footer ul {
-  padding: 0;
-}
-
-footer ul li {
-  font-size: 0.95em;
-}
-
-/* Border Top */
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  text-align: center;
-  padding-top: 20px;
-  font-size: 0.85em;
-}
-
-/* Responsive Design */
-@media (max-width: 992px) {
-  .footer-logo {
-    width: 40px; /* Adjusted for tablets */
-  }
-  
-  footer h5 {
-    font-size: 1.1em;
-  }
-  
-  footer ul li {
-    font-size: 0.9em;
-  }
-}
-
-@media (max-width: 768px) {
-  footer .row {
-    text-align: center;
-  }
-  
-  .footer-logo {
-    width: 35px; /* Adjusted for mobile */
-  }
-
-  footer h5 {
-    font-size: 1em;
-    margin-top: 20px;
-  }
-
-  footer ul li {
-    font-size: 0.85em;
-  }
-}
-
-</style>
-
-
- <!-- Footer -->
- <footer class="text-white py-5 " style="background-color: #5ABCE6;">
-  <div class="container">
-      <div class="row g-4">
-          <div class="col-lg-3 col-md-6">
-              <div class="d-flex align-items-center mb-3">
-                  <img src="img/lo.png" style="width: 50px; height: auto;">
-                  <span class="h4 mb-0">NEOM</span>
-              </div>
-              <p class="text-muted">Neom World Trade Pvt. Ltd., operating under the Pathibhara Group, is the authorized distributor of Ontex in Nepal.</p>
-          </div>
-          <div class="col-lg-3 col-md-6">
-              <h5 class="mb-3">Products</h5>
-              <ul class="list-unstyled">
-                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Baby Charm</a></li>
-                  <li><a href="product.html" class="text-muted text-decoration-none mb-2 d-block">Halen Harper</a></li>
-                  <li><a href="upcoming.html" class="text-muted text-decoration-none mb-2 d-block">Upcoming</a></li>
-              </ul>
-          </div>
-          <div class="col-lg-3 col-md-6">
-              <h5 class="mb-3">Company</h5>
-              <ul class="list-unstyled">
-                  <li><a href="about.html" class="text-muted text-decoration-none mb-2 d-block">About Us</a></li>
-                  <li><a href="sustainability.html" class="text-muted text-decoration-none mb-2 d-block">Sustainability</a></li>
-                  <li><a href="news.html" class="text-muted text-decoration-none mb-2 d-block">News</a></li>
-                  <li><a href="notice.html" class="text-muted text-decoration-none mb-2 d-block">Notice</a></li>
-              </ul>
-          </div>
-          <div class="col-lg-3 col-md-6">
-              <h5 class="mb-3">Contact</h5>
-              <ul class="list-unstyled text-muted">
-                  <li class="mb-2">info@ontex.com</li>
-                  <li class="mb-2">+977 1234567890</li>
-                  <li class="mb-2">Kathmandu, Nepal</li>
-              </ul>
-          </div>
-      </div>
-      <div class="border-top border-secondary mt-4 pt-4 text-center text-muted">
-          <p class="mb-0">&copy; 2025 NEOM World Trade Pvt Ltd. All rights reserved.</p>
-          <p class="mb-0" style="color: wheat;"> Designed By &copy;Brandwave</p>
-      </div>
-  </div>
-</footer>
-
-
-
- 
-   
-    
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+            header.classList.toggle('active');
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+            }
+        </script>
+    </body>
 </html>
