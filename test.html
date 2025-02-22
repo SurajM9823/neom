@@ -3,375 +3,754 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Product Cards</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Fashion Store Nepal - Order Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
     <style>
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+        body {
+    background-color: #f8f9fa;
+}
 
-        .card {
-            background-color: #fff;
-            border: none;
-            border-radius: 10px;
-            width: 100%;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            margin-bottom: 20px;
-        }
+.store-title {
+    color: #2c3e50;
+    font-size: 2rem;
+    font-weight: bold;
+}
 
-        .image-container {
-            position: relative;
-        }
+.step-indicator {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
 
-        .thumbnail-image {
-            border-radius: 10px !important;
-            width: 100%;
-            height: auto;
-        }
+.card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
 
-        .discount {
-            background-color: #5ABCE6;
-            padding: 1px 4px;
-            font-size: 10px;
-            border-radius: 6px;
-            color: #fff;
-        }
+.card-title {
+    color: #2c3e50;
+    font-weight: 600;
+}
 
-        .wishlist {
-            height: 25px;
-            width: 25px;
-            background-color: #5ABCE6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
+.table th {
+    font-weight: 600;
+    color: #2c3e50;
+}
 
-        .first {
-            position: absolute;
-            width: 100%;
-            padding: 9px;
-        }
+.upload-area {
+    background-color: #f8f9fa;
+    border-color: #dee2e6 !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-        .dress-name {
-            font-size: 13px;
-            font-weight: bold;
-            width: 75%;
-        }
+.upload-area:hover {
+    background-color: #e9ecef;
+}
 
-        .new-price {
-            font-size: 15px;
-            font-weight: bold;
-            color: #5ABCE6;
-        }
+.upload-icon {
+    font-size: 2rem;
+    color: #6c757d;
+}
 
-        .old-price {
-            font-size: 12px;
-            font-weight: bold;
-            color: grey;
-            text-decoration: line-through;
-        }
+#uploadText {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
 
-        .btn-card {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            padding: 3px;
-        }
+.payment-details {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+}
 
-        .creme, .red, .blue, .darkblue, .yellow {
-            background-color: #fff;
-            border: 2px solid;
-        }
+.payment-details h3 {
+    color: #2c3e50;
+}
 
-        .creme { border-color: grey; }
-        .red { border-color: red; }
-        .blue { border-color: #40C4FF; }
-        .darkblue { border-color: #01579B; }
-        .yellow { border-color: #FFCA28; }
+.payment-details p {
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
 
-        .item-size {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: #fff;
-            border: 1px solid grey;
-            color: grey;
-            font-size: 10px;
-            text-align: center;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .store-title {
+        font-size: 1.5rem;
+    }
 
-        .rating-star {
-            font-size: 10px !important;
-        }
+    .card-body {
+        padding: 1rem;
+    }
 
-        .rating-number {
-            font-size: 10px;
-            color: grey;
-        }
+    .table-responsive {
+        margin: 0 -1rem;
+    }
+}
 
-        .buy {
-            font-size: 12px;
-            color: purple;
-            font-weight: 500;
-        }
+/* Animation for step transitions */
+.step-section {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
 
-        .voutchers {
-            background-color: #fff;
-            border: none;
-            border-radius: 10px;
-            width: 100%;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            overflow: hidden;
-        }
+.step-section.fade-out {
+    opacity: 0;
+}
 
-        .voutcher-divider {
-            display: flex;
-        }
+/* Custom styles for form elements */
+.form-control:focus,
+.form-select:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+}
 
-        .voutcher-left {
-            width: 60%;
-            align-items: center;
-            justify-content: center;
-        }
+.btn-primary {
+    background-color: #4a90e2;
+    border-color: #4a90e2;
+}
 
-        .voutcher-name {
-            color: grey;
-            font-size: 9px;
-            font-weight: 500;
-        }
+.btn-primary:hover {
+    background-color: #357abd;
+    border-color: #357abd;
+}
 
-        .voutcher-code {
-            color: #5ABCE6;
-            font-size: 11px;
-            font-weight: bold;
-        }
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
 
-        .voutcher-right {
-            width: 40%;
-            background-color: #5ABCE6;
-            color: #fff;
-        }
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
 
-        .discount-percent {
-            font-size: 12px;
-            font-weight: bold;
-            position: relative;
-            top: 5px;
-        }
+/* Cart table styles */
+.table td {
+    vertical-align: middle;
+}
 
-        .off {
-            font-size: 14px;
-            position: relative;
-            bottom: 5px;
-        }
+.quantity-input {
+    width: 70px;
+}
 
-        .centered-heading {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #5ABCE6;
-            position: relative;
-            margin: 20px 0;
-        }
+.action-button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
 
-        .centered-heading::after {
-            content: '';
-            display: block;
-            width: 50%;
-            height: 5px;
-            background-color: #5ABCE6;
-            margin: 10px auto 0;
-        }
+/* Modal styles */
+.modal-content {
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-        .tabs {
-            display: flex;
-            border-bottom: 2px solid #ccc;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
 
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .tab:not(:last-child) {
-            margin-right: 20px;
-        }
-
-        .tab::after {
-            content: '';
-            display: block;
-            height: 4px;
-            background-color: transparent;
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            transition: background-color 0.3s;
-        }
-
-        .tab.active::after {
-            background-color: #5ABCE6;
-        }
-
-        .content {
-            display: none;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .content.active {
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .col-md-3 {
-                flex: 0 0 50%;
-                max-width: 50%;
-            }
-
-            .centered-heading {
-                font-size: 2em;
-            }
-
-            .tab {
-                padding: 10px;
-                margin-right: 10px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .col-md-3 {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-
-            .centered-heading {
-                font-size: 1.5em;
-            }
-
-            .tab {
-                padding: 5px;
-                margin-right: 5px;
-            }
-        }
+.modal-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
     </style>
 </head>
 <body>
-    <div class="container" style="margin-top: 30px;">
-        <h2 class="text-center mb-5">Our Products</h2>
+    <div class="container py-5">
+        <header class="mb-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="store-title">Fashion Store Nepal</h1>
+                <div class="step-indicator">Step <span id="currentStep">1</span> of 3</div>
+            </div>
+        </header>
 
-        <div class="tabs">
-            <div class="tab active" onclick="showContent('baby-charm')">Baby Charm</div>
-            <div class="tab" onclick="showContent('helen-harper')">Helen Harper</div>
-        </div>
+        <!-- Step 1: Product Selection -->
+        <div id="step1" class="step-section">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Select Your Product</h2>
+                    <div class="mb-3">
+                        <label for="productSelect" class="form-label">Choose Product</label>
+                        <select id="productSelect" class="form-select">
+                            <option value="">Select a product</option>
+                        </select>
+                    </div>
+                    <div class="mb-3" id="sizeSelectContainer" style="display: none;">
+                        <label for="sizeSelect" class="form-label">Choose Size</label>
+                        <select id="sizeSelect" class="form-select">
+                            <option value="">Select a size</option>
+                        </select>
+                    </div>
+                    <button id="addToCartBtn" class="btn btn-primary w-100" disabled>Add to Cart</button>
+                </div>
+            </div>
 
-        <div id="baby-charm" class="content active">
-            <div class="row">
-                <div class="col-md-3">
-                    <!-- Product Card -->
-                    <div class="card">
-                        <div class="image-container">
-                            <div class="first">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="discount">-15%</span>
-                                    <span class="wishlist" style="cursor: pointer;"><i class="fa fa-info-circle"></i></span>
-                                </div>
-                            </div>
-                            <img src="img/baby-charm-diaper-roduct-1.jpg" class="img-fluid rounded thumbnail-image">
-                        </div>
-                        <div class="product-detail-container p-2">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="dress-name">BABY CHARM-New Born</h5>
-                                <div class="d-flex flex-column mb-2">
-                                    <span class="new-price">Rs 3.99</span>
-                                    <small class="old-price text-right">Rs 5.99</small>
-                                </div>
-                            </div>
-                            <!-- Voucher Card -->
-                            <div class="card voutchers">
-                                <div class="voutcher-divider">
-                                    <div class="voutcher-left text-center" style="cursor: pointer;" onclick="window.location.href='sell.php'">
-                                        <h5 class="voutcher-code" style="margin-top: 16px; font-size: 14px;">Buy Now</h5>
-                                    </div>
-                                    <div class="voutcher-right text-center border-left">
-                                        <h5 class="discount-percent">20%</h5>
-                                        <span class="off">Off</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Your Cart</h2>
+                    <div class="table-responsive">
+                        <table class="table" id="cartTable">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Size</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cartItems"></tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <div class="h5 mb-0">Total: Rs. <span id="cartTotal">0</span></div>
+                        <button id="nextToAddress" class="btn btn-primary" disabled>Next</button>
                     </div>
                 </div>
-                <!-- Repeat for other Baby Charm products -->
             </div>
         </div>
 
-        <div id="helen-harper" class="content">
-            <div class="row">
-                <div class="col-md-3">
-                    <!-- Product Card -->
-                    <div class="card">
-                        <div class="image-container">
-                            <div class="first">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="discount">-15%</span>
-                                    <span class="wishlist" style="cursor: pointer;"><i class="fa fa-info-circle"></i></span>
-                                </div>
+        <!-- Step 2: Address Form -->
+        <div id="step2" class="step-section" style="display: none;">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Delivery Address</h2>
+                    <form id="addressForm">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" required>
                             </div>
-                            <img src="img/helen-product-1.jpg" class="img-fluid rounded thumbnail-image">
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="province" class="form-label">Province</label>
+                                <select class="form-select" id="province" required>
+                                    <option value="">Select Province</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="district" class="form-label">District</label>
+                                <select class="form-select" id="district" required disabled>
+                                    <option value="">Select District</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="municipality" class="form-label">Municipality</label>
+                                <select class="form-select" id="municipality" required disabled>
+                                    <option value="">Select Municipality</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="ward" class="form-label">Ward No.</label>
+                                <input type="number" class="form-control" id="ward" min="1" max="32" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="tole" class="form-label">Tole/Street</label>
+                                <input type="text" class="form-control" id="tole" required>
+                            </div>
                         </div>
-                        <div class="product-detail-container p-2">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="dress-name">HELEN HARPER -Junior</h5>
-                                <div class="d-flex flex-column mb-2">
-                                    <span class="new-price">Rs 3.99</span>
-                                    <small class="old-price text-right">Rs 5.99</small>
-                                </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" class="btn btn-secondary" id="backToCart">Back</button>
+                            <button type="submit" class="btn btn-primary">Next</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Payment -->
+        <div id="step3" class="step-section" style="display: none;">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Payment Details</h2>
+                    <div class="mb-4">
+                        <label class="form-label">Payment Method</label>
+                        <div class="d-flex gap-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="bank" checked>
+                                <label class="form-check-label" for="bankTransfer">Bank Transfer</label>
                             </div>
-                            <!-- Voucher Card -->
-                            <div class="card voutchers">
-                                <div class="voutcher-divider">
-                                    <div class="voutcher-left text-center" style="cursor: pointer;" onclick="window.location.href='sell.php'">
-                                        <h5 class="voutcher-code" style="margin-top: 16px; font-size: 14px;">Buy Now</h5>
-                                    </div>
-                                    <div class="voutcher-right text-center border-left">
-                                        <h5 class="discount-percent">20%</h5>
-                                        <span class="off">Off</span>
-                                    </div>
-                                </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="esewa" value="esewa">
+                                <label class="form-check-label" for="esewa">eSewa</label>
                             </div>
                         </div>
                     </div>
+
+                    <div id="bankDetails" class="payment-details bg-light p-3 rounded mb-4">
+                        <h3 class="h5 mb-3">Bank Details</h3>
+                        <p class="mb-1">Bank: Nepal Bank Limited</p>
+                        <p class="mb-1">Account Holder: Fashion Store Nepal</p>
+                        <p class="mb-1">Account Number: 0123456789</p>
+                    </div>
+
+                    <div id="esewaDetails" class="payment-details bg-light p-3 rounded mb-4" style="display: none;">
+                        <h3 class="h5 mb-3">eSewa Details</h3>
+                        <p class="mb-1">eSewa ID: fashion@esewa</p>
+                    </div>
+
+                    <div class="text-center mb-4">
+                        <img id="qrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://example.com/payment" alt="Payment QR Code" class="img-fluid mb-2" style="max-width: 200px;">
+                        <br>
+                        <a href="#" id="downloadQR" class="btn btn-link">Download QR Code</a>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Upload Payment Slip</label>
+                        <div class="upload-area p-4 text-center border border-2 border-dashed rounded">
+                            <input type="file" id="paymentSlip" accept=".pdf,.jpg,.jpeg,.png" class="d-none">
+                            <label for="paymentSlip" class="mb-0 cursor-pointer">
+                                <div class="upload-icon mb-2">📤</div>
+                                <span id="uploadText">Click to upload payment slip (PDF, JPG)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-secondary" id="backToAddress">Back</button>
+                        <button class="btn btn-success" id="confirmOrder" disabled>Confirm Order</button>
+                    </div>
                 </div>
-                <!-- Repeat for other Helen Harper products -->
+            </div>
+        </div>
+
+        <!-- Order Confirmation Modal -->
+        <div class="modal fade" id="confirmationModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Order Confirmed!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your order has been successfully placed. Thank you for shopping with us!</p>
+                        <p>Your order details have been sent to your email.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="downloadInvoice">Download Invoice</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+
     <script>
-        function showContent(tabName) {
-            const tabs = document.querySelectorAll('.tab');
-            const contents = document.querySelectorAll('.content');
+        // Product data
+const products = [
+    {
+        id: 1,
+        name: "Classic T-Shirt",
+        price: 1200,
+        sizes: ["S", "M", "L", "XL"]
+    },
+    {
+        id: 2,
+        name: "Denim Jeans",
+        price: 2500,
+        sizes: ["28", "30", "32", "34", "36"]
+    },
+    {
+        id: 3,
+        name: "Sneakers",
+        price: 3500,
+        sizes: ["7", "8", "9", "10", "11"]
+    }
+];
 
-            tabs.forEach(tab => tab.classList.remove('active'));
-            contents.forEach(content => content.classList.remove('active'));
+// Location data
+const provinces = [
+    "Province 1",
+    "Madhesh",
+    "Bagmati",
+    "Gandaki",
+    "Lumbini",
+    "Karnali",
+    "Sudurpashchim"
+];
 
-            document.querySelector(`.tab[onclick="showContent('${tabName}')"]`).classList.add('active');
-            document.getElementById(tabName).classList.add('active');
-        }
+const districts = {
+    "Province 1": ["Taplejung", "Panchthar", "Ilam", "Jhapa"],
+    "Madhesh": ["Saptari", "Siraha", "Dhanusha", "Mahottari"],
+    "Bagmati": ["Kathmandu", "Bhaktapur", "Lalitpur", "Kavrepalanchok"]
+};
+
+const municipalities = {
+    "Kathmandu": ["Kathmandu Metropolitan", "Kirtipur", "Chandragiri"],
+    "Lalitpur": ["Lalitpur Metropolitan", "Godawari", "Mahalaxmi"]
+};
+
+// State management
+let cart = [];
+let currentStep = 1;
+let orderData = {
+    items: [],
+    address: {},
+    payment: {
+        method: 'bank',
+        slip: null
+    }
+};
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', () => {
+    initializeProductSelect();
+    initializeLocationSelects();
+    setupEventListeners();
+    updateStepIndicator();
+});
+
+// Product selection initialization
+function initializeProductSelect() {
+    const productSelect = document.getElementById('productSelect');
+    products.forEach(product => {
+        const option = document.createElement('option');
+        option.value = product.id;
+        option.textContent = `${product.name} - Rs. ${product.price}`;
+        productSelect.appendChild(option);
+    });
+}
+
+// Location selects initialization
+function initializeLocationSelects() {
+    const provinceSelect = document.getElementById('province');
+    provinces.forEach(province => {
+        const option = document.createElement('option');
+        option.value = province;
+        option.textContent = province;
+        provinceSelect.appendChild(option);
+    });
+}
+
+// Event listeners setup
+function setupEventListeners() {
+    // Product selection events
+    document.getElementById('productSelect').addEventListener('change', handleProductChange);
+    document.getElementById('sizeSelect').addEventListener('change', handleSizeChange);
+    document.getElementById('addToCartBtn').addEventListener('click', handleAddToCart);
+
+    // Navigation events
+    document.getElementById('nextToAddress').addEventListener('click', () => navigateToStep(2));
+    document.getElementById('backToCart').addEventListener('click', () => navigateToStep(1));
+    document.getElementById('backToAddress').addEventListener('click', () => navigateToStep(2));
+    
+    // Address form events
+    document.getElementById('addressForm').addEventListener('submit', handleAddressSubmit);
+    document.getElementById('province').addEventListener('change', handleProvinceChange);
+    document.getElementById('district').addEventListener('change', handleDistrictChange);
+
+    // Payment events
+    document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+        radio.addEventListener('change', handlePaymentMethodChange);
+    });
+    document.getElementById('paymentSlip').addEventListener('change', handleSlipUpload);
+    document.getElementById('confirmOrder').addEventListener('click', handleOrderConfirmation);
+    document.getElementById('downloadInvoice').addEventListener('click', generatePDF);
+}
+
+// Product selection handlers
+function handleProductChange(e) {
+    const productId = Number(e.target.value);
+    const product = products.find(p => p.id === productId);
+    const sizeSelect = document.getElementById('sizeSelect');
+    const sizeContainer = document.getElementById('sizeSelectContainer');
+
+    if (product) {
+        sizeSelect.innerHTML = '<option value="">Select a size</option>';
+        product.sizes.forEach(size => {
+            const option = document.createElement('option');
+            option.value = size;
+            option.textContent = size;
+            sizeSelect.appendChild(option);
+        });
+        sizeContainer.style.display = 'block';
+    } else {
+        sizeContainer.style.display = 'none';
+    }
+    
+    updateAddToCartButton();
+}
+
+function handleSizeChange() {
+    updateAddToCartButton();
+}
+
+function updateAddToCartButton() {
+    const productSelect = document.getElementById('productSelect');
+    const sizeSelect = document.getElementById('sizeSelect');
+    const addToCartBtn = document.getElementById('addToCartBtn');
+    
+    addToCartBtn.disabled = !productSelect.value || !sizeSelect.value;
+}
+
+function handleAddToCart() {
+    const productId = Number(document.getElementById('productSelect').value);
+    const size = document.getElementById('sizeSelect').value;
+    const product = products.find(p => p.id === productId);
+
+    if (product && size) {
+        const cartItem = {
+            id: Date.now(),
+            productId,
+            name: product.name,
+            size,
+            quantity: 1,
+            price: product.price
+        };
+
+        cart.push(cartItem);
+        updateCart();
+        
+        // Reset selections
+        document.getElementById('productSelect').value = '';
+        document.getElementById('sizeSelect').value = '';
+        document.getElementById('sizeSelectContainer').style.display = 'none';
+        updateAddToCartButton();
+    }
+}
+
+// Cart management
+function updateCart() {
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const nextBtn = document.getElementById('nextToAddress');
+
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>${item.size}</td>
+            <td>Rs. ${item.price}</td>
+            <td>
+                <input type="number" min="1" value="${item.quantity}" 
+                    class="form-control quantity-input" 
+                    onchange="updateQuantity(${item.id}, this.value)">
+            </td>
+            <td>Rs. ${item.price * item.quantity}</td>
+            <td>
+                <button class="btn btn-danger btn-sm" onclick="removeItem(${item.id})">
+                    Remove
+                </button>
+            </td>
+        `;
+        cartItems.appendChild(row);
+        total += item.price * item.quantity;
+    });
+
+    cartTotal.textContent = total;
+    nextBtn.disabled = cart.length === 0;
+    orderData.items = [...cart];
+}
+
+function updateQuantity(id, quantity) {
+    const item = cart.find(item => item.id === id);
+    if (item) {
+        item.quantity = Math.max(1, parseInt(quantity) || 1);
+        updateCart();
+    }
+}
+
+function removeItem(id) {
+    cart = cart.filter(item => item.id !== id);
+    updateCart();
+}
+
+// Navigation
+function navigateToStep(step) {
+    const currentSection = document.getElementById(`step${currentStep}`);
+    const nextSection = document.getElementById(`step${step}`);
+    
+    currentSection.style.display = 'none';
+    nextSection.style.display = 'block';
+    
+    currentStep = step;
+    updateStepIndicator();
+}
+
+function updateStepIndicator() {
+    document.getElementById('currentStep').textContent = currentStep;
+}
+
+// Address form handlers
+function handleAddressSubmit(e) {
+    e.preventDefault();
+    orderData.address = {
+        name: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        province: document.getElementById('province').value,
+        district: document.getElementById('district').value,
+        municipality: document.getElementById('municipality').value,
+        ward: document.getElementById('ward').value,
+        tole: document.getElementById('tole').value
+    };
+    navigateToStep(3);
+}
+
+function handleProvinceChange(e) {
+    const province = e.target.value;
+    const districtSelect = document.getElementById('district');
+    const municipalitySelect = document.getElementById('municipality');
+
+    districtSelect.innerHTML = '<option value="">Select District</option>';
+    municipalitySelect.innerHTML = '<option value="">Select Municipality</option>';
+
+    if (province && districts[province]) {
+        districts[province].forEach(district => {
+            const option = document.createElement('option');
+            option.value = district;
+            option.textContent = district;
+            districtSelect.appendChild(option);
+        });
+        districtSelect.disabled = false;
+    } else {
+        districtSelect.disabled = true;
+    }
+    municipalitySelect.disabled = true;
+}
+
+function handleDistrictChange(e) {
+    const district = e.target.value;
+    const municipalitySelect = document.getElementById('municipality');
+
+    municipalitySelect.innerHTML = '<option value="">Select Municipality</option>';
+
+    if (district && municipalities[district]) {
+        municipalities[district].forEach(municipality => {
+            const option = document.createElement('option');
+            option.value = municipality;
+            option.textContent = municipality;
+            municipalitySelect.appendChild(option);
+        });
+        municipalitySelect.disabled = false;
+    } else {
+        municipalitySelect.disabled = true;
+    }
+}
+
+// Payment handlers
+function handlePaymentMethodChange(e) {
+    const method = e.target.value;
+    orderData.payment.method = method;
+    
+    document.getElementById('bankDetails').style.display = method === 'bank' ? 'block' : 'none';
+    document.getElementById('esewaDetails').style.display = method === 'esewa' ? 'block' : 'none';
+    
+    const qrCode = document.getElementById('qrCode');
+    qrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${method === 'bank' ? 'bank-payment' : 'esewa-payment'}`;
+}
+
+function handleSlipUpload(e) {
+    const file = e.target.files[0];
+    if (file) {
+        orderData.payment.slip = file;
+        document.getElementById('uploadText').textContent = file.name;
+        document.getElementById('confirmOrder').disabled = false;
+    }
+}
+
+function handleOrderConfirmation() {
+    const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+    modal.show();
+}
+
+// PDF generation
+function generatePDF() {
+    const content = document.createElement('div');
+    content.innerHTML = `
+        <div style="padding: 20px;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h1>Fashion Store Nepal</h1>
+                <p>Thamel, Kathmandu</p>
+                <p>Phone: +977-1-4XXXXXX</p>
+                <p>Email: info@fashionstore.com.np</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h2>Order Details</h2>
+                <p><strong>Order Date:</strong> ${new Date().toLocaleDateString()}</p>
+                <p><strong>Customer Name:</strong> ${orderData.address.name}</p>
+                <p><strong>Email:</strong> ${orderData.address.email}</p>
+                <p><strong>Phone:</strong> ${orderData.address.phone}</p>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <h2>Delivery Address</h2>
+                <p>${orderData.address.tole}, Ward ${orderData.address.ward}</p>
+                <p>${orderData.address.municipality}</p>
+                <p>${orderData.address.district}, ${orderData.address.province}</p>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <h2>Products</h2>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Product</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Size</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Price</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Quantity</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${orderData.items.map(item => `
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 8px;">${item.name}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">${item.size}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">Rs. ${item.price}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">${item.quantity}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">Rs. ${item.price * item.quantity}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="text-align: right; margin-bottom: 20px;">
+                <h3>Total Amount: Rs. ${orderData.items.reduce((sum, item) => sum + (item.price * item.quantity), 0)}</h3>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <h2>Payment Details</h2>
+                <p><strong>Payment Method:</strong> ${orderData.payment.method === 'bank' ? 'Bank Transfer' : 'eSewa'}</p>
+            </div>
+
+            <div style="margin-top: 40px; text-align: center;">
+                <p>Thank you for shopping with us!</p>
+            </div>
+        </div>
+    `;
+
+    const opt = {
+        margin: 1,
+        filename: 'order-invoice.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(content).save();
+}
     </script>
 </body>
 </html>
