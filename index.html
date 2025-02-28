@@ -577,6 +577,149 @@ footer a:hover {
 </style>
 </head>
 <body>
+  
+  <div id="popup-notice-1" class="popup-notice">
+    <div class="popup-content">
+        <button class="close-btn">&times;</button>
+        <img src="img/pop-up-distributors.jpg" alt="Notice 1" />
+    </div>
+</div>
+
+<div id="popup-notice-2" class="popup-notice">
+    <div class="popup-content">
+        <button class="close-btn">&times;</button>
+        <img src="img/pop-up-manager.jpg" alt="Notice 2" />
+    </div>
+</div>
+
+<style>
+/* Popup Overlay */
+.popup-notice {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+}
+
+/* Popup Content */
+.popup-content {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px; /* Ensures it's   not too large on desktops */
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-btn:hover {
+    background: darkred;
+}
+
+/* Image Styling */
+.popup-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;  /* Maintains aspect ratio */
+    display: block;
+    margin: 0 auto; /* Centering */
+    object-fit: contain; /* Prevents cropping */
+}
+
+/* Show Popup */
+.popup-notice.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .popup-content {
+        width: 95%; /* Slightly larger for mobile view */
+        max-width: 90%; 
+    }
+}
+
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const popup1 = document.getElementById("popup-notice-1");
+        const popup2 = document.getElementById("popup-notice-2");
+        const closeBtns = document.querySelectorAll(".close-btn");
+        let isSecondPopupClosed = false; // Track if the second popup has been closed
+    
+        // Show the first popup on page load
+        popup1.classList.add("show");
+    
+        // Function to show the second popup
+        function showSecondPopup() {
+            // Only show the second popup if it hasn't been closed manually
+            if (!isSecondPopupClosed) {
+                popup2.classList.add("show");
+    
+                // Hide the second popup after 5 seconds
+                setTimeout(() => {
+                    popup2.classList.remove("show");
+                }, 5000);
+            }
+        }
+    
+        // Close event for both popups
+        closeBtns.forEach(btn => {
+            btn.addEventListener("click", (event) => {
+                const popup = event.target.closest(".popup-notice");
+                popup.classList.remove("show");
+    
+                // If the first popup is closed, show the second popup
+                if (popup === popup1) {
+                    setTimeout(showSecondPopup, 500);
+                }
+    
+                // If the second popup is closed, mark it as closed manually
+                if (popup === popup2) {
+                    isSecondPopupClosed = true;
+                }
+            });
+        });
+    
+        // Automatically hide the first popup after 5 seconds and show the second popup
+        setTimeout(() => {
+            popup1.classList.remove("show");
+            setTimeout(showSecondPopup, 500);
+        }, 5000);
+    });
+    </script>
+            
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
