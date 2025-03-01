@@ -256,6 +256,26 @@
     transform: scale(1.2);
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 1.5rem; /* Smaller h1 for tablets and below */
+    }
+
+    .hero-content p {
+        font-size: 0.5rem; /* Smaller p for tablets and below */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1rem; /* Even smaller h1 for mobile */
+    }
+
+    .hero-content p {
+        font-size: 0.5rem; /* Even smaller p for mobile */
+    }
+}
 /* Animations */
 @keyframes fadeInUp {
     from {
